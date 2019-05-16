@@ -19,6 +19,22 @@
 <body>
 
   <nav class="navbar navbar-default">
+      <div id="header1" class="hidden-xs">
+          <div class="container" style="max-width:80%">
+              <div class="small">
+                  <table width="100%">
+                      <tr>
+                          <td align="left">Contact Us | About US | FAQs</td>
+                          <td align="right"><i class="glyphicon glyphicon-facetime-video"></i></td>
+                      </tr>
+                  </table>
+              </div>
+              </div>
+          </div> 
+          
+          
+          
+      </div>
   <div class="container-fluid" id="navcontainer">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -28,16 +44,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">H-Factor</a>
+        <a class="navbar-brand" href="#" style="color:#ffffff">H-Factor</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+        <li class="active" style="color:#ffffff"><a href="#">Home <span class="sr-only" style="color:#ffffff">(current)</span></a></li>
         
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Appointment<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#ffffff">Appointment<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Doctor</a></li>
             <li><a href="#">Diagnostics</a></li>
@@ -47,16 +63,16 @@
             <li><a href="#">Diagnostics Report Delivery</a></li>
           </ul>
         </li>
-        <li><a href="#">About US</a></li>
+        <li><a href="#" style="color:#ffffff">About US</a></li>
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" class="btn btn-info"> <i class="glyphicon glyphicon-search"></i></button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><i class="glyphicon glyphicon-log-in"></i> Login</a></li>
+          <li ><a href="#" style="color:#ffffff"><i class="glyphicon glyphicon-log-in" style="color:#ffffff"></i> Login</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -64,11 +80,11 @@
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
-  <ol class="carousel-indicators">
+  <!--<ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
+  </ol> -->
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
@@ -98,6 +114,53 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+    <div class="container" id="tilecontainer" >
+        <div class="row">
+            
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"><div class="tile" id="tile1">
+                
+                    <h4>
+                        DOCTOR'S APPOINTMENT
+                    </h4>
+                    <p>
+                        ipulated like a whip at will, bite opponents, and break Orichalcum.[ch. 82] Level 3 merges the sword with his arm, with eyes on his shoulder and another large arm extending from his back.[ch. 176] Its final form, Level Max, creates a colossal blade made o
+                    </p>
+                    <div class="pull-left"> <a href="#" class="btn btn-warning btn-sm" role="button">PROCEED</a> </div>
+                
+                
+                </div></div>
+            
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"><div class="tile" id="tile2">
+                
+                    <h4>
+                        DIAGNOSTICS SERVICES
+                    </h4>
+                    <p>
+                        ipulated like a whip at will, bite opponents, and break Orichalcum.[ch. 82] Level 3 merges the sword with his arm, with eyes on his shoulder and another large arm extending from his back.[ch. 176] Its final form, Level Max, creates a colossal blade made o
+                    </p>
+                    <div class="pull-left"> <a href="#" class="btn btn-warning btn-sm" role="button">PROCEED</a> </div>
+                
+                </div></div>
+           
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="tile" id="tile3">
+                
+                <h4>
+                       NURSING SERVICES
+                    </h4>
+                    <p>
+                        ipulated like a whip at will, bite opponents, and break Orichalcum.[ch. 82] Level 3 merges the sword with his arm, with eyes on his shoulder and another large arm extending from his back.[ch. 176] Its final form, Level Max, creates a colossal blade made o
+                    </p>
+                    <div class="pull-left"> <a href="#" class="btn btn-warning btn-sm" role="button">PROCEED</a> </div>
+                
+                
+                </div></div>
+            
+        </div>
+    </div>
+    
+    
+    
+    
     <script src='js/jquery-3.2.1.min.js'></script>
     <script src='bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
 
