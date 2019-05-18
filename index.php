@@ -3,10 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width= device-width, initial-scale = 1">
   <title>H-Factor</title>
   
   
   <link rel='stylesheet' href='bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel='stylesheet' href='css/page_style.css'>
 
      
@@ -25,7 +28,11 @@
                   <table width="100%">
                       <tr>
                           <td align="left">Contact Us | About US | FAQs</td>
-                          <td align="right"><i class="glyphicon glyphicon-facetime-video"></i></td>
+                          <td align="right"><i class="fa fa-facebook-square sicon"></i> &nbsp;&nbsp;
+                              <i class="fa fa-twitter-square sicon"></i>&nbsp;&nbsp;
+                              <i class="fa fa-instagram" sicon></i>&nbsp;&nbsp;
+                              <i class="fa fa-linkedin-square sicon"></i>
+                          </td>
                       </tr>
                   </table>
               </div>
@@ -156,8 +163,67 @@
                 </div></div>
             
         </div>
+        
+       
     </div>
     
+    <div class="row2">
+        <div class="container" style="max-width: 80%">
+            <div class="row" >
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                    <h2>We have got the Best for You</h2>
+                    <p style="color:#666666">All registered doctors are highly experienced in their fields and 
+                        <br>produce excellent outcomes for patients</p>
+                    <br><br>
+                    </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                        <div class="doctile left" ><div class="thumbnail">
+                            <img src="images/doctor_default_thumbnail.jpg" alt="...">
+                        </div>
+                        <div class="caption">
+                            <h4>Dr. Debasish Das</h4>
+                            <hr>
+                            <p>Here will be something special about the Doctor</p>
+                            <a href="#" class="btn btn-info btn-sm" role="button">READ MORE</a>
+                        </div></div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                        <div class="doctile left" ><div class="thumbnail">
+                            <img src="images/doctor_default_thumbnail.jpg" alt="...">
+                        </div>
+                        <div class="caption">
+                            <h4>Dr. Debasish Das</h4>
+                            <hr>
+                            <p>Here will be something special about the Doctor</p>
+                            <a href="#" class="btn btn-info btn-sm" role="button">READ MORE</a>
+                        </div></div>
+                    </div><div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                        <div class="doctile left" ><div class="thumbnail">
+                            <img src="images/doctor_default_thumbnail.jpg" alt="...">
+                        </div>
+                        <div class="caption">
+                            <h4>Dr. Debasish Das</h4>
+                            <hr>
+                            <p>Here will be something special about the Doctor</p>
+                            <a href="#" class="btn btn-info btn-sm" role="button">READ MORE</a>
+                        </div></div>
+                    </div><div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                        <div class="doctile left" ><div class="thumbnail">
+                            <img src="images/doctor_default_thumbnail.jpg" alt="...">
+                        </div>
+                        <div class="caption">
+                            <h4>Dr. Debasish Das</h4>
+                            <hr>
+                            <p>Here will be something special about the Doctor</p>
+                            <a href="#" class="btn btn-info btn-sm" role="button">READ MORE</a>
+                        </div></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
     
     
     
