@@ -74,7 +74,7 @@
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control" placeholder="Search"  id='srchbx'>
         </div>
           <button type="submit" class="btn btn-info"> <i class="glyphicon glyphicon-search"></i></button>
       </form>
@@ -179,7 +179,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
                         <div class="doctile left" ><div class="thumbnail">
-                            <img src="images/doctor_default_thumbnail.jpg" alt="...">
+                                <img src="images/drdebasish.jpg" alt="...">
                         </div>
                         <div class="caption">
                             <h4>Dr. Debasish Das</h4>
@@ -190,10 +190,10 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
                         <div class="doctile left" ><div class="thumbnail">
-                            <img src="images/doctor_default_thumbnail.jpg" alt="...">
+                                <img src="images/drdibyendu.jpg" alt="...">
                         </div>
                         <div class="caption">
-                            <h4>Dr. Debasish Das</h4>
+                            <h4>Dr. Dibyendu Sarkar</h4>
                             <hr>
                             <p>Here will be something special about the Doctor</p>
                             <a href="#" class="btn btn-info btn-sm" role="button">READ MORE</a>
@@ -203,17 +203,17 @@
                             <img src="images/doctor_default_thumbnail.jpg" alt="...">
                         </div>
                         <div class="caption">
-                            <h4>Dr. Debasish Das</h4>
+                            <h4>Dr. Fistname Lastnmae</h4>
                             <hr>
                             <p>Here will be something special about the Doctor</p>
                             <a href="#" class="btn btn-info btn-sm" role="button">READ MORE</a>
                         </div></div>
                     </div><div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
                         <div class="doctile left" ><div class="thumbnail">
-                            <img src="images/doctor_default_thumbnail.jpg" alt="...">
+                                <img src="images/drchinmay.jpg" alt="...">
                         </div>
                         <div class="caption">
-                            <h4>Dr. Debasish Das</h4>
+                            <h4>Dr. Chinmay Biswas</h4>
                             <hr>
                             <p>Here will be something special about the Doctor</p>
                             <a href="#" class="btn btn-info btn-sm" role="button">READ MORE</a>
@@ -224,7 +224,47 @@
             </div>
         </div>
     </div>
-    
+    <div id="footer">
+        <div class="container" style="width:80%">
+            <div class="row" >
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <h5>H-Factor</h5>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <h5>Services</h5>
+                <p>
+                    <a href="#" class="btn btn-xs" role="link">Doctor's Appointment</a><br>
+                    <a href="#" class="btn btn-xs" role="link">Diagnostics</a><br>
+                    <a href="#" class="btn btn-xs" role="link">Nursing Services</a>
+                </p>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <h5>Contact Us</h5>
+                <p>
+                <h6>Head Office</h6>
+                
+                TMC Road, Hapania, 1st Floor of UBI ATM
+                <br>Sadar, Agartala, West Tripura, Tripura-799014<br>
+e-mail: info@biht.in
+                </p>
+            </div>
+                <div class="col-lg-3 col-md-12 col-sm-6 col-xs-12">
+                <h5>Follow Us</h5>
+                <p>
+                    <i class="fa fa-facebook-square sicon"></i> &nbsp;&nbsp;&nbsp;&nbsp;
+                              <i class="fa fa-twitter-square sicon"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                              <i class="fa fa-instagram" sicon></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                              <i class="fa fa-linkedin-square sicon"></i>
+                
+                </p>
+                <hr>
+                <p>
+                    Copyright 2019 © BIH Technologies Pvt. Ltd.
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
     
     
     <script src='js/jquery-3.2.1.min.js'></script>

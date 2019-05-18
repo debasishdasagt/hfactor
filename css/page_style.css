@@ -11,6 +11,13 @@
   border-radius:0;
   border-color:transparent;
 }
+
+#srchbx
+{
+    background-color: rgba(255,255,255,0.2);
+    color: #eeeeee;
+    border-color: #aaaaaa;
+}
 #carousel-example-generic{
     max-height: 600px;
     overflow: hidden;
@@ -47,17 +54,23 @@
    position: relative; 
    top: -150px;
    margin-bottom: -50px;
+   
 }
 
 .tile{
     
     min-height: 300px;
     margin: 10px;
-    box-shadow: 0px 0px 8px #000000;
+    box-shadow: 0px 0px 15px #888888;
     padding: 20px;
     color: #ffffff;
     
 }
+
+.tile h4{
+    font-weight: bold;
+}
+
 
 .doctile{
     
@@ -67,6 +80,7 @@
     padding: 0px;
     background-color: #ffffff;
     padding-bottom: 10px;
+    
 }
 
 .doctile > .thumbnail{
@@ -94,4 +108,41 @@
     width: 100%;
     padding-top:0px;
     text-align: center;
+    padding-bottom: 50px;
+}
+
+.doctile .thumbnail
+{
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.doctile .thumbnail img{
+    
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#footer
+{
+    background-color: #606060;
+    width: 100%;
+    color: #aaaaaa;
+    padding-top:1 0px;
+    font-size: 10px;
+}
+
+#footer a
+{
+    color: #bdc1c2;
+}
+#footer a:hover
+{
+    color: #33e65d;
+}
+
+#footer hr{
+    border-top-color: #aaaaaa;
 }
