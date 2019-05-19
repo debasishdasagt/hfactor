@@ -146,3 +146,29 @@
 #footer hr{
     border-top-color: #aaaaaa;
 }
+
+
+.vertical-center {
+    background-color: #4288b5;
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+#login_container
+{
+    max-width: 500px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px #555555;
+    border-radius: 5px;
+    text-align: center;
+    padding:20px;
+}
+
+.logininputs
+{
+    width: 100%;
+    
+}

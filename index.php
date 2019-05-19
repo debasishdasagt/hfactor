@@ -79,7 +79,7 @@
           <button type="submit" class="btn btn-info"> <i class="glyphicon glyphicon-search"></i></button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-          <li ><a href="#" style="color:#ffffff"><i class="glyphicon glyphicon-log-in" style="color:#ffffff"></i> Login</a></li>
+          <li ><a href="master/" style="color:#ffffff"><i class="glyphicon glyphicon-log-in" style="color:#ffffff"></i> Login</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
