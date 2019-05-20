@@ -4,6 +4,8 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
+
 <!DOCTYPE html>
 <html lang="en" >
 
@@ -17,10 +19,35 @@ and open the template in the editor.
   <link rel='stylesheet' href='../css/page_style.css'>
 
 </head>
-<body style="background-color: #4288b5">
-       
-    <div class="jumbotron vertical-center"> 
+<body style="background-color: #4288b5; padding: 0px; margin: 0px;">
+    
+<?php
+
+include_once '../config.php';
+if($_SERVER['REQUEST_METHOD']=== "POST")
+{
+    if(isset($_POST['usrid']) && isset($_POST['passwd']))
+    {
+        
+    }
+    else
+    {
+       $err="UserID or Password Not Entered";
+    }
+}
+
+
+
+?>
+    
+     
+    <div class="jumbotron vertical-center">
+        
   <div class="container" id="login_container">
+      <div class="alert alert-danger alert-dismissable">
+       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error! </strong> Username or Password Not Entered
+    </div>  
       <div class="row">
           <div class="col-lg-6 col-md-6 hidden-sm hidden-xs"><br><br><br>
               <img src="../images/login_icon.png">
