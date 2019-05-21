@@ -24,15 +24,39 @@ and open the template in the editor.
 <?php
 
 include_once '../config.php';
+$login=false;
+$err="";
 if($_SERVER['REQUEST_METHOD']=== "POST")
 {
-    if(isset($_POST['usrid']) && isset($_POST['passwd']))
+    if($_POST['usrid']!="" && $_POST['passwd']!="")
     {
-        
+        $userid=  mysqli_real_escape_string($conn,$_POST['usrid']);
+        $passwd=  mysqli_real_escape_string($conn,$_POST['passwd']);
+        $r=  mysqli_query($conn, "select count(id) as c from d_user_password where user_id='$userid' and user_password=md5('$passwd') and record_status='A'");
+        if (!$r) {
+    printf("Error: %s\n", mysqli_error($conn));
+    exit();
+}
+        $res=  mysqli_fetch_array($r);
+        if($res['c'] >= 1)
+        {
+            $login=true;
+            session_start();
+            $_SESSION['loginid']=$userid;
+            header("Location: memberdashboard.php");
+            
+        }
+        else
+        {
+            $login=FALSE;
+            $err="Incorrect UserID or Password entered";
+        }
     }
     else
     {
+        $login=false;
        $err="UserID or Password Not Entered";
+       
     }
 }
 
@@ -44,10 +68,19 @@ if($_SERVER['REQUEST_METHOD']=== "POST")
     <div class="jumbotron vertical-center">
         
   <div class="container" id="login_container">
+      
+      
+      <?php
+      if(!$login && $err != "")
+      {
+      ?>
       <div class="alert alert-danger alert-dismissable">
        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Error! </strong> Username or Password Not Entered
-    </div>  
+        <strong>Error! </strong> <?php echo $err; ?>
+    </div> 
+      <?php }?>
+      
+      
       <div class="row">
           <div class="col-lg-6 col-md-6 hidden-sm hidden-xs"><br><br><br>
               <img src="../images/login_icon.png">
