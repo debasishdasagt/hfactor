@@ -32,7 +32,7 @@ include_once 'loginhandler.php';
 <div class="sidebar">
     <a class="active" href="#home"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a>
   <a href="#news"><i class="glyphicon glyphicon-user"></i> User Management</a>
-  <a href="#contact"><i class="glyphicon glyphicon-plus-sign"></i> Doctors</a>
+  <a href="doctor/newdoctor.php" target="adminframe"><i class="glyphicon glyphicon-plus-sign"></i> Doctors</a>
   <a href="#contact"><i class="glyphicon glyphicon-heart-empty"></i> Patients</a>
   <a href="#about"><i class="glyphicon glyphicon-search"></i> Pathology Labs</a>
   <a href="#about"><i class="glyphicon glyphicon-briefcase"></i> Nursing Care</a>
@@ -41,7 +41,7 @@ include_once 'loginhandler.php';
 
 <!-- Page content -->
 <div class="content" id="wrapper">
-    <iframe src="dashboard.php" class="adminframe"></iframe>
+    <iframe name="adminframe" id="adminframe" src="dashboard.php" class="adminframe"></iframe>
 </div> 
         
         <script src='../js/jquery-3.2.1.min.js'></script>
