@@ -25,6 +25,10 @@ and open the template in the editor.
 </head>
     <body>
         <div class="container">
+            <div class='btn-group btn-group-sm'>
+                <a class='btn btn-info' role='button' href="#">All Doctors</a>
+                <a class='btn btn-info' role='button' href="#">All Chambers</a>
+            </div><br><br>
             <div class="well" style="text-align: center">
                 <h4>New Doctor Registration</h4>
             </div>
@@ -52,6 +56,24 @@ and open the template in the editor.
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <br>
                     <div class="input-group input-group-sm">
+                        <span class="input-group-addon">Designation</span>
+                        <input type="text" class="form-control" placeholder="Designation in Hospital">
+                    </div>
+                </div>
+                    
+                    
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <br>
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">Experience </span>
+                        <input type="text" class="form-control" placeholder="Doctor's Expirience">
+                    </div>
+                </div>
+                    
+                    
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <br>
+                    <div class="input-group input-group-sm">
                         <span class="input-group-addon">Mobile Number</span>
                         <input type="text" class="form-control" placeholder="Contact Number">
                     </div>
@@ -71,17 +93,29 @@ and open the template in the editor.
                         <br>
                     
                         <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div>
-                        
+                            <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">Doctor,s Specialization
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">SP1</a></li>
+                              <li><a href="#">Specialization 2</a></li>
+                              <li><a href="#">Medicine</a></li>
+                            </ul>
+                        </div>
+                </div>
                     
+                    
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <br>
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">Consultation Fee</span>
+                        <input type="text" class="form-control" placeholder="Doctor's Consultation Fee">
+                    </div>
+                </div>
+                    
+                    
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-6 col-md-offset-6 col-sm-offset-12 col-xs-offset-12" style="text-align: right">
+                        <br>
+                        <a class='btn btn-info btn-sm' role='Button' href='#'>Submit</a>
                 </div>
                     
                     
