@@ -34,7 +34,7 @@ include_once 'loginhandler.php';
   <a href="#news"><i class="glyphicon glyphicon-user"></i> User Management</a>
   <a href="doctor/newdoctor.php" target="adminframe"><i class="glyphicon glyphicon-plus-sign"></i> Doctors</a>
   <a href="#contact"><i class="glyphicon glyphicon-heart-empty"></i> Patients</a>
-  <a href="#about"><i class="glyphicon glyphicon-search"></i> Pathology Labs</a>
+  <a href="#about"><i class="glyphicon glyphicon-search"></i> Diagnostic Labs</a>
   <a href="#about"><i class="glyphicon glyphicon-briefcase"></i> Nursing Care</a>
   <a href="logout.php"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
 </div>

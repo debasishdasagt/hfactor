@@ -45,11 +45,16 @@ include_once '../../config.php';
                     
                 </div>
                 
-                <h4>Search Result for <strong> <?php echo  $_POST['srchbox'];?></strong></h4>
-                    <hr>
+                
                 <?php
                 if(isset($_POST['srchbox']) && $_POST['srchbox']!="")
                 {
+                    ?>
+                <br>
+                <br>
+                <h4>Search Result for <strong> <?php echo  $_POST['srchbox'];?></strong></h4>
+                    <hr>
+                    <?php
                     $stxt=  mysqli_real_escape_string($conn,$_POST['srchbox']);
                     $srchres=  mysqli_query($conn, "SELECT `d_doctor_info`.`id`,
     `d_doctor_info`.`doctor_code`,
