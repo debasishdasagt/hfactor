@@ -5,7 +5,12 @@
         <group>
             <file>file:/C:/xampp/htdocs/hfactor/master/doctor/newdoctor.php</file>
             <file>file:/C:/xampp/htdocs/hfactor/css/page_style.css</file>
+            <file>file:/C:/xampp/htdocs/hfactor/master/doctor/savedoctor.php</file>
+            <file>file:/C:/xampp/htdocs/hfactor/js/jquery.uploadfile.js</file>
+            <file>file:/C:/xampp/htdocs/hfactor/master/doctor/picuploader/upload.php</file>
+            <file>file:/C:/xampp/htdocs/hfactor/js/jscript.js</file>
             <file>file:/C:/xampp/htdocs/hfactor/master/memberdashboard.php</file>
+            <file>file:/C:/xampp/htdocs/hfactor/css/uploadfile.css</file>
         </group>
     </open-files>
 </project-private>

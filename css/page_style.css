@@ -258,3 +258,26 @@ div.content {
     margin: 10px;
     text-align: center;
 }
+
+.tile_sm
+{
+    background-color: #efffff;
+    box-shadow: 0px 0px 5px #aaaaaa;
+    border-radius: 3px;     
+    margin: 10px;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.srchimg
+{
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+}
+
+.srchsubtxt
+{
+    color: #bbbbbb;
+    border-top: 1px solid #efefef;
+}
