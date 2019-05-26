@@ -31,10 +31,10 @@ include_once 'loginhandler.php';
     <body>
         <div class="container">
             <div class='btn-group btn-group-sm'>
-                <a class='btn btn-info' role='button' href="#">All Doctors</a>
+                <a class='btn btn-info' role='button' href="alldoctors.php">All Doctors</a>
                 <a class='btn btn-info' role='button' href="addchamber.php">Add  Chamber</a>
-                <a class='btn btn-info' role='button' href="#">All Chambers</a>
-            </div><br><br>
+                <a class='btn btn-info' role='button' href="allchambers.php">All Chambers</a>
+            </div><hr>
             <div class="well" style="text-align: center">
                 <h4>New Doctor Registration</h4>
             </div>
@@ -146,7 +146,7 @@ include_once 'loginhandler.php';
         <h4>Upload Doctor's Profile Picture</h4>
         <hr>
         
-        <a href='' class='btn btn-info btn-sm' role='button'>Add Chamber</a> for the Doctor.
+        <a href='addchamber.php' class='btn btn-info btn-sm' role='button'>Add Chamber</a> for the Doctor.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

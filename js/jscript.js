@@ -38,3 +38,48 @@ function saved()
     });
     
     }
+    
+    
+    
+    function taguntag(lid,tid)
+    {
+        var rateid="rate_"+lid+tid;
+        var btnid="btn_"+lid+tid;
+        if(document.getElementById(rateid).value !="")
+        {
+            $.post("labtestmapping.php",{
+                labid: lid,
+                testid: tid,
+                rate: document.getElementById(rateid).value},
+            function(data,status)
+            {
+                if(data==='1')
+                {
+                    $("#"+btnid).html("Tagged");
+                    $("#"+btnid).addClass("disabled");
+                }
+            })
+        }
+    }
+    
+    
+    function untag(lid,tid)
+    {
+        var rateid="rate_"+lid+tid;
+        var btnid="btn_"+lid+tid;
+        
+            $.post("labtestuntag.php",{
+                labid: lid,
+                testid: tid
+            },
+            function(data,status)
+            {
+                if(data==='1')
+                {
+                    $("#"+btnid).html("Untagged");
+                    $("#"+btnid).addClass("disabled");
+                     $("#"+rateid).addClass("disabled");
+                }
+            })
+        
+    }
