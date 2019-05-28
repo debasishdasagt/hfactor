@@ -83,3 +83,18 @@ function saved()
             })
         
     }
+    
+    
+    function rolechange()
+    {
+        ur=$('#userrole').val();
+        if(ur==="1002")
+        {
+            $('#lab').css('display','block');
+        }
+        else
+        {
+            $('#lab').css('display','none');
+        }
+        
+    }
