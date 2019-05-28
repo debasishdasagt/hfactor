@@ -31,7 +31,7 @@ include_once 'loginhandler.php';
          <!-- The sidebar -->
 <div class="sidebar">
     <a class="active" href="#home"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a>
-  <a href="#news"><i class="glyphicon glyphicon-user"></i> User Management</a>
+    <a href="users/userinfo.php" target="adminframe"><i class="glyphicon glyphicon-user"></i> User Management</a>
   <a href="doctor/newdoctor.php" target="adminframe"><i class="glyphicon glyphicon-plus-sign"></i> Doctors</a>
   <a href="#contact"><i class="glyphicon glyphicon-heart-empty"></i> Patients</a>
   <a href="labs/index.php" target="adminframe"><i class="glyphicon glyphicon-search"></i> Diagnostic Labs</a>
