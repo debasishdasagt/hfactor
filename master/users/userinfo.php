@@ -38,6 +38,7 @@ $rolecd= $roleckr['user_role_code'];
                 if($rolecd=="1001")
                 {
                 ?>
+                <a class='btn btn-info' role='button' href="allusers.php">All Users</a>
                 <a class='btn btn-info' role='button' href="newuser.php">New User</a>
                 <?php } ?>
             </div><hr>
