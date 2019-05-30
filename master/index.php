@@ -43,6 +43,10 @@ if($_SERVER['REQUEST_METHOD']=== "POST")
             $login=true;
             session_start();
             $_SESSION['loginid']=$userid;
+            $getroleq=  mysqli_query($conn, "select user_role_code from d_user_role where record_status='A' and user_id='$userid'");
+            $rolr=  mysqli_fetch_array($getroleq);
+            $_SESSION['rolecode']=$rolr['user_role_code'];
+            
             header("Location: memberdashboard.php");
             
         }

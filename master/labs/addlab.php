@@ -110,25 +110,25 @@ VALUES
                     <div class="alert alert-info alert-dismissable">
        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <strong>Info! </strong> Lab. Saved with Lab. ID : <?php echo $lab_id ?>
-    </div> 
+        . <a href="../users/newuser.php?labid=<?php echo $lab_id ?>" role="button" class="btn btn-info btn-sm">Add User</a> for this Lab.     </div> 
                    <?php
                     }
                     
-                    ?>
+                    ?><div class='container'>
                     <form action='#' method="post">
-                        <div class='col-lg-12'>
+                        <div class='col-lg-12'  style='margin-top: 10px'>
                             <div class='input-group input-group-sm'>
                                 <span class='input-group-addon'>Lab. Name</span>
                                 <input name='l_name' type="text" class='form-control' placeholder="Labolatory Name">
                             </div>
-                        </div><br><div class='col-lg-12'>
+                        </div><br><div class='col-lg-12' style='margin-top: 10px'>
                             <div class='input-group input-group-sm'>
                                 <span class='input-group-addon'>Lab. Address</span>
                                 <input name='l_address' type="text" class='form-control' placeholder="Labolatory Address">
                             </div>
                         </div>
                         
-                        <br><div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                        <br><div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style='margin-top: 10px'>
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="o_t" data-link-format="hh:ii">
                                 <span class='input-group-addon'>Opening Time</span>
                                 <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="o_time">
@@ -139,7 +139,7 @@ VALUES
                         </div>
                         
                        
-                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 '>
+                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 ' style='margin-top: 10px'>
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
                                 <span class='input-group-addon'>Closing Time</span>
                                 <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="c_time">
@@ -150,7 +150,7 @@ VALUES
                         </div>
                         <br><br><br>
                         
-                        <div class='col-lg-12'>
+                        <div class='col-lg-12' style='margin-top: 10px'>
                             
                                     <div class="input-group input-group-sm" style="font-weight: normal">
                                 <input type="checkbox" name="sunday" style="margin-left: 20px;" checked><label for="sunday">Sunday</label>
@@ -167,14 +167,14 @@ VALUES
                         
                         <br>
                         
-                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'  style='margin-top: 10px'>
                             <div class='input-group input-group-sm'>
                                 <span class='input-group-addon'>Lab. Area PIN</span>
                                 <input type="text" class='form-control' name="l_pin" placeholder="Area PIN">
                             </div>
                         </div>
                         
-                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'  style='margin-top: 10px'>
                             <div class='input-group input-group-sm'>
                                 <span class='input-group-addon'>Lab. Doctor</span>
                                 <input type="text" class='form-control' name="l_doctor" placeholder="Doctor In Lab.">
@@ -183,14 +183,14 @@ VALUES
                         
                         
                          <br><br>
-                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-6 col-md-offset-6' style='text-align: right'>
+                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-6 col-md-offset-6' style='text-align: right; margin-top: 10px'>
                            
                             <input type="submit" class='btn btn-info btn-sm' value="Save Lab">
                            
                             
                         </div>
                         
-                    </form><br>
+                    </form></div><br>
                 </div>
             </div>
             

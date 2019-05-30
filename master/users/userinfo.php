@@ -272,7 +272,7 @@ $rolecd= $roleckr['user_role_code'];
                     </div>
                 
                 
-                
+ <?php if($rolecd=='1001') { ?>               
                 
                 <div class="jumbotron">
                     
@@ -368,7 +368,24 @@ $rolecd= $roleckr['user_role_code'];
                                <?php } ?>
                             </select>
                         </div>
-                    </div> <br>
+                    </div>
+                            
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px; display: none" id="chamber">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon">Chamber</span>
+                            <select class="form-control" id="chambers" name="chambers">
+                                <?php
+                                $chamberq=  mysqli_query($conn, "SELECT chamber_id,chamber_name FROM `d_chambers` where record_status='A'");
+                                while ($chamberr=  mysqli_fetch_array($chamberq))
+                                {?>
+                                <option value="<?php echo $chamberr['chamber_id']; ?>"><?php echo $chamberr['chamber_id']."-".$chamberr['chamber_name']; ?></option>
+                               <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                            
+                            
+                            <br>
                            
                     
                     
@@ -385,7 +402,7 @@ $rolecd= $roleckr['user_role_code'];
                         
                    
                     </div>
-                
+ <?php } ?>
                 
                 
                 

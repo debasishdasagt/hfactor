@@ -31,11 +31,21 @@ include_once 'loginhandler.php';
          <!-- The sidebar -->
 <div class="sidebar">
     <a class="active" href="#home"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a>
+   
     <a href="users/userinfo.php" target="adminframe"><i class="glyphicon glyphicon-user"></i> User Management</a>
+   
+    <?php if($_SESSION['rolecode']== '1001') { ?>
   <a href="doctor/newdoctor.php" target="adminframe"><i class="glyphicon glyphicon-plus-sign"></i> Doctors</a>
+  <?php } ?>
+  <?php if($_SESSION['rolecode']== '1001' || $_SESSION['rolecode']== '1003') { ?>
   <a href="#contact"><i class="glyphicon glyphicon-heart-empty"></i> Patients</a>
-  <a href="labs/index.php" target="adminframe"><i class="glyphicon glyphicon-search"></i> Diagnostic Labs</a>
+  <?php } ?>
+  <?php if($_SESSION['rolecode']== '1001' || $_SESSION['rolecode']== '1002') { ?>
+  <a href="labs/addtest.php" target="adminframe"><i class="glyphicon glyphicon-search"></i> Diagnostic Labs</a>
+  <?php } ?>
+  <?php if($_SESSION['rolecode']== '1001') { ?>
   <a href="#about"><i class="glyphicon glyphicon-briefcase"></i> Nursing Care</a>
+  <?php } ?>
   <a href="logout.php"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
 </div>
 

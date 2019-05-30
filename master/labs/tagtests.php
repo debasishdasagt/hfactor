@@ -16,6 +16,10 @@ $roleck= mysqli_query($conn, "select user_role_code from d_user_role where user_
 $roleckr=  mysqli_fetch_array($roleck);
 $rolecd= $roleckr['user_role_code'];
 
+$getlabq=mysqli_query($conn, "select lab_id from d_user_lab_mapping where user_id='$uid' and record_status='A'");
+$labr=  mysqli_fetch_array($getlabq);
+$labcd=$labr['lab_id'];
+
 ?>
 
 <html lang="en" >
@@ -73,7 +77,7 @@ $rolecd= $roleckr['user_role_code'];
     `d_labs`.`saturday_open`
 FROM `d_labs` where record_status='A'";
                     }
-                    else
+                    else if($rolecd=="1002")
                     {
                         $sql="SELECT `d_labs`.`id`,
     `d_labs`.`lab_id`,
@@ -90,7 +94,7 @@ FROM `d_labs` where record_status='A'";
     `d_labs`.`thursday_open`,
     `d_labs`.`friday_open`,
     `d_labs`.`saturday_open`
-FROM `d_labs` where record_status='A'";
+FROM `d_labs` where record_status='A' and lab_id='$labcd'";
                     }
                     
                     $labss=  mysqli_query($conn, $sql);

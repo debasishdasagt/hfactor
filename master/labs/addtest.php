@@ -70,7 +70,7 @@ $rolecd= $roleckr['user_role_code'];
 `test_approved`,
 `record_status`,
 `record_created_on`)
-VALUES('$test_id','$t_name','$t_desc','$t_cat','$uid','N','A',now())";
+VALUES('$test_id','$t_name','$t_cat','$t_desc','$uid','N','A',now())";
 
                $save_test=  mysqli_query($conn, $sql);
                if($save_test)
@@ -97,20 +97,22 @@ VALUES('$test_id','$t_name','$t_desc','$t_cat','$uid','N','A',now())";
                     }
                     
                     ?>
+                    
+                    <div class='container'>
                     <form action='#' method="post">
                         <div class='col-lg-12'>
-                            <div class='input-group input-group-sm'>
+                            <div class='input-group input-group-sm' style='margin-top: 10px'>
                                 <span class='input-group-addon'>Test Name</span>
                                 <input name='t_name' type="text" class='form-control' placeholder="Test Name">
                             </div>
                         </div><br><div class='col-lg-12'>
-                            <div class='input-group input-group-sm'>
+                            <div class='input-group input-group-sm' style='margin-top: 10px'>
                                 <span class='input-group-addon'>Test Description</span>
                                 <input name='t_desc' type="text" class='form-control' placeholder="Test Dscription">
                             </div>
                         </div>
                         
-                        <br><div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                        <br><div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style='margin-top: 10px'>
                             <div class='input-group input-group-sm'>
                                 <span class='input-group-addon'>Test Category</span>
                                 <input name='t_cat' type="text" class='form-control' placeholder="Test Category" value="General" readonly> 
@@ -118,14 +120,14 @@ VALUES('$test_id','$t_name','$t_desc','$t_cat','$uid','N','A',now())";
                         </div>
                         
                         
-                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style='text-align: right'>
+                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style='text-align: right; margin-top: 10px'>
                             
                                 
                             <input type="submit" class='btn btn-info btn-sm' value="Submit">
                             
                         </div>
                         
-                    </form><br>
+                    </form><br></div>
                 </div>
             </div>
             

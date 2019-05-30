@@ -91,10 +91,46 @@ function saved()
         if(ur==="1002")
         {
             $('#lab').css('display','block');
+            $('#chamber').css('display','none');
+        }
+        else if(ur==="1003")
+        {
+            $('#chamber').css('display','block');
+            $('#lab').css('display','none');
         }
         else
         {
             $('#lab').css('display','none');
+            $('#chamber').css('display','none');
+        }
+        
+    }
+    
+    function valuid()
+    {
+        if($('#loginid').val()!="")
+        {
+            $.post('valuserid.php',{uid: $('#loginid').val()},
+            function(data,status)
+            {
+                if(data=='1')
+                {
+                    alert("Login ID already Exists.");
+                }
+                else if(data=='0')
+                {
+                    if($('#newpassword').val() == $('#newpassword1').val() && $('#newpassword1').val()!="")
+                    {$("#userinfo").submit();}
+                    else
+                    {
+                        alert("Password not Confirmed");
+                    }
+                }
+            })
+        }
+        else
+        {
+            alert("Please Enter a Login ID");
         }
         
     }

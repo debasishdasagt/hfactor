@@ -215,20 +215,21 @@ VALUES
                     }
                     
                     ?>
+                    <div class="container">
                     <form action='#' method="post">
-                        <div class='col-lg-12'>
+                        <div class='col-lg-12' style="margin-top: 10px">
                             <div class='input-group input-group-sm'>
                                 <span class='input-group-addon'>Chamber</span>
                                 <input name='c_name' type="text" class='form-control' placeholder="Chamber Name">
                             </div>
-                        </div><br><div class='col-lg-12'>
+                        </div><br><div class='col-lg-12' style="margin-top: 10px">
                             <div class='input-group input-group-sm'>
                                 <span class='input-group-addon'>Chamber Address</span>
                                 <input name='c_address' type="text" class='form-control' placeholder="Chamber Address">
                             </div>
                         </div>
                         
-                        <br><div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                        <br><div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style="margin-top: 10px">
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="o_t" data-link-format="hh:ii">
                                 <span class='input-group-addon'>Opening Time</span>
                                 <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="o_time">
@@ -237,7 +238,7 @@ VALUES
                             </div>
 				<input type="hidden" name="o_t" value="00:00" />
                         </div>
-                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'  style="margin-top: 10px">
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
                                 <span class='input-group-addon'>Closing Time</span>
                                 <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="c_time">
@@ -250,7 +251,7 @@ VALUES
                         
                         <div class='col-lg-12'>
                             
-                                    <div class="input-group input-group-sm" style="font-weight: normal">
+                                    <div class="input-group input-group-sm" style="font-weight: normal;margin-top: 10px">
                                 <input type="checkbox" name="sunday" style="margin-left: 20px;" checked><label for="sunday">Sunday</label>
                                 <input type="checkbox" name="monday" style="margin-left: 20px;" checked ><label for="monday">Monday</label>
                                 <input type="checkbox" name="tuesday" style="margin-left: 20px;" checked><label for="tuesday">Tuesday</label>
@@ -265,14 +266,14 @@ VALUES
                         
                         <br>
                         
-                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style="margin-top: 10px">
                             <div class='input-group input-group-sm'>
                                 <span class='input-group-addon'>Chamber Area PIN</span>
                                 <input type="text" class='form-control' name="c_pin">
                             </div>
                         </div>
                         
-                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style='text-align: right'>
+                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style='text-align: right;margin-top: 10px'>
                            <div class="btn-group btn-group-sm">
                                 <a href="canceladdchamber.php" class="btn btn-danger btn-sm" role="button">Cancel</a>
                             <input type="submit" class='btn btn-info btn-sm' value="Save Chamber">
@@ -280,7 +281,7 @@ VALUES
                             
                         </div>
                         
-                    </form><br>
+                    </form><br></div>
                 </div>
             </div>
             
