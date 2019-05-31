@@ -49,6 +49,7 @@ $rolecd= $roleckr['user_role_code'];
             {
                 $l_name=  mysqli_real_escape_string($conn,$_POST['l_name']);
                 $l_address=  mysqli_real_escape_string($conn,$_POST['l_address']);
+                $l_contact=  mysqli_real_escape_string($conn,$_POST['l_contact']);
                 $c_time=  mysqli_real_escape_string($conn,$_POST['c_time']);
                 $o_time=  mysqli_real_escape_string($conn,$_POST['o_time']);
                 $l_pin=  mysqli_real_escape_string($conn,$_POST['l_pin']);
@@ -73,6 +74,7 @@ $rolecd= $roleckr['user_role_code'];
 `lab_id`,
 `lab_name`,
 `lab_address`,
+`lab_contact`,
 `lab_area_pin`,
 `lab_doctor`,
 `opening_time`,
@@ -87,7 +89,7 @@ $rolecd= $roleckr['user_role_code'];
 `record_status`,
 `record_created_on`)
 VALUES
-('$lab_id','$l_name','$l_address','$l_pin','$l_doctor','$o_time','$c_time','$sund','$mond','$tued','$wedd','$thud','$frid','$satd','A',now())";
+('$lab_id','$l_name','$l_address','$l_contact','$l_pin','$l_doctor','$o_time','$c_time','$sund','$mond','$tued','$wedd','$thud','$frid','$satd','A',now())";
 
                
                $save_lab=  mysqli_query($conn, $sql);
@@ -125,6 +127,13 @@ VALUES
                             <div class='input-group input-group-sm'>
                                 <span class='input-group-addon'>Lab. Address</span>
                                 <input name='l_address' type="text" class='form-control' placeholder="Labolatory Address">
+                            </div>
+                        </div>
+                        
+                        <br><div class='col-lg-12' style='margin-top: 10px'>
+                            <div class='input-group input-group-sm'>
+                                <span class='input-group-addon'>Contact Number</span>
+                                <input name='l_contact' type="text" class='form-control' placeholder="Contact Number(s) Separated By Coma(,)">
                             </div>
                         </div>
                         

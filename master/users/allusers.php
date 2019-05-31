@@ -67,6 +67,8 @@ $rolecd= $roleckr['user_role_code'];
                     {
                     ?>
                     <input type="text" class="form-control" id="srchlab" placeholder="Search Labs.."><br>
+                    
+                    <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover table-responsive" style="font-size: 12px">
                         <thead>
                             <tr>
@@ -76,7 +78,7 @@ $rolecd= $roleckr['user_role_code'];
                                 <th>User Office</th>
                                 
                                 <th>Edit User</th>
-                                <th>Activate / Deactivate</th>
+                                <th>Disable Login</th>
                     
                             </tr>
                         </thead>
@@ -106,29 +108,45 @@ $rolecd= $roleckr['user_role_code'];
                                 {
                                  $getoffcq=  mysqli_query($conn, "select lab_id from d_user_lab_mapping where user_id='$usrid' and record_status='A' ");
                                 $getoffcr= mysqli_fetch_array($getoffcq);
-                                echo $getoffcr['lab_id'];
+                               $offcid=$getoffcr['lab_id'];
+                               $getoffcnameq=  mysqli_query($conn, "select lab_name from d_labs where lab_id='$offcid' and record_status='A'");
+                               $getoffcnamer=  mysqli_fetch_array($getoffcnameq);
+                               echo $getoffcnamer['lab_name'];
                                 }
                                 else if($rlcd=="1003")
                                 {
                                  $getoffcq=  mysqli_query($conn, "select chamber_id from d_user_chamber_mapping where user_id='$usrid' and record_status='A' ");
                                 $getoffcr= mysqli_fetch_array($getoffcq);
-                                echo $getoffcr['chamber_id'];
+                                $offcid=$getoffcr['chamber_id'];                               
+                               $getoffcnameq=  mysqli_query($conn, "select chamber_name from d_chambers where chamber_id='$offcid' and record_status='A'");
+                               $getoffcnamer=  mysqli_fetch_array($getoffcnameq);
+                               echo $getoffcnamer['chamber_name'];
                                 }
                                 
                                 ?>
                             </td>
                             
                             
-                            <td></td>
-                                <td align="center"><a href="deletelab.php?id=<?php echo $labsr['id']; ?>" class="btn btn-danger btn-sm" role="Button"><i class="glyphicon glyphicon-trash"></i></a></td>
-                    
+                            <td align="center">
+                                <a href="userinfo.php?uid=<?php echo $labsr['user_id']?>" class="btn btn-info btn-sm" role="button"><i class="glyphicon glyphicon-edit"></i></a>
+                            </td>
+                            <td align="center">
+                                <?php
+                                $getuserstatusq = mysqli_query($conn, "select user_id from d_user_password where user_id='$usrid' and record_status='A'");
+                                if(mysqli_num_rows($getuserstatusq)>0)
+                                { ?>
+                                <a href="disablelogin.php?uid=<?php echo $usrid; ?>" class="btn btn-danger btn-xs" role="button">Disable</a>
+                                <?php } else { ?>
+                                <a href="enablelogin.php?uid=<?php echo $usrid; ?>" class="btn btn-success btn-xs" role="button">Enable</a>
+                                <?php } ?>
+                            </td>
                             
                             
                         </tr>
                             
                     <?php }} ?>
                             </tbody>
-                    </table>
+                    </table></div>
                 </div>
             </div>
                         
@@ -141,5 +159,15 @@ $rolecd= $roleckr['user_role_code'];
      <script src='../../js/jquery-3.2.1.min.js'></script>
     <script src='../../bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
     <script src="../../js/jscript.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function(){
+  $("#srchlab").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#labtable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+        </script>
 </body>
 </html>

@@ -151,8 +151,11 @@ where doctor_code= '$doctor_code'");
             {
                 $c_name=  mysqli_real_escape_string($conn,$_POST['c_name']);
                 $c_address=  mysqli_real_escape_string($conn,$_POST['c_address']);
+                $c_contact=  mysqli_real_escape_string($conn,$_POST['c_contact']);
                 $c_time=  mysqli_real_escape_string($conn,$_POST['c_time']);
                 $o_time=  mysqli_real_escape_string($conn,$_POST['o_time']);
+                $c_time2=  mysqli_real_escape_string($conn,$_POST['c_time2']);
+                $o_time2=  mysqli_real_escape_string($conn,$_POST['o_time2']);
                 $c_pin=  mysqli_real_escape_string($conn,$_POST['c_pin']);
                 $sund= mysqli_real_escape_string($conn,$_POST['sunday']);
                 $mond= mysqli_real_escape_string($conn,$_POST['monday']);
@@ -175,9 +178,12 @@ where doctor_code= '$doctor_code'");
 `doctor_code`,
 `chamber_name`,
 `chamber_address`,
+`contact_number`,
 `chamber_area_pin`,
 `opening_time`,
 `closing_time`,
+`opening_time2`,
+`closing_time2`,
 `sunday_open`,
 `monday_open`,
 `tuesday_open`,
@@ -188,7 +194,7 @@ where doctor_code= '$doctor_code'");
 `record_status`,
 `record_created_on`)
 VALUES
-('$chamber_id','$doctor_code','$c_name','$c_address','$c_pin','$o_time','$c_time','$sund','$mond','$tued','$wedd','$thud','$frid','$satd','A',now());";
+('$chamber_id','$doctor_code','$c_name','$c_address','$c_contact','$c_pin','$o_time','$c_time','$o_time2','$c_time2','$sund','$mond','$tued','$wedd','$thud','$frid','$satd','A',now());";
 
                $save_chamber=  mysqli_query($conn, $sql);
                if($save_chamber)
@@ -209,7 +215,7 @@ VALUES
                     
                     <div class="alert alert-info alert-dismissable">
        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Info! </strong> Chamber Saved with Chamber ID : <?php echo $chamber_id ?>
+        <strong>Info! </strong> Chamber Saved with Chamber ID : <?php echo $chamber_id ?>. <a href="../users/newuser.php?chamberid=<?php echo $chamber_id ?>" role="button" class="btn btn-info btn-xs">Add User</a> for this Chamber.
     </div> 
                    <?php
                     }
@@ -228,6 +234,13 @@ VALUES
                                 <input name='c_address' type="text" class='form-control' placeholder="Chamber Address">
                             </div>
                         </div>
+                        <br>
+                        <div class='col-lg-12' style="margin-top: 10px">
+                            <div class='input-group input-group-sm'>
+                                <span class='input-group-addon'>Contact Number</span>
+                                <input name='c_contact' type="text" class='form-control' placeholder="Contact Number(s) Separated by coma(,)">
+                            </div>
+                        </div>
                         
                         <br><div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style="margin-top: 10px">
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="o_t" data-link-format="hh:ii">
@@ -242,6 +255,25 @@ VALUES
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
                                 <span class='input-group-addon'>Closing Time</span>
                                 <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="c_time">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+				<input type="hidden" name="c_t" value="23:59" />
+                        </div>
+                        <br><br><br>
+                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style="margin-top: 10px">
+                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="o_t" data-link-format="hh:ii">
+                                <span class='input-group-addon'>2nd Opening Time</span>
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="o_time2">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+				<input type="hidden" name="o_t" value="00:00" />
+                        </div>
+                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'  style="margin-top: 10px">
+                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <span class='input-group-addon'>2nd Closing Time</span>
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="c_time2">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
