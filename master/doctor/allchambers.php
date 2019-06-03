@@ -203,7 +203,7 @@ FROM `d_chambers` where record_status='A' ";
                     
                     ?>
                 
-                <div class='col-lg-3 col-md-3 col-sm-6 col-xs-11 tile_sm'>
+                <div class='col-lg-4 col-md-4 col-sm-6 col-xs-11 tile_sm'>
                     
                     <table width='100%' border='0' cellspacing='0' cellpadding="5">
                         <tr>
