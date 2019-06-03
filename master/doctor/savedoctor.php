@@ -4,6 +4,7 @@ include_once '../../config.php';
 $dname=  mysqli_real_escape_string($conn,$_POST["dname"]);
 $dhospital=  mysqli_real_escape_string($conn,$_POST["dhospital"]);
 $dexpirience=  mysqli_real_escape_string($conn,$_POST["dexpirience"]);
+$ddegree= mysqli_real_escape_string($conn,$_POST["ddegree"]);
 $dspeciality=  mysqli_real_escape_string($conn,$_POST["dspecial"]);
 $dmob=  mysqli_real_escape_string($conn,$_POST["dmob"]);
 $demail=  mysqli_real_escape_string($conn,$_POST["demail"]);
@@ -22,6 +23,7 @@ $ins=  mysqli_query($conn, "INSERT INTO `ihealthcare`.`d_doctor_info`
 `d_hospital`,
 `d_designation`,
 `d_expirience`,
+`d_degree`,
 `d_speciality`,
 `d_fee`,
 `d_mob`,
@@ -30,7 +32,7 @@ $ins=  mysqli_query($conn, "INSERT INTO `ihealthcare`.`d_doctor_info`
 `record_created_on`)
 VALUES
 (
-        '$doc_code','$dname','$dhospital','$ddesignation','$dexpirience','$dspeciality','$dfee','$dmob','$demail','A',now()
+        '$doc_code','$dname','$dhospital','$ddesignation','$dexpirience','$ddegree','$dspeciality','$dfee','$dmob','$demail','A',now()
 )");
 
 if($ins)

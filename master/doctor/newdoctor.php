@@ -79,10 +79,11 @@ include_once 'loginhandler.php';
                     
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <br>
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-addon">Mobile Number</span>
-                        <input type="text" class="form-control" placeholder="Contact Number" id='dmob'>
+                        <div class="input-group input-group-sm">
+                        <span class="input-group-addon">Doctor's Degree</span>
+                        <input type="text" class="form-control" placeholder="Qualifications" id='ddegree'>
                     </div>
+                   
                 </div>
                     
                     
@@ -97,16 +98,11 @@ include_once 'loginhandler.php';
                     
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <br>
-                    
-                        <div class="dropdown">
-                            <button class="btn btn-warning dropdown-toggle btn-sm" type="button" data-toggle="dropdown" id='dspecialdd'>Doctor's Speciality
-                            <span class="caret"></span></button>
-                            <ul class="dropdown-menu" id='dspecial'>
-                              <li><a href="#">SP1</a></li>
-                              <li><a href="#">Specialization 2</a></li>
-                              <li><a href="#">Medicine</a></li>
-                            </ul>
-                        </div>
+                     <div class="input-group input-group-sm">
+                        <span class="input-group-addon">Mobile Number</span>
+                        <input type="text" class="form-control" placeholder="Contact Number" id='dmob'>
+                    </div>
+                        
                 </div>
                     
                     
@@ -119,8 +115,42 @@ include_once 'loginhandler.php';
                 </div>
                     
                     
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-6 col-md-offset-6 col-sm-offset-0 col-xs-offset-0" style="text-align: right">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <br>
+                     <div class="dropdown">
+                            <button class="btn btn-warning dropdown-toggle btn-sm" type="button" data-toggle="dropdown" id='dspecialdd'>Doctor's Speciality
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu" id='dspecial'>
+                              <li><a href='#'>CARDIOLOGIST</a></li>
+<li><a href='#'>CARDIOLOGY</a></li>
+<li><a href='#'>CHILD SPECIALIST</a></li>
+<li><a href='#'>DENTIST</a></li>
+<li><a href='#'>DERMATOLOGIST (SKIN)</a></li>
+<li><a href='#'>DIABETOLOGIST</a></li>
+<li><a href='#'>E.N.T</a></li>
+<li><a href='#'>EYE SPECIALIST</a></li>
+<li><a href='#'>GYNAECOLOGIST</a></li>
+<li><a href='#'>HOMEOPATHY</a></li>
+<li><a href='#'>MEDICINE</a></li>
+<li><a href='#'>NEPHROLOGIST</a></li>
+<li><a href='#'>NEUROLOGIST</a></li>
+<li><a href='#'>NEUROSURGEON</a></li>
+<li><a href='#'>ONCOLOGY</a></li>
+<li><a href='#'>ORTHOPEDIC</a></li>
+<li><a href='#'>PAEDIA NEPHROLOGIST</a></li>
+<li><a href='#'>PSYCHIATRIST</a></li>
+<li><a href='#'>RHEUMATOLOGIST</a></li>
+<li><a href='#'>SPINE SURGEON</a></li>
+<li><a href='#'>SURGEON</a></li>
+<li><a href='#'>UROLOGIST</a></li></ul>
+                        </div>
+                </div>
+                    
+                    
+                    
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-6 " style="text-align: right">
+                        <br>
+                       
                         <a class='btn btn-info btn-sm' role='Button' href='#' onclick="javascript:saved()" id='sdbtn'>Submit</a>
                 </div>
                     
@@ -139,7 +169,7 @@ include_once 'loginhandler.php';
         <h4 class="modal-title">Doctor Registration</h4>
       </div>
       <div class="modal-body">
-          <h3>Doctor has been registered Successfully</h3>
+          <h4>Doctor has been registered Successfully</h4>
         <hr>
         <div id="fileuploader">Upload</div>
         <br>
