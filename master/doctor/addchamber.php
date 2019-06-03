@@ -235,73 +235,299 @@ VALUES
                             </div>
                         </div>
                         <br>
-                        <div class='col-lg-12' style="margin-top: 10px">
+                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style="margin-top: 10px">
                             <div class='input-group input-group-sm'>
                                 <span class='input-group-addon'>Contact Number</span>
                                 <input name='c_contact' type="text" class='form-control' placeholder="Contact Number(s) Separated by coma(,)">
                             </div>
                         </div>
                         
-                        <br><div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style="margin-top: 10px">
-                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="o_t" data-link-format="hh:ii">
-                                <span class='input-group-addon'>Opening Time</span>
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="o_time">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-                            </div>
-				<input type="hidden" name="o_t" value="00:00" />
-                        </div>
-                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'  style="margin-top: 10px">
-                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <span class='input-group-addon'>Closing Time</span>
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="c_time">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-                            </div>
-				<input type="hidden" name="c_t" value="23:59" />
-                        </div>
-                        <br><br><br>
                         <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style="margin-top: 10px">
-                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="o_t" data-link-format="hh:ii">
-                                <span class='input-group-addon'>2nd Opening Time</span>
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="o_time2">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            <div class='input-group input-group-sm'>
+                                <span class='input-group-addon'>Chamber Area PIN</span>
+                                <input type="text" class='form-control' name="c_pin">
                             </div>
-				<input type="hidden" name="o_t" value="00:00" />
                         </div>
-                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'  style="margin-top: 10px">
+                        
+                        
+                        
+                        <div class="col-lg-12 table-responsive" style="margin-top: 10px">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Day</th><th>Opening Time-1</th><th>Closing Time-1</th><th>Patient Limit</th><th>Opening Time-2</th><th>Closing Time-2</th><th>Patient Limit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" name="sun" checked="chacked"></td>
+                                    <td>Sunday</td>
+                                    <td>
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <span class='input-group-addon'>2nd Closing Time</span>
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="c_time2">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sun_ot1" onchange="allsetot1(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
 				<input type="hidden" name="c_t" value="23:59" />
-                        </div>
-                        <br><br><br>
-                        
-                        <div class='col-lg-12'>
-                            
-                                    <div class="input-group input-group-sm" style="font-weight: normal;margin-top: 10px">
-                                <input type="checkbox" name="sunday" style="margin-left: 20px;" checked><label for="sunday">Sunday</label>
-                                <input type="checkbox" name="monday" style="margin-left: 20px;" checked ><label for="monday">Monday</label>
-                                <input type="checkbox" name="tuesday" style="margin-left: 20px;" checked><label for="tuesday">Tuesday</label>
-                                <input type="checkbox" name="wednesday" style="margin-left: 20px;" checked><label for="wednesday">Wednesday</label>
-                                <input type="checkbox" name="thursday" style="margin-left: 20px;" checked><label for="thursday">Thursday</label>
-                                <input type="checkbox" name="friday" style="margin-left: 20px;" checked><label for="friday">Friday</label>
-                                <input type="checkbox" name="saturday" style="margin-left: 20px;" checked><label for="saturday">Saturday</label>
+                                    </td>
+                                    <td>
+                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sun_ct1">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
-                            
-                            
-                        </div>
+                                    </td>
+                                    <td><input class="form-control" type="number" placeholder="Limit" name="sun_l1"></td>
+                                    <td>
+                           <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sun_ot2">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                        </td>
+                                    <td>
+                                        
+                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sun_ct2">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                    
+                                          </td>
+                                          <td><input class="form-control" type="number" placeholder="Limit" name="sun_l2"></td>
+                                  
+                                </tr>
+                                <tr>
+                                     <td><input type="checkbox" name="mon" checked="chacked"></td>
+                                    <td>Monday</td>
+                                    <td>
+                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="mon_ot1">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+				<input type="hidden" name="c_t" value="23:59" />
+                                    </td>
+                                    <td>
+                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="mon_ct1">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                    </td>
+                                    <td><input class="form-control" type="number" placeholder="Limit" name="mon_l1"></td>
+                                    <td>
+                           <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="mon_ot2">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                        </td>
+                                    <td>
+                                        
+                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="mon_ct2">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                    
+                                          </td>
+                                          <td><input class="form-control" type="number" placeholder="Limit" name="mon_l2"></td>
+                                </tr>
+                                
+                                
+                                
+                                
+                                <tr>
+                                     <td><input type="checkbox" name="tue" checked="chacked"></td>
+                                    <td>Tuesday</td>
+                                    <td>
+                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="tue_ot1">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+				<input type="hidden" name="c_t" value="23:59" />
+                                    </td>
+                                    <td>
+                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="stue_ct1">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                    </td>
+                                    <td><input class="form-control" type="number" placeholder="Limit" name="tue_l1"></td>
+                                    <td>
+                           <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="tue_ot2">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                        </td>
+                                    <td>
+                                        
+                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="tue_ct2">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                    
+                                          </td>
+                                          <td><input class="form-control" type="number" placeholder="Limit" name="tue_l2"></td>
+                                </tr>
+                                
+                                
+                                
+                                
+                                <tr>
+                                     <td><input type="checkbox" name="wed" checked="chacked"></td>
+                                    <td>Wednesday</td>
+                                    <td>
+                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="wed_ot1">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+				<input type="hidden" name="c_t" value="23:59" />
+                                    </td>
+                                    <td>
+                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="wed_ct1">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                    </td>
+                                    <td><input class="form-control" type="number" placeholder="Limit" name="wed_l1"></td>
+                                    <td>
+                           <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="wed_ot2">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                        </td>
+                                    <td>
+                                        
+                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="wed_ct2">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                    
+                                          </td>
+                                          <td><input class="form-control" type="number" placeholder="Limit" name="wed_l2"></td>
+                                </tr>
+                                
+                                
+                                
+                                
+                                
+                                <tr>
+                                     <td><input type="checkbox" name="thu" checked="chacked"></td>
+                                    <td>Thursday</td>
+                                    <td>
+                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="thu_ot1">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+				<input type="hidden" name="c_t" value="23:59" />
+                                    </td>
+                                    <td>
+                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="thu_ct1">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                    </td>
+                                    <td><input class="form-control" type="number" placeholder="Limit" name="thu_l1"></td>
+                                    <td>
+                           <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="thu_ot2">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                        </td>
+                                    <td>
+                                        
+                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="thu_ct2">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                    
+                                          </td>
+                                          <td><input class="form-control" type="number" placeholder="Limit" name="thu_l2"></td>
+                                </tr>
+                                
+                                
+                                
+                                
+                                
+                                <tr>
+                                     <td><input type="checkbox" name="fri" checked="chacked"></td>
+                                    <td>Friday</td>
+                                    <td>
+                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="fri_ot1">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+				<input type="hidden" name="c_t" value="23:59" />
+                                    </td>
+                                    <td>
+                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="fri_ct1">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                    </td>
+                                    <td><input class="form-control" type="number" placeholder="Limit" name="fri_l1"></td>
+                                    <td>
+                           <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="fri_ot2">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                        </td>
+                                    <td>
+                                        
+                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="fri_ct2">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                    
+                                          </td>
+                                          <td><input class="form-control" type="number" placeholder="Limit" name="fri_l2"></td>
+                                    
+                                </tr>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <tr>
+                                     <td><input type="checkbox" name="sat" checked="chacked"></td>
+                                    <td>Saturday</td>
+                                    <td>
+                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sat_ot1">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+				<input type="hidden" name="c_t" value="23:59" />
+                                    </td>
+                                    <td>
+                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sat_ct1">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                    </td>
+                                    <td><input class="form-control" type="number" placeholder="Limit" name="sat_l1"></td>
+                                    <td>
+                           <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sat_ot2">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                        </td>
+                                    <td>
+                                        
+                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sat_ct2">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
+                                    
+                                          </td>
+                                          <td><input class="form-control" type="number" placeholder="Limit" name="sat_l2"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>   
+                        
                         
                         <br>
                         
                         <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style="margin-top: 10px">
                             <div class='input-group input-group-sm'>
-                                <span class='input-group-addon'>Chamber Area PIN</span>
-                                <input type="text" class='form-control' name="c_pin">
+                                <span class='input-group-addon'>Chamber Remarks</span>
+                                <input name='c_remarks' type="text" class='form-control' placeholder="Remarks for Paitients if Any">
                             </div>
                         </div>
                         

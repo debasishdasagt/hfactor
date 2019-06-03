@@ -153,3 +153,20 @@ function saved()
         $('#gamodal').modal('show');
         $('#appointmentframe').attr('src','docappoinment.php?did='+did);
     }
+    
+    
+    
+    var ot1=false;
+    function allsetot1(v)
+    {
+        if(!ot1)
+        {
+            $("[name='sun_ot1']").val(v);
+            $("[name='mon_ot1']").val(v);
+            $("[name='tue_ot1']").val(v);
+            $("[name='wed_ot1']").val(v);
+            $("[name='thu_ot1']").val(v);
+            $("[name='fri_ot1']").val(v);
+            $("[name='sat_ot1']").val(v);
+        }
+    }
