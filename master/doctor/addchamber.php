@@ -188,9 +188,111 @@ VALUES
                        $lim1=mysqli_real_escape_string($conn,$_POST['sun_l1']);
                        $ot2=mysqli_real_escape_string($conn,$_POST['sun_ot2']);
                        $ct2=mysqli_real_escape_string($conn,$_POST['sun_ct2']);
-                       $lim1=mysqli_real_escape_string($conn,$_POST['sun_l2']);
-                       $insd=$insd."('$chamber_id','Sunday','$ot1','$ct1','$lim1','$ot2','$ct2','lim2','A',now())";
+                       $lim2=mysqli_real_escape_string($conn,$_POST['sun_l2']);
+                       $insd="('$chamber_id','Sunday','$ot1','$ct1','$lim1','$ot2','$ct2','$lim2','A',now())";
+                       $insdq=  mysqli_query($conn, "INSERT INTO `d_chamber_days`(`chamber_id`, `week_day`, `opening_time1`, `closing_time1`, "
+                               . "`limit1`, `opening_time2`, `closing_time2`, `limit2`, `record_status`, `record_created_on`) "
+                               . "VALUES".$insd);
+                       if($insdq)
+                       {$csavestatus='saved'; } else{$csavestatus='not saved';}
                    }
+                   
+                   if($_POST['mon']== 'on')
+                   {
+                       $ot1= mysqli_real_escape_string($conn,$_POST['mon_ot1']);
+                       $ct1=mysqli_real_escape_string($conn,$_POST['mon_ct1']);
+                       $lim1=mysqli_real_escape_string($conn,$_POST['mon_l1']);
+                       $ot2=mysqli_real_escape_string($conn,$_POST['mon_ot2']);
+                       $ct2=mysqli_real_escape_string($conn,$_POST['mon_ct2']);
+                       $lim2=mysqli_real_escape_string($conn,$_POST['mon_l2']);
+                       $insd="('$chamber_id','Monday','$ot1','$ct1','$lim1','$ot2','$ct2','$lim2','A',now())";$insdq=  mysqli_query($conn, "INSERT INTO `d_chamber_days`(`chamber_id`, `week_day`, `opening_time1`, `closing_time1`, "
+                               . "`limit1`, `opening_time2`, `closing_time2`, `limit2`, `record_status`, `record_created_on`) "
+                               . "VALUES".$insd);
+                       if($insdq)
+                       {$csavestatus='saved'; } else{$csavestatus='not saved';}
+                   }
+                   
+                   if($_POST['tue']== 'on')
+                   {
+                       $ot1=  mysqli_real_escape_string($conn,$_POST['tue_ot1']);
+                       $ct1=mysqli_real_escape_string($conn,$_POST['tue_ct1']);
+                       $lim1=mysqli_real_escape_string($conn,$_POST['tue_l1']);
+                       $ot2=mysqli_real_escape_string($conn,$_POST['tue_ot2']);
+                       $ct2=mysqli_real_escape_string($conn,$_POST['tue_ct2']);
+                       $lim2=mysqli_real_escape_string($conn,$_POST['tue_l2']);
+                       $insd="('$chamber_id','Tuesday','$ot1','$ct1','$lim1','$ot2','$ct2','$lim2','A',now())";
+                       $insdq=  mysqli_query($conn, "INSERT INTO `d_chamber_days`(`chamber_id`, `week_day`, `opening_time1`, `closing_time1`, "
+                               . "`limit1`, `opening_time2`, `closing_time2`, `limit2`, `record_status`, `record_created_on`) "
+                               . "VALUES".$insd);
+                       if($insdq)
+                       {$csavestatus='saved'; } else{$csavestatus='not saved';}
+                   }
+                   
+                   
+                   if($_POST['wed']== 'on')
+                   {
+                       $ot1=  mysqli_real_escape_string($conn,$_POST['wed_ot1']);
+                       $ct1=mysqli_real_escape_string($conn,$_POST['wed_ct1']);
+                       $lim1=mysqli_real_escape_string($conn,$_POST['wed_l1']);
+                       $ot2=mysqli_real_escape_string($conn,$_POST['wed_ot2']);
+                       $ct2=mysqli_real_escape_string($conn,$_POST['wed_ct2']);
+                       $lim2=mysqli_real_escape_string($conn,$_POST['wed_l2']);
+                       $insd="('$chamber_id','Wednesday','$ot1','$ct1','$lim1','$ot2','$ct2','$lim2','A',now())";
+                       $insdq=  mysqli_query($conn, "INSERT INTO `d_chamber_days`(`chamber_id`, `week_day`, `opening_time1`, `closing_time1`, "
+                               . "`limit1`, `opening_time2`, `closing_time2`, `limit2`, `record_status`, `record_created_on`) "
+                               . "VALUES".$insd);
+                       if($insdq)
+                       {$csavestatus='saved'; } else{$csavestatus='not saved';}
+                   }
+                   
+                   if($_POST['thu']== 'on')
+                   {
+                       $ot1=  mysqli_real_escape_string($conn,$_POST['thu_ot1']);
+                       $ct1=mysqli_real_escape_string($conn,$_POST['thu_ct1']);
+                       $lim1=mysqli_real_escape_string($conn,$_POST['thu_l1']);
+                       $ot2=mysqli_real_escape_string($conn,$_POST['thu_ot2']);
+                       $ct2=mysqli_real_escape_string($conn,$_POST['thu_ct2']);
+                       $lim2=mysqli_real_escape_string($conn,$_POST['thu_l2']);
+                       $insd="('$chamber_id','Thursday','$ot1','$ct1','$lim1','$ot2','$ct2','$lim2','A',now())";
+                       $insdq=  mysqli_query($conn, "INSERT INTO `d_chamber_days`(`chamber_id`, `week_day`, `opening_time1`, `closing_time1`, "
+                               . "`limit1`, `opening_time2`, `closing_time2`, `limit2`, `record_status`, `record_created_on`) "
+                               . "VALUES".$insd);
+                       if($insdq)
+                       {$csavestatus='saved'; } else{$csavestatus='not saved';}
+                   }
+                   
+                   if($_POST['fri']== 'on')
+                   {
+                       $ot1=  mysqli_real_escape_string($conn,$_POST['fri_ot1']);
+                       $ct1=mysqli_real_escape_string($conn,$_POST['fri_ct1']);
+                       $lim1=mysqli_real_escape_string($conn,$_POST['fri_l1']);
+                       $ot2=mysqli_real_escape_string($conn,$_POST['fri_ot2']);
+                       $ct2=mysqli_real_escape_string($conn,$_POST['fri_ct2']);
+                       $lim2=mysqli_real_escape_string($conn,$_POST['fri_l2']);
+                       $insd="('$chamber_id','Friday','$ot1','$ct1','$lim1','$ot2','$ct2','$lim2','A',now())";
+                       $insdq=  mysqli_query($conn, "INSERT INTO `d_chamber_days`(`chamber_id`, `week_day`, `opening_time1`, `closing_time1`, "
+                               . "`limit1`, `opening_time2`, `closing_time2`, `limit2`, `record_status`, `record_created_on`) "
+                               . "VALUES".$insd);
+                       if($insdq)
+                       {$csavestatus='saved'; } else{$csavestatus='not saved';}
+                   }
+                   
+                   if($_POST['sat']== 'on')
+                   {
+                       $ot1=  mysqli_real_escape_string($conn,$_POST['sat_ot1']);
+                       $ct1=mysqli_real_escape_string($conn,$_POST['sat_ct1']);
+                       $lim1=mysqli_real_escape_string($conn,$_POST['sat_l1']);
+                       $ot2=mysqli_real_escape_string($conn,$_POST['sat_ot2']);
+                       $ct2=mysqli_real_escape_string($conn,$_POST['sat_ct2']);
+                       $lim2=mysqli_real_escape_string($conn,$_POST['sat_l2']);
+                       $insd="('$chamber_id','Saturday','$ot1','$ct1','$lim1','$ot2','$ct2','$lim2','A',now())";
+                       $insdq=  mysqli_query($conn, "INSERT INTO `d_chamber_days`(`chamber_id`, `week_day`, `opening_time1`, `closing_time1`, "
+                               . "`limit1`, `opening_time2`, `closing_time2`, `limit2`, `record_status`, `record_created_on`) "
+                               . "VALUES".$insd);
+                       if($insdq)
+                       {$csavestatus='saved'; } else{$csavestatus='not saved';}
+                   }
+                   
                    $csavestatus='saved';
                }
                
@@ -541,16 +643,8 @@ VALUES
     `d_chambers`.`chamber_id`,
     `d_chambers`.`chamber_name`,
     `d_chambers`.`chamber_address`,
-    `d_chambers`.`chamber_area_pin`,
-    `d_chambers`.`opening_time`,
-    `d_chambers`.`closing_time`,
-    `d_chambers`.`sunday_open`,
-    `d_chambers`.`monday_open`,
-    `d_chambers`.`tuesday_open`,
-    `d_chambers`.`wednesday_open`,
-    `d_chambers`.`thursday_open`,
-    `d_chambers`.`friday_open`,
-    `d_chambers`.`saturday_open`
+    `d_chambers`.`chamber_area_pin`
+    
 FROM `d_chambers` where record_status='A' and doctor_code='$doctor_code'";
                 $dc=  mysqli_query($conn, $csql);
                 if(mysqli_num_rows($dc) > 0)
@@ -565,24 +659,7 @@ FROM `d_chambers` where record_status='A' and doctor_code='$doctor_code'";
                 <?php
                 while($dcr=  mysqli_fetch_array($dc))
                 {
-                    $days="";
-                    if($dcr['sunday_open'] == 'on')
-                    {$days=$days."Sunday, ";}
-                    if($dcr['monday_open'] == 'on')
-                    {$days=$days."Monday, ";}
-                    if($dcr['tuesday_open'] == 'on')
-                    {$days=$days."Tuesday, ";}
-                    if($dcr['wednesday_open'] == 'on')
-                    {$days=$days."Webnesday, ";}
-                    if($dcr['thursday_open'] == 'on')
-                    {$days=$days."Thursday, ";}
-                    if($dcr['friday_open'] == 'on')
-                    {$days=$days."Friday, ";}
-                    if($dcr['saturday_open'] == 'on')
-                    {$days=$days."Satuday";}
-                    
-                    
-                    ?>
+                    $days=""; ?>
                 
                 <div class='col-lg-3 col-md-3 col-sm-6 col-xs-11 tile_sm'>
                     
@@ -596,12 +673,7 @@ FROM `d_chambers` where record_status='A' and doctor_code='$doctor_code'";
                         
                         <tr>
                             <td colspan="2" class='srchsubtxt'>
-                                <strong>Time:</strong> <?php echo  $dcr['opening_time'];?> to <?php echo  $dcr['closing_time'];?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class='srchsubtxt'>
-                                <strong>Days:</strong> <?php echo  $days;?>
+                                <strong>Pincode:</strong> <?php echo  $dcr['chamber_area_pin'];?>
                             </td>
                         </tr>
                         <tr>
@@ -617,11 +689,7 @@ FROM `d_chambers` where record_status='A' and doctor_code='$doctor_code'";
                 
                 
                 <?php
-                }
-                
-                
-                }
-                
+                }}
                 ?>
                 
                 

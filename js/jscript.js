@@ -136,23 +136,7 @@ function saved()
         
     }
     
-    function showtt(id)
-    {
-        var idd="#"+id;
-        $(idd).tooltip({ trigger: 'manual' });
-        $(idd).tooltip('show');
-        setTimeout(function()
-        {
-            $(idd).tooltip('hide');
-        },2000);
-    }
     
-    
-    function getappointment(did)
-    {
-        $('#gamodal').modal('show');
-        $('#appointmentframe').attr('src','docappoinment.php?did='+did);
-    }
     
     
     

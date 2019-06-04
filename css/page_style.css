@@ -366,5 +366,6 @@ div.content {
 #appointmentframe
 {
     border: 0px;
-    overflow: hidden;
+    overflow: auto;
+    width: 100%;
 }

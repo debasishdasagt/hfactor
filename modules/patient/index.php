@@ -230,7 +230,7 @@ e-mail: info@biht.in
     </div>
     
 <div id="gamodal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
     <div class="modal-content">
@@ -257,7 +257,7 @@ e-mail: info@biht.in
     
     <script src='../../js/jquery-3.2.1.min.js'></script>
     <script src='../../bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
-    <script src='../../js/jscript.js'></script>
+    <script src='../../js/public.js'></script>
 <script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
