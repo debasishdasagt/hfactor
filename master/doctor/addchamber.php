@@ -152,18 +152,8 @@ where doctor_code= '$doctor_code'");
                 $c_name=  mysqli_real_escape_string($conn,$_POST['c_name']);
                 $c_address=  mysqli_real_escape_string($conn,$_POST['c_address']);
                 $c_contact=  mysqli_real_escape_string($conn,$_POST['c_contact']);
-                $c_time=  mysqli_real_escape_string($conn,$_POST['c_time']);
-                $o_time=  mysqli_real_escape_string($conn,$_POST['o_time']);
-                $c_time2=  mysqli_real_escape_string($conn,$_POST['c_time2']);
-                $o_time2=  mysqli_real_escape_string($conn,$_POST['o_time2']);
                 $c_pin=  mysqli_real_escape_string($conn,$_POST['c_pin']);
-                $sund= mysqli_real_escape_string($conn,$_POST['sunday']);
-                $mond= mysqli_real_escape_string($conn,$_POST['monday']);
-                $tued= mysqli_real_escape_string($conn,$_POST['tuesday']);
-                $wedd= mysqli_real_escape_string($conn,$_POST['wednesday']);
-                $thud= mysqli_real_escape_string($conn,$_POST['thursday']);
-                $frid= mysqli_real_escape_string($conn,$_POST['friday']);
-                $satd= mysqli_real_escape_string($conn,$_POST['saturday']);
+                $c_remarks=mysqli_real_escape_string($conn,$_POST['c_remarks']);
                 
                 
                 
@@ -180,25 +170,27 @@ where doctor_code= '$doctor_code'");
 `chamber_address`,
 `contact_number`,
 `chamber_area_pin`,
-`opening_time`,
-`closing_time`,
-`opening_time2`,
-`closing_time2`,
-`sunday_open`,
-`monday_open`,
-`tuesday_open`,
-`wednesday_open`,
-`thursday_open`,
-`friday_open`,
-`saturday_open`,
+`chamber_remarks`,
 `record_status`,
 `record_created_on`)
 VALUES
-('$chamber_id','$doctor_code','$c_name','$c_address','$c_contact','$c_pin','$o_time','$c_time','$o_time2','$c_time2','$sund','$mond','$tued','$wedd','$thud','$frid','$satd','A',now());";
+('$chamber_id','$doctor_code','$c_name','$c_address','$c_contact','$c_pin','$c_remarks','A',now());";
 
                $save_chamber=  mysqli_query($conn, $sql);
                if($save_chamber)
                {
+                   $insd="";
+                   
+                   if($_POST['sun']== 'on')
+                   {
+                       $ot1=  mysqli_real_escape_string($conn,$_POST['sun_ot1']);
+                       $ct1=mysqli_real_escape_string($conn,$_POST['sun_ct1']);
+                       $lim1=mysqli_real_escape_string($conn,$_POST['sun_l1']);
+                       $ot2=mysqli_real_escape_string($conn,$_POST['sun_ot2']);
+                       $ct2=mysqli_real_escape_string($conn,$_POST['sun_ct2']);
+                       $lim1=mysqli_real_escape_string($conn,$_POST['sun_l2']);
+                       $insd=$insd."('$chamber_id','Sunday','$ot1','$ct1','$lim1','$ot2','$ct2','lim2','A',now())";
+                   }
                    $csavestatus='saved';
                }
                
@@ -249,7 +241,7 @@ VALUES
                             </div>
                         </div>
                         
-                        
+                        <br>      <br>
                         
                         <div class="col-lg-12 table-responsive" style="margin-top: 10px">
                         <table class="table table-bordered table-hover table-striped">
@@ -272,26 +264,26 @@ VALUES
                                     </td>
                                     <td>
                              <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sun_ct1">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sun_ct1" onchange="allsetct1(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                     </td>
-                                    <td><input class="form-control" type="number" placeholder="Limit" name="sun_l1"></td>
+                                    <td><input class="form-control" type="number" placeholder="Limit" name="sun_l1" onchange="allsetlim1(this.value)"></td>
                                     <td>
                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sun_ot2">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sun_ot2"  onchange="allsetot2(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                         </td>
                                     <td>
                                         
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sun_ct2">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sun_ct2" onchange="allsetct2(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                     
                                           </td>
-                                          <td><input class="form-control" type="number" placeholder="Limit" name="sun_l2"></td>
+                                          <td><input class="form-control" type="number" placeholder="Limit" name="sun_l2" onchange="allsetlim2(this.value)"></td>
                                   
                                 </tr>
                                 <tr>
@@ -299,33 +291,33 @@ VALUES
                                     <td>Monday</td>
                                     <td>
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="mon_ot1">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="mon_ot1" onchange="allsetot1(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
 				<input type="hidden" name="c_t" value="23:59" />
                                     </td>
                                     <td>
                              <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="mon_ct1">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="mon_ct1" onchange="allsetct1(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                     </td>
-                                    <td><input class="form-control" type="number" placeholder="Limit" name="mon_l1"></td>
+                                    <td><input class="form-control" type="number" placeholder="Limit" name="mon_l1"  onchange="allsetlim1(this.value)"></td>
                                     <td>
                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="mon_ot2">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="mon_ot2" onchange="allsetot2(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                         </td>
                                     <td>
                                         
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="mon_ct2">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="mon_ct2" onchange="allsetct2(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                     
                                           </td>
-                                          <td><input class="form-control" type="number" placeholder="Limit" name="mon_l2"></td>
+                                          <td><input class="form-control" type="number" placeholder="Limit" name="mon_l2" onchange="allsetlim2(this.value)"></td>
                                 </tr>
                                 
                                 
@@ -336,33 +328,33 @@ VALUES
                                     <td>Tuesday</td>
                                     <td>
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="tue_ot1">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="tue_ot1" onchange="allsetot1(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
 				<input type="hidden" name="c_t" value="23:59" />
                                     </td>
                                     <td>
                              <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="stue_ct1">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="tue_ct1" onchange="allsetct1(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                     </td>
-                                    <td><input class="form-control" type="number" placeholder="Limit" name="tue_l1"></td>
+                                    <td><input class="form-control" type="number" placeholder="Limit" name="tue_l1"  onchange="allsetlim1(this.value)"></td>
                                     <td>
                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="tue_ot2">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="tue_ot2" onchange="allsetot2(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                         </td>
                                     <td>
                                         
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="tue_ct2">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="tue_ct2" onchange="allsetct2(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                     
                                           </td>
-                                          <td><input class="form-control" type="number" placeholder="Limit" name="tue_l2"></td>
+                                          <td><input class="form-control" type="number" placeholder="Limit" name="tue_l2" onchange="allsetlim2(this.value)"></td>
                                 </tr>
                                 
                                 
@@ -373,33 +365,33 @@ VALUES
                                     <td>Wednesday</td>
                                     <td>
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="wed_ot1">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="wed_ot1" onchange="allsetot1(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
 				<input type="hidden" name="c_t" value="23:59" />
                                     </td>
                                     <td>
                              <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="wed_ct1">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="wed_ct1" onchange="allsetct1(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                     </td>
-                                    <td><input class="form-control" type="number" placeholder="Limit" name="wed_l1"></td>
+                                    <td><input class="form-control" type="number" placeholder="Limit" name="wed_l1"  onchange="allsetlim1(this.value)"></td>
                                     <td>
                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="wed_ot2">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="wed_ot2" onchange="allsetot2(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                         </td>
                                     <td>
                                         
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="wed_ct2">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="wed_ct2" onchange="allsetct2(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                     
                                           </td>
-                                          <td><input class="form-control" type="number" placeholder="Limit" name="wed_l2"></td>
+                                          <td><input class="form-control" type="number" placeholder="Limit" name="wed_l2" onchange="allsetlim2(this.value)"></td>
                                 </tr>
                                 
                                 
@@ -411,33 +403,33 @@ VALUES
                                     <td>Thursday</td>
                                     <td>
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="thu_ot1">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="thu_ot1" onchange="allsetot1(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
 				<input type="hidden" name="c_t" value="23:59" />
                                     </td>
                                     <td>
                              <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="thu_ct1">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="thu_ct1" onchange="allsetct1(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                     </td>
-                                    <td><input class="form-control" type="number" placeholder="Limit" name="thu_l1"></td>
+                                    <td><input class="form-control" type="number" placeholder="Limit" name="thu_l1" onchange="allsetlim1(this.value)"></td>
                                     <td>
                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="thu_ot2">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="thu_ot2" onchange="allsetot2(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                         </td>
                                     <td>
                                         
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="thu_ct2">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="thu_ct2" onchange="allsetct2(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                     
                                           </td>
-                                          <td><input class="form-control" type="number" placeholder="Limit" name="thu_l2"></td>
+                                          <td><input class="form-control" type="number" placeholder="Limit" name="thu_l2" onchange="allsetlim2(this.value)"></td>
                                 </tr>
                                 
                                 
@@ -449,33 +441,33 @@ VALUES
                                     <td>Friday</td>
                                     <td>
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="fri_ot1">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="fri_ot1" onchange="allsetot1(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
 				<input type="hidden" name="c_t" value="23:59" />
                                     </td>
                                     <td>
                              <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="fri_ct1">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="fri_ct1" onchange="allsetct1(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                     </td>
-                                    <td><input class="form-control" type="number" placeholder="Limit" name="fri_l1"></td>
+                                    <td><input class="form-control" type="number" placeholder="Limit" name="fri_l1" onchange="allsetlim1(this.value)"></td>
                                     <td>
                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="fri_ot2">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="fri_ot2" onchange="allsetot2(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                         </td>
                                     <td>
                                         
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="fri_ct2">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="fri_ct2" onchange="allsetct2(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                     
                                           </td>
-                                          <td><input class="form-control" type="number" placeholder="Limit" name="fri_l2"></td>
+                                          <td><input class="form-control" type="number" placeholder="Limit" name="fri_l2" onchange="allsetlim2(this.value)"></td>
                                     
                                 </tr>
                                 
@@ -489,33 +481,33 @@ VALUES
                                     <td>Saturday</td>
                                     <td>
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sat_ot1">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sat_ot1" onchange="allsetot1(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
 				<input type="hidden" name="c_t" value="23:59" />
                                     </td>
                                     <td>
                              <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sat_ct1">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sat_ct1" onchange="allsetct1(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                     </td>
-                                    <td><input class="form-control" type="number" placeholder="Limit" name="sat_l1"></td>
+                                    <td><input class="form-control" type="number" placeholder="Limit" name="sat_l1" onchange="allsetlim1(this.value)"></td>
                                     <td>
                            <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sat_ot2">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sat_ot2" onchange="allsetot2(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                         </td>
                                     <td>
                                         
                             <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sat_ct2">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="HH:MM" name="sat_ct2" onchange="allsetct2(this.value)">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             </div>
                                     
                                           </td>
-                                          <td><input class="form-control" type="number" placeholder="Limit" name="sat_l2"></td>
+                                          <td><input class="form-control" type="number" placeholder="Limit" name="sat_l2" onchange="allsetlim2(this.value)"></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -158,15 +158,47 @@ function saved()
     
     var ot1=false;
     function allsetot1(v)
-    {
-        if(!ot1)
+    {if(!ot1)
         {
-            $("[name='sun_ot1']").val(v);
-            $("[name='mon_ot1']").val(v);
-            $("[name='tue_ot1']").val(v);
-            $("[name='wed_ot1']").val(v);
-            $("[name='thu_ot1']").val(v);
-            $("[name='fri_ot1']").val(v);
-            $("[name='sat_ot1']").val(v);
-        }
-    }
+            $("[name='sun_ot1']").val(v);$("[name='mon_ot1']").val(v);$("[name='tue_ot1']").val(v);$("[name='wed_ot1']").val(v);
+            $("[name='thu_ot1']").val(v);$("[name='fri_ot1']").val(v);$("[name='sat_ot1']").val(v);ot1=true;
+        }}
+    
+     var ct1=false;
+    function allsetct1(v)
+    {if(!ct1)
+        {
+            $("[name='sun_ct1']").val(v);$("[name='mon_ct1']").val(v);$("[name='tue_ct1']").val(v);$("[name='wed_ct1']").val(v);
+            $("[name='thu_ct1']").val(v);$("[name='fri_ct1']").val(v);$("[name='sat_ct1']").val(v);ct1=true;
+        }}
+    var lim1=false;
+    function allsetlim1(v)
+    {if(!lim1)
+        {
+            $("[name='sun_l1']").val(v);$("[name='mon_l1']").val(v);$("[name='tue_l1']").val(v);$("[name='wed_l1']").val(v);
+            $("[name='thu_l1']").val(v);$("[name='fri_l1']").val(v);$("[name='sat_l1']").val(v);lim1=true;
+        }}
+    
+    
+    var ot2=false;
+    function allsetot2(v)
+    {if(!ot2)
+        {
+            $("[name='sun_ot2']").val(v);$("[name='mon_ot2']").val(v);$("[name='tue_ot2']").val(v);$("[name='wed_ot2']").val(v);
+            $("[name='thu_ot2']").val(v);$("[name='fri_ot2']").val(v);$("[name='sat_ot2']").val(v);ot2=true;
+        }}
+    
+     var ct2=false;
+    function allsetct2(v)
+    {if(!ct2)
+        {
+            $("[name='sun_ct2']").val(v);$("[name='mon_ct2']").val(v);$("[name='tue_ct2']").val(v);$("[name='wed_ct2']").val(v);
+            $("[name='thu_ct2']").val(v);$("[name='fri_ct2']").val(v);$("[name='sat_ct2']").val(v);ct2=true;
+        }}
+    var lim2=false;
+    function allsetlim2(v)
+    {if(!lim2)
+        {
+            $("[name='sun_l2']").val(v);$("[name='mon_l2']").val(v);$("[name='tue_l2']").val(v);$("[name='wed_l2']").val(v);
+            $("[name='thu_l2']").val(v);$("[name='fri_l2']").val(v);$("[name='sat_l2']").val(v);lim2=true;
+        }}
