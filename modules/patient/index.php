@@ -150,7 +150,7 @@ include_once '../../config.php';
                             
                                     </td>
                                     <td id="<?php echo $btnttid; ?>" align="center" rowspan="2" valign="middle" class="doc-td-book" data-toggle="tooltip" data-placement="right" title="Click here to Book Appintment" onclick="getappointment('<?php echo $getdocr['doctor_code'] ?>')">
-                                       <i class="glyphicon glyphicon-circle-arrow-right" ></i>
+                                       <i class="glyphicon glyphicon-menu-right" ></i>
 
                                     </td>
                                 </tr>
