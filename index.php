@@ -105,7 +105,7 @@
       <img src="images/img2.jpg" alt="..." class="img-responsive">
       <!-- <a href="https://www.freepik.com/free-photos-vectors/background">Background photo created by pressfoto - www.freepik.com</a> -->
       <div class="carousel-caption">
-         <h2 class="hidden-xs">We have listed best doctors only for you and your loved ones </h2><h4 class="visible-xs">We have listed best doctors only for you and your loved ones </h4><a href="#" class="btn btn-danger btn-lg " role="button"><i class="glyphicon glyphicon-phone-alt"></i> Book Now</a> 
+          <h2 class="hidden-xs">We have listed best doctors only for you and your loved ones </h2><h4 class="visible-xs">We have listed best doctors only for you and your loved ones </h4><a href="modules/patient/" class="btn btn-danger btn-lg " role="button"><i class="glyphicon glyphicon-phone-alt"></i> Book Now</a> 
       </div>
     </div>
     

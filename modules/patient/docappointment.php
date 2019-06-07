@@ -104,8 +104,8 @@ $('#getappfrm').on('submit',function()
         {
             if(data.success)
             {
-                var otp=prompt("Please Enter The OTP");
-                otpchk(otp);
+                var otp=prompt("Please Enter The OTP received in you phone");
+                otpchk(otp,data.otpkey);
             }
             else
             {

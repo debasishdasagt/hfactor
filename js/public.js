@@ -114,7 +114,20 @@ return timeString;
 
 
 
-function otpchk()
+function otpchk(otp,otpkey)
 {
-    
+    $.ajax({
+        url: 'verifyotp.php?otp='+otp+'&key='+otpkey,
+        type:'GET',
+        dataType: 'json',
+        success:function(data)
+        {
+            if(data.success)
+            {
+                alert("Appointment Booked Successfully");
+                $('#gamodal').modal('toggle');
+            }
+        }
+        
+    })
 }
