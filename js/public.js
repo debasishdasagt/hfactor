@@ -94,7 +94,11 @@ function addctoption(d,t)
     if(t!="")
     {
         var t24=t.split("-");
-        document.getElementById('chamber_time').add(new Option(d+"  ("+time24to12(t24[0])+" - "+time24to12(t24[1])+")"),t);
+        var x = document.getElementById("chamber_time");
+        var option = document.createElement("option");
+        option.text = d+"  ("+time24to12(t24[0])+" - "+time24to12(t24[1])+")";
+        option.value=t;
+        x.add(option);
     }
 }
 
@@ -106,4 +110,11 @@ var h = (H % 12) || 12;
 var ampm = H < 12 ? "AM" : "PM";
 timeString = h + timeString.substr(2, 3) + ampm;
 return timeString;
+}
+
+
+
+function otpchk()
+{
+    
 }

@@ -16,6 +16,41 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `d_appointment_otp`
+--
+
+DROP TABLE IF EXISTS `d_appointment_otp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `d_appointment_otp` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tmp_session_id` varchar(45) DEFAULT NULL,
+  `chamber_id` varchar(45) DEFAULT NULL,
+  `mobile_number` varchar(45) DEFAULT NULL,
+  `otp` varchar(45) DEFAULT NULL,
+  `otp_expr_on` datetime DEFAULT NULL,
+  `sent_count` int(11) DEFAULT NULL,
+  `otp_sent_date` date DEFAULT NULL,
+  `otp_msg_body` varchar(500) DEFAULT NULL,
+  `otp_verification_status` varchar(45) DEFAULT NULL,
+  `record_status` varchar(45) DEFAULT NULL,
+  `record_created_on` datetime DEFAULT NULL,
+  `record_modified_on` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `d_appointment_otp`
+--
+
+LOCK TABLES `d_appointment_otp` WRITE;
+/*!40000 ALTER TABLE `d_appointment_otp` DISABLE KEYS */;
+INSERT INTO `d_appointment_otp` VALUES (8,'999v3qQerM','200021','9774308994','942547','2019-06-07 08:22:54',3,'2019-06-07','OTP for Appointment Booking is 942547','N','A','2019-06-07 07:52:54',NULL),(9,'zUJaIdClVd','200020','9774308994','342825','2019-06-07 08:28:26',3,'2019-06-07','OTP for Appointment Booking is 342825','N','A','2019-06-07 07:58:26',NULL),(10,'qByqOjTgK3','200021','9774308994','273576','2019-06-07 08:32:02',1,'2019-06-07','OTP for Appointment Booking is 273576','N','A','2019-06-07 08:02:02',NULL),(11,'FC8EqhD110','200021','9774308994','157200','2019-06-07 08:42:34',1,'2019-06-07','OTP for Appointment Booking is 157200','N','A','2019-06-07 08:12:34',NULL),(12,'zTQzPcha7g','200021','9774308994','922565','2019-06-07 08:43:41',1,'2019-06-07','OTP for Appointment Booking is 922565','N','A','2019-06-07 08:13:41',NULL);
+/*!40000 ALTER TABLE `d_appointment_otp` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `d_chamber_appointment`
 --
 
@@ -640,4 +675,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-06  0:07:04
+-- Dump completed on 2019-06-07  8:15:41

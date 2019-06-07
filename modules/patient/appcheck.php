@@ -101,13 +101,13 @@ function bkavailable($conn,$dt,$cid)
     //echo $otime2->format("Y-m-d H:i:s")."<br>";
     
     $timing="0";
-    $getappcount1q=  mysqli_query($conn, "select count(id) as c from d_chamber_appointment where app_date='$dt' and chamber_id='$cid' and record_status='A' and app_time between '$ot1' and '$ct1'");
+    $getappcount1q=  mysqli_query($conn, "select count(id) as c from d_chamber_appointment where app_date='$dt' and chamber_id='$cid' and record_status='A' and app_time_from='$ot1' and app_time_to='$ct1'");
     $getappcount1r=  mysqli_fetch_array($getappcount1q);
     if($getappcount1r['c'] < $l1 && $curtime < $otime1)
     {
         $timing=substr($ot1,0,5)."-".substr($ct1,0,5);
     }
-    $getappcount2q=  mysqli_query($conn, "select count(id) as c from d_chamber_appointment where app_date='$dt' and chamber_id='$cid' and record_status='A' and app_time between '$ot2' and '$ct2'");
+    $getappcount2q=  mysqli_query($conn, "select count(id) as c from d_chamber_appointment where app_date='$dt' and chamber_id='$cid' and record_status='A' and app_time_from='$ot2' and app_time_to='$ct2'");
     $getappcount2r=  mysqli_fetch_array($getappcount2q);
     if($getappcount2r['c'] < $l2 && $curtime < $otime2)
     {

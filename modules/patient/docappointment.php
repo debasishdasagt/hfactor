@@ -6,6 +6,10 @@ and open the template in the editor.
 -->
 <?php
 include_once '../../config.php';
+session_start();
+unset($_SESSION['tmpappid']);
+session_unset();
+session_destroy();
 ?>
 <html>
     <head>
@@ -17,7 +21,7 @@ include_once '../../config.php';
     <body>
         <div class="container">
             <div class="row">
-                <form action="#" method="post">
+                <form action="otphandler.php" method="post" id="getappfrm" >
                 <div class="col-lg-12">
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Select Chamber</span>
@@ -69,7 +73,7 @@ include_once '../../config.php';
                 </div>
                 <br><br>
                 <div class="col-lg-12" style="text-align: right">
-                    <button class="btn btn-success disabled btn-sm" id="getapp" role="button">Get Appointment</button>
+                    <input type="submit" class="btn btn-success disabled btn-sm" id="getapp" role="button" value="Get Verification OTP">
                 </div>
                 </form>
                 
@@ -84,6 +88,34 @@ include_once '../../config.php';
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
 });
+
+
+$('#getappfrm').on('submit',function()
+{
+    var that = $(this),
+    content=that.serialize();
+
+    $.ajax({
+        url: 'otphandler.php',
+        dataType: 'json',
+        type: 'post',
+        data: content,
+        success: function(data)
+        {
+            if(data.success)
+            {
+                var otp=prompt("Please Enter The OTP");
+                otpchk(otp);
+            }
+            else
+            {
+                alert(data.err);
+            }
+        }
+    });
+    return false;
+});
+
   
 </script>
 
