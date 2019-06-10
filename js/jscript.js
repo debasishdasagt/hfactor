@@ -186,3 +186,29 @@ function saved()
             $("[name='sun_l2']").val(v);$("[name='mon_l2']").val(v);$("[name='tue_l2']").val(v);$("[name='wed_l2']").val(v);
             $("[name='thu_l2']").val(v);$("[name='fri_l2']").val(v);$("[name='sat_l2']").val(v);lim2=true;
         }}
+    
+    
+    
+    function appconfirm(rep,rem,id)
+    {
+        if($('#'+rep).val()!='')
+        {
+            var repp=$('#'+rep).val();
+            var remm=$('#'+rem).val();
+            $.ajax({
+                url: 'appconfirm.php',
+                type: 'POST',
+                data: {repo: repp, rema: remm, aid: id},
+                dataType: 'json',
+                success:function(data)
+                {
+                    if(data.success)
+                    {
+                        $('#'+id+'acs').html("<i class='glyphicon glyphicon-ok-circle'></i> Confirmed");
+                    }
+                    else
+                    { alert(data.err);}
+                }
+            });
+        }
+    }

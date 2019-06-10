@@ -38,7 +38,7 @@ include_once 'loginhandler.php';
   <a href="doctor/newdoctor.php" target="adminframe"><i class="glyphicon glyphicon-plus-sign"></i> Doctors</a>
   <?php } ?>
   <?php if($_SESSION['rolecode']== '1001' || $_SESSION['rolecode']== '1003') { ?>
-  <a href="#contact"><i class="glyphicon glyphicon-heart-empty"></i> Patients</a>
+  <a href="patients/patientsday.php" target="adminframe"><i class="glyphicon glyphicon-heart-empty"></i> Patients</a>
   <?php } ?>
   <?php if($_SESSION['rolecode']== '1001' || $_SESSION['rolecode']== '1002') { ?>
   <a href="labs/addtest.php" target="adminframe"><i class="glyphicon glyphicon-search"></i> Diagnostic Labs</a>

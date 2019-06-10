@@ -127,6 +127,10 @@ function otpchk(otp,otpkey)
                 alert("Appointment Booked Successfully");
                 $('#gamodal').modal('toggle');
             }
+            else
+            {
+                alert(data.err);
+            }
         }
         
     })

@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && $_POST['pmob'] != "")
     $getotpstq=  mysqli_query($conn, "select id from d_appointment_otp where tmp_session_id='$tmpid' and otp_sent_date='$dt' and mobile_number='$mob' and chamber_id='$chamberid' and record_status='A'");
     if(mysqli_num_rows($getotpstq)==0)
     {
-        $otpsent=  otpsend($otp);
+        $otpsent=  otpsend($mob,$msg);
         $insotprec=  mysqli_query($conn,"INSERT INTO `d_appointment_otp`
 (`tmp_session_id`,`chamber_id`,`mobile_number`,`otp`,`otp_expr_on`,`sent_count`,`otp_sent_date`,`otp_msg_body`,`otp_verification_status`,
 `record_status`,`record_created_on`) 
@@ -52,8 +52,9 @@ values('$tmpid','$chamberid','$mob','$otp','$et',1,'$dt','$msg','N','A',now())")
                 . "VALUES ('$tmpid','$pid','$pname','$padd','$mob','self','A',now())");
         
         
-        
-        $json['success']=TRUE;
+        if($insotprec && $instmpappq && $instmppinfoq)
+        {$json['success']=TRUE;}
+        else{$json['success']=FALSE; $json['err']="Something Went wrong while saving data";}
     }
 else
 {
@@ -100,7 +101,7 @@ function getotp($n) {
 } 
 
 
-function otpsend($otp)
+function otpsend($mob,$otp)
 {
     
 }
