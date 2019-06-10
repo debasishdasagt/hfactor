@@ -52,11 +52,17 @@ if($rolecd=='1003')
                     
                     <input type="text" class="form-control" placeholder="Serach Tests..."  id="testsearch">
                     <div class='input-group-btn'>
-                        <button class='btn btn-info' role='button'><i class='glyphicon glyphicon-plus'></i> Add</button>
+                        <button class='btn btn-info' role='button' onclick="addtesttile($('#testsearch').val())"><i class='glyphicon glyphicon-plus'></i> Add</button>
                     </div>
                 </div>
             </div>
         </div> 
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="plate" id="tests">No Test(s) Selected / Added.
+                </div>
+            </div>
+        </div>
         
     </div>
     <script src='../../js/jquery-3.2.1.min.js'></script>
@@ -81,9 +87,21 @@ if($rolecd=='1003')
                         cbf(res);
                     }
                 })
+            },
+            select: function(event,ui)
+            {
+                
+                addtesttile(ui.item.value);
+                console.log(ui.item.value);
             }
         });
         
+        
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+            
+          });
+
        
         
         </script>
