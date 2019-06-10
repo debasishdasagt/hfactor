@@ -125,7 +125,7 @@ function otpchk(otp,otpkey)
             if(data.success)
             {
                 alert("Appointment Booked Successfully");
-                $('#gamodal').modal('toggle');
+                window.parent.closeModal();
             }
             else
             {
@@ -135,3 +135,7 @@ function otpchk(otp,otpkey)
         
     })
 }
+
+window.closeModal = function(){
+    $('#gamodal').modal('hide');
+};
