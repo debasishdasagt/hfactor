@@ -151,7 +151,7 @@ order by `d_chamber_appointment`.`app_time_from`, `d_chamber_appointment`.`slot_
                             </td>
                              <td>
                                 
-                                <a href='#' class='btn btn-info btn-xs' role='Button'>Visited</a>
+                                 <a href='#' class='btn btn-info btn-xs' role='Button' onclick="visitedp('<?php echo $appr['id']; ?>')">Visited</a>
                                 
                             </td>
                     
@@ -165,7 +165,29 @@ order by `d_chamber_appointment`.`app_time_from`, `d_chamber_appointment`.`slot_
                 </div>
             </div>
             
-            
+<div id="visitedmodal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h5 class="modal-title">Patient Visited</h5>
+      </div>
+      <div class="modal-body">
+          <iframe id='appointmentframe'></iframe>   
+        
+        
+        
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>            
             
             
             

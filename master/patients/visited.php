@@ -50,7 +50,7 @@ if($rolecd=='1003')
             <div class="col-lg-12">
                 <div class='input-group input-group-sm'>
                     
-                    <input type="text" class="form-control" placeholder="Serach Tests..."  id="testsearch">
+                    <input type="text" class="form-control" placeholder="Test(s) Recomended by Doctor..."  id="testsearch">
                     <div class='input-group-btn'>
                         <button class='btn btn-info' role='button' onclick="addtesttile($('#testsearch').val())"><i class='glyphicon glyphicon-plus'></i> Add</button>
                     </div>

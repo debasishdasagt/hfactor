@@ -257,3 +257,10 @@ function remtests(j)
     }
     addtesttile("");
 }
+
+
+function visitedp(pid)
+    {
+        $('#visitedmodal').modal('show');
+        $('#appointmentframe').attr('src','visited.php?pid='+pid);
+    }
