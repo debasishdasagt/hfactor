@@ -12,7 +12,7 @@ if(isset($_POST['aid']))
       'success'=>false,
       'err'=>''  
     );
-    $acq=  mysqli_query($conn, "update d_chamber_appointment set app_reporting_time='$rep', app_remarks='$rem',app_confirmed='Y' where id='$id' and record_status='A'");
+    $acq=  mysqli_query($conn, "update d_chamber_appointment set app_reporting_time='$rep', app_remarks='$rem',app_confirmed='Y',record_modified_on=now() where id='$id' and record_status='A'");
     if($acq)
     {
         $json['success']=TRUE;

@@ -131,7 +131,7 @@ order by `d_chamber_appointment`.`app_time_from`, `d_chamber_appointment`.`slot_
                                 <input type="text" class='form-control input-sm' placeholder="Remarks" id='<?php echo $appr['id']."rem"; ?>' value="<?php if($appr['app_remarks']!=""){echo $appr['app_remarks'];} else {echo "";}?>">
                             </td>
                             
-                            <td align='center'>
+                            <td align='center' valign="middle">
                                 <div class='btn-group btn-group-xs' id='<?php echo $appr['id']."acs"; ?>'>
                                     <?php
                                     if($appr['app_confirmed']!='Y')
@@ -143,16 +143,30 @@ order by `d_chamber_appointment`.`app_time_from`, `d_chamber_appointment`.`slot_
                                     }
                                     else{
                                         ?>
-                                    <i class='glyphicon glyphicon-ok-circle'></i> Confirmed
+                                    <span class="label label-success"> <i class='glyphicon glyphicon-ok-circle'></i> Confirmed</span>
                                             <?php
                                     }
                                     ?>
                                 </div>
                             </td>
                              <td>
+                                  <?php
+                                    if($appr['app_confirmed']=='Y')
+                                    {
+                                    ?>
+                                    
+                                    <button class='btn btn-info btn-xs' role='Button' id="<?php echo $appr['id'].'_btn'; ?>" onclick="visitedp('<?php echo $appr['id']; ?>')">Visited</button>
+                                    <?php
+                                    }
+                                    else{
+                                        ?>
+                                    <button class='btn btn-info btn-xs disabled' role='Button' id="<?php echo $appr['id'].'_btn'; ?>" onclick="visitedp('<?php echo $appr['id']; ?>')">Visited</button>
                                 
-                                 <a href='#' class='btn btn-info btn-xs' role='Button' onclick="visitedp('<?php echo $appr['id']; ?>')">Visited</a>
+                                            <?php
+                                    }
+                                    ?>
                                 
+                                 
                             </td>
                     
                             
@@ -175,7 +189,7 @@ order by `d_chamber_appointment`.`app_time_from`, `d_chamber_appointment`.`slot_
         <h5 class="modal-title">Patient Visited</h5>
       </div>
       <div class="modal-body">
-          <iframe id='appointmentframe'></iframe>   
+          <iframe id='appointmentframe' styl="height: 300px"></iframe>   
         
         
         

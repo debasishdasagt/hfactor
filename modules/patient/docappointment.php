@@ -71,9 +71,8 @@ session_destroy();
                         <input type="text" class="form-control" name="pmob" id="pmob" placeholder="Valied Mobile Number">
                     </div>
                 </div>
-                <br><br>
-                <div class="col-lg-12" style="text-align: right">
-                    <input type="submit" class="btn btn-success disabled btn-sm" id="getapp" role="button" value="Get Verification OTP">
+                <div class="col-lg-12" style="text-align: right;">
+                    <input type="submit" class="btn btn-success disabled btn-sm" id="getapp" role="button" value="Get Verification OTP" style=" margin-top: 10px">
                 </div>
                 </form>
                 

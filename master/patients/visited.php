@@ -63,6 +63,23 @@ if($rolecd=='1003')
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-2 col-sm-2 hidden-xs"></div>
+            <div class="col-lg-10 col-sm-10 col-xs-12">
+                <div class="checkbox">
+                    <label><input type="checkbox" id="app_comp" checked="chacked"> Visited and consulted with doctor.</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" id="sendreq" checked="chacked" disabled="disabled"> Send Feedback Request to Patient.</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <button class="btn btn-success btn-sm" role="button" onclick="aftervisit('<?php echo $_GET['pid']; ?>')">Submit</button>
+            </div>
+        </div>
         
     </div>
     <script src='../../js/jquery-3.2.1.min.js'></script>

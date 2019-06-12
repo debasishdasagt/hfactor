@@ -204,7 +204,8 @@ function saved()
                 {
                     if(data.success)
                     {
-                        $('#'+id+'acs').html("<i class='glyphicon glyphicon-ok-circle'></i> Confirmed");
+                        $('#'+id+'acs').html("<span class='label label-success'><i class='glyphicon glyphicon-ok-circle'></i> Confirmed</span>");
+                        $('#'+id+"_btn").removeClass('disabled');
                     }
                     else
                     { alert(data.err);}
@@ -263,4 +264,24 @@ function visitedp(pid)
     {
         $('#visitedmodal').modal('show');
         $('#appointmentframe').attr('src','visited.php?pid='+pid);
+    }
+    
+    
+    function aftervisit(id)
+    {
+        if(document.getElementById('app_comp').checked)
+        {var appcomp= true;}
+        else{var appcomp= false;}
+        var sendreq= true;
+        $.ajax({
+            type: "POST",
+            url: "savetestreco.php",
+            data: {data: tests, pid: id,appocomp: appcomp, sendfreq: sendreq},
+            cache: false,
+            success: function(data)
+            {
+                
+            }
+            
+        })
     }
