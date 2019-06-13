@@ -45,6 +45,55 @@ if($rolecd=='1003')
       </style>
 </head>
 <body>
+    <?php
+    if(isset($_GET['pid']))
+    {
+        $pid=  mysqli_real_escape_string($conn,$_GET['pid']);
+        $getidq=  mysqli_query($conn,"select patient_id,chamber_id,app_completed from d_chamber_appointment where record_status='A' and id='$pid'");
+        $getidr= mysqli_fetch_array($getidq);
+        $patient_id=$getidr['patient_id'];
+        $chamber_id=$getidr['chamber_id'];
+        $appocomp=$getidr['app_completed'];
+        if($appocomp=='Y')
+        {
+         ?>
+    
+    <div class="row" style="width:95%">
+        <div class="col-lg-12">
+            <h4>Appointment with doctor has been completed
+        <?php
+        $recptestq=  mysqli_query($conn, "select patient_id,test_id,get_test_name(test_id) as t_name from d_tests_recommended where patient_id='$patient_id' and record_status='A'");
+        if(mysqli_num_rows($recptestq)>0)
+        {
+            echo " and following test has been recommanded by the Doctor <br><br>";
+        }
+        else{ echo ".";}
+        
+        if(mysqli_num_rows($recptestq)>0)
+        {
+            while($tnames=mysqli_fetch_array($recptestq))
+            {
+                echo $tnames['t_name'].", ";
+            }
+        }
+            
+            ?></h4>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    <?php
+        }
+        
+        else{
+            
+    ?>
     <div class='container'>
         <div class="row">
             <div class="col-lg-12">
@@ -80,7 +129,9 @@ if($rolecd=='1003')
                 <button class="btn btn-success btn-sm" role="button" onclick="aftervisit('<?php echo $_GET['pid']; ?>')">Submit</button>
             </div>
         </div>
-        
+        <?php
+    }}
+        ?>
     </div>
     <script src='../../js/jquery-3.2.1.min.js'></script>
     <script src='../../js/jquery-ui.min.js'></script>

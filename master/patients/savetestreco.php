@@ -17,7 +17,7 @@ if(isset($_POST['data']))
     $appcomp=mysqli_real_escape_string($conn,$_POST['appocomp']);
     $sendfreq=mysqli_real_escape_string($conn,$_POST['sendfreq']);
     $tests=$_POST['data'];
-    $remoldrecq=  mysqli_query($conn, "update d_tests_recommended set record_status='D' where record_status='A' and id='$pid'");
+    $remoldrecq=  mysqli_query($conn, "update d_tests_recommended set record_status='D' where record_status='A' and patient_id='$patient_id'");
     foreach($tests as $t)
     {
         $tmparr=  explode(' - ', $t);
@@ -30,11 +30,11 @@ VALUES('$chamber_id','$patient_id','$tmparr[0]','A',now())");
         $updtappo=  mysqli_query($conn, "update d_chamber_appointment set app_completed='Y' where record_status='A' and id='$pid'");
         if($updtappo && $sendfreq)
         {
-            $intermnalurl="modules/patient/afterappo.php?appoid=".$pid;
+            $intermnalurl="modules/patient/afterappo.php";
             $publicurl="r.php?q=".getrandomstring(6);
             $smsbody="Thank you for visiting : <Chamber Name>.  Please visit: ".$intermnalurl." For best labs arround you";
-            $insredirectq=  mysqli_query($conn, "INSERT INTO `d_redirect_url`(`public_url`,`internal_url`,`record_status`,`record_created_on`)
-VALUES('$publicurl','$intermnalurl','Y',now())");
+            $insredirectq=  mysqli_query($conn, "INSERT INTO `d_redirect_url`(`public_url`,`internal_url`,`p1`,`record_status`,`record_created_on`)
+VALUES('$publicurl','$intermnalurl','$pid','Y',now())");
             sendsms('4356456',$smsbody);
             $json['success']=TRUE;
         }
