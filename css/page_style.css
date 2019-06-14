@@ -3,6 +3,7 @@
   min-width:100%;
 }
 
+
 .navbar{
   position:fixed;
   background-color: rgba(0,0,0,0.6);
@@ -12,6 +13,80 @@
   border-color:transparent;
   
 }
+
+.navbar-default {
+    background-color: rgba(0,0,0,0.6);
+    border-color: transparent;
+}
+/* Title */
+.navbar-default .navbar-brand {
+    color: #777;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #5E5E5E;
+}
+/* Link */
+.navbar-default .navbar-nav > li > a {
+    color: #777;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #333;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #cccccc;
+    background-color: red;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: red;
+}
+/* Caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #777;
+    border-bottom-color: #777;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #333;
+    border-bottom-color: #333;
+}
+.navbar-default .navbar-nav > .open > a .caret,
+.navbar-default .navbar-nav > .open > a:hover .caret,
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #555;
+    border-bottom-color: #555;
+}
+/* Mobile version */
+.navbar-default .navbar-toggle {
+    border-color: #DDD;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #DDD;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #CCC;
+}
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #ffffff;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+          color: #efefef;
+    }
+}
+
+
+
+/* Nav bar end */
+
 
 #srchbx
 {
@@ -386,4 +461,55 @@ div.content {
     font-size: 12px;
     color: #aaaaaa;
     border:1px solid #eeeeee;
+}
+.labtile{
+    margin: 10px; 
+    box-shadow: 0px 0px 5px #000000; 
+}
+.labtiletd1c1
+{
+    background-color: #525064;
+    color: #ffffff;
+    height: 150px;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    font-size: 11px;
+}
+
+.labtiletd1c1 > h5
+{
+    border-bottom: 1px solid #999999;
+    padding: 3px;
+    font-size: 12px;
+}
+
+.labtiletd2c1
+{
+    background-color: #ffffff;
+    color: #000000;
+    padding: 5px; 
+    height: 120px;
+    min-width: 50%;
+    font-size: 10px;
+    overflow: auto;
+}
+
+.labtiletd2c2
+{
+    background-color: #38acf4;
+    color: #ffffff; 
+    padding: 4px; 
+    height: 30px;
+    width: 100%;
+    text-align: left;
+    text-align: center;
+    font-size: 12px;
+}
+.labtiletdtitle
+{
+   padding:3px;
+   font-weight: bold;
+   border-bottom: 1px solid #eeeeee;
+   font-size: 12px;
 }

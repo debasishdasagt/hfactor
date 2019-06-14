@@ -85,13 +85,13 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-    <img class='img-fluid hidden-sm hidden-xs' src='images/doctor_banner.jpg' style="position: fixed; z-index: -2">
+    <img class='img-fluid hidden-sm hidden-xs' src='images/lab_banner.jpg' style="position: fixed; z-index: -2">
 
 <div class="hidden-sm hidden-xs banner-caption" style="height: 340px; width: 400px; color: #ffffff">
     <h2>We have got the Best for You</h2>
                   
-    <p>All registered doctors are highly experienced in their fields and
-        produce excellent outcomes for patients</p>  
+    <p>All registered diagnostic labs are highly efficient in their fields and
+        produce excellent outcomes for everyone</p>  
     
 </div>
 
@@ -106,8 +106,8 @@
                         <br><br><br>
     <h3>We have got the Best for You</h3>
                   
-    <p>All registered doctors are highly experienced in their fields and
-        produce excellent outcomes for patients</p>  
+    <p>All registered diagnostic labs are highly efficient in their fields and
+        produce excellent outcomes for everyone</p>  
 </div>
                     
                     
@@ -152,21 +152,49 @@
                 $lid=$gettetscountr['lab_id'];
             ?>
                     <div class="col-lg-6 col-md-12">
-                        <div style="background-color: #ffffff; border-radius: 5px; padding: 10px; margin: 10px; box-shadow: 0px 0px 5px #000000; width: 100%; height: 200px" >
-                            <h4><?php echo  $gettetscountr['lab_name'];?></h4>
-                            <hr>
-                            <?php
-                            $tp=0;
-                            $gettq=  mysqli_query($conn, "select test_name,test_rate from patient_test_pricing where patient_id='$patient_id' and lab_id='$lid'");
-                            echo "<ul>";
-                            while($gettr=  mysqli_fetch_array($gettq))
-                            {
-                                echo "<li>".$gettr['test_name']." - Rs:".$gettr['test_rate']."</li>";
-                                $tp=$tp+$gettr['test_rate'];
-                            }
-                            echo "</ul><br>";
-                            echo "Total Cost Rs: $tp";
-                            ?>
+                        <div class="labtile" >
+                            
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <tr>
+                                    <td style="width:50%" class="hidden-xs">
+                                        <div class="labtiletd1c1"><h5><strong><?php echo  $gettetscountr['lab_name'];?></strong></h5>
+                                        
+                                        <?php
+                                       
+                                        $getlabaddressq=  mysqli_query($conn, "select lab_address,lab_area_pin,lab_contact,lab_doctor from d_labs where lab_id='$lid' and record_status='A'");
+                                        $getlabaddressr=  mysqli_fetch_array($getlabaddressq);
+                                        echo "<ul>".$getlabaddressr['lab_address']."<br>";
+                                        echo "PIN: ".$getlabaddressr['lab_area_pin']."<br>";
+                                        echo "Contact Number: ".$getlabaddressr['lab_contact']."<br>";
+                                        echo "Doctor: ".$getlabaddressr['lab_doctor']."<br></ul>";
+                                        ?>
+                                        
+                                        </div>
+                                        
+                                    </td>
+                                    <td style="width: 50%" valign="top">
+                                        <div class="labtiletd2c1">
+                                            <div class="labtiletdtitle hidden-lg hidden-md hidden-sm" data-toggle="tooltip" data-placement="bottom" title="<?php echo $getlabaddressr['lab_address'].", Mob:".$getlabaddressr['lab_contact']; ?>">
+                                                <?php echo  $gettetscountr['lab_name'];?>
+                                            </div>
+                                        <?php
+                                        $tp=0;
+                                        $gettq=  mysqli_query($conn, "select test_name,test_rate from patient_test_pricing where patient_id='$patient_id' and lab_id='$lid'");
+                                        echo "Available Tests:<ul>";
+                                        while($gettr=  mysqli_fetch_array($gettq))
+                                        {
+                                            echo "<li>".$gettr['test_name']." - Rs:".$gettr['test_rate']."</li>";
+                                            $tp=$tp+$gettr['test_rate'];
+                                        }
+                                        echo "</ul>";
+                                        ?>
+                                        </diV>
+                                        <div class="labtiletd2c2"><?php echo "Total Cost Rs: <strong>".$tp."</strong>" ?></div>
+                                    </td>
+                                </tr>
+                            </table>
+                          
+                            
                         </div>
                     </div>
                     

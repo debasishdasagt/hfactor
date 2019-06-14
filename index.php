@@ -51,13 +51,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <a class="navbar-brand" href="#" style="color:#ffffff">H-Factor</a>
+        <a class="navbar-brand" href="#" style="color:#ffffff;">
+            <div class="hidden-sm hidden-xs" style="background: rgba(255,255,255,0.7); border-radius: 3px; position: relative; top:-32px; padding:3px">
+                <img src="images/logo.png" height="60">
+            </div>
+            
+            <div class="hidden-lg hidden-md" style="background: rgba(255,255,255,0.7); border-radius: 3px; position: relative">
+                <img src="images/logo.png" height="50">
+            </div>
+            
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active" style="color:#ffffff"><a href="#">Home <span class="sr-only" style="color:#ffffff">(current)</span></a></li>
+        <li class="active" style="color:#ffffff"><a href="#">Home <span class="sr-only">(current)</span></a></li>
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#ffffff">Appointment<span class="caret"></span></a>
