@@ -280,7 +280,11 @@ function visitedp(pid)
             cache: false,
             success: function(data)
             {
-                
+                if(data.success)
+                {
+                    $('#msg').removeClass('hidden');
+                    $('#msg').html(data.msg);
+                }
             }
             
         })

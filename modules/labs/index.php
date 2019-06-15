@@ -266,7 +266,7 @@ include_once '../../config.php';
                     
                     ?>
                 
-                <div class='col-lg-4 col-md-4 col-sm-6 col-xs-12 tile_sp'>
+                <div class='col-lg-4 col-md-6 col-sm-6 col-xs-11 tile_sp'>
                     
                     <table width='100%' border='0' cellspacing='0' cellpadding="0">
                         <tr>
@@ -289,7 +289,7 @@ include_once '../../config.php';
                         </tr>
                         <tr>
                             <td colspan="2" align='right' align="left" style="padding: 5px;" >
-                                <a  href='testsav.php?labid=<?php echo  $dcr['id'];?>' style="color:white;font-weight: bold;">Available Tests<i class="glyphicon glyphicon-menu-right"> </i></a>
+                                <a  href="javascript:showtest('<?php echo  $dcr['lab_id'];?>')" style="color:white;font-weight: bold;">Available Tests<i class="glyphicon glyphicon-menu-right"> </i></a>
                             </td>
                         </tr>
                     </table>
@@ -357,17 +357,17 @@ e-mail: info@biht.in
     </div>
     </div>
     
-<div id="gamodal" class="modal fade" role="dialog">
+<div id="tmodal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header">
+        <div class="modal-header" style="border-bottom:0px">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h5 class="modal-title">Doctor's Appointment</h5>
+        <h5 class="modal-title">Tests Available</h5>
       </div>
       <div class="modal-body">
-          <iframe id='tests'></iframe>   
+          <iframe id='testsf' style="border:0px; width:100%; height: 300px"></iframe>   
         
         
         

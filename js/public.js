@@ -145,7 +145,7 @@ var tests=new Array();
 function addtesttile(t)
     {
         var ht="";
-        var srchbtn="<hr> <button class='btn btn-info btn-sm' role='button' onclick='srchtests()'>Search</button>";
+        var srchbtn="<hr><div style='width: 100%; text-align: right; padding-right: 10px'> <button class='btn btn-warning btn-sm' role='button' onclick='srchtests()'><i class='glyphicon glyphicon-search'> </i> Search</button></div>";
         if(t!="")
         {
             if(document.getElementById('testsel').value=='na')
@@ -218,3 +218,9 @@ function srchtests()
 {
     document.getElementById('tsrch').submit();
 }
+
+function showtest(lid)
+    {
+        $('#tmodal').modal('show');
+        $('#testsf').attr('src','labtests.php?lid='+lid);
+    }

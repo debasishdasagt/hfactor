@@ -128,6 +128,7 @@ if($rolecd=='1003')
             <div class="col-lg-12 text-right">
                 <button class="btn btn-success btn-sm" role="button" onclick="aftervisit('<?php echo $_GET['pid']; ?>')">Submit</button>
             </div>
+            <textarea class="form-control rounded-0 hidden" id="msg" rows="3"></textarea>
         </div>
         <?php
     }}

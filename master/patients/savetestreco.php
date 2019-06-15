@@ -5,7 +5,8 @@ include_once 'loginhandler.php';
 include_once '../../config.php';
 $json = array(
     'success'=>false,
-    'err'=> ''
+    'err'=> '',
+    'msg'=> ''
 );
 if(isset($_POST['data']))
 {
@@ -32,11 +33,12 @@ VALUES('$chamber_id','$patient_id','$tmparr[0]','A',now())");
         {
             $intermnalurl="modules/patient/afterappo.php";
             $publicurl="r.php?q=".getrandomstring(6);
-            $smsbody="Thank you for visiting : <Chamber Name>.  Please visit: ".$intermnalurl." For best labs arround you";
+            $smsbody="Thank you for visiting : <Chamber Name>.  Please visit: http://".$_SERVER['HTTP_HOST']."/hfactor/".$publicurl." to find best labs arround you";
             $insredirectq=  mysqli_query($conn, "INSERT INTO `d_redirect_url`(`public_url`,`internal_url`,`p1`,`record_status`,`record_created_on`)
 VALUES('$publicurl','$intermnalurl','$pid','Y',now())");
             sendsms('4356456',$smsbody);
             $json['success']=TRUE;
+            $json['msg']=$smsbody;
         }
         
     }
