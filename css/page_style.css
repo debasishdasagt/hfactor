@@ -11,40 +11,43 @@
   z-index:10;
   border-radius:0;
   border-color:transparent;
-  
+  color: #ffffff;
 }
 
 .navbar-default {
     background-color: rgba(0,0,0,0.6);
     border-color: transparent;
+    color: #ffffff;
 }
 /* Title */
 .navbar-default .navbar-brand {
-    color: #777;
+    color: #ffffff;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-    color: #5E5E5E;
+    color: #ffffff;
 }
 /* Link */
 .navbar-default .navbar-nav > li > a {
-    color: #777;
+    color: #ffffff;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: #333;
+    color: ffffff;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-    color: #cccccc;
-    background-color: red;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: rgba(0,0,0,0);
+    border-bottom: 2px solid #62addc;
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-    color: #555;
-    background-color: red;
+    color: #ffffff;
+    background-color: #62addc;
 }
 /* Caret */
 .navbar-default .navbar-nav > .dropdown > a .caret {

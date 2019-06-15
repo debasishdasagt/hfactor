@@ -45,7 +45,8 @@ include_once '../../config.php';
           
           
       </div>
-  <div class="container-fluid" id="navcontainer">
+  
+      <div class="container-fluid" id="navcontainer">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -54,15 +55,23 @@ include_once '../../config.php';
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <a class="navbar-brand" href="#" style="color:#ffffff">H-Factor</a>
+        <a class="navbar-brand" href="#" style="color:#ffffff;">
+            <div class="hidden-sm hidden-xs" style="background: rgba(255,255,255,0.7); border-radius: 3px; position: relative; top:-32px; padding:3px">
+                <img src="../../images/logo.png" height="60">
+            </div>
+            
+            <div class="hidden-lg hidden-md" style="background: rgba(255,255,255,0.7); border-radius: 3px; position: relative">
+                <img src="../../images/logo.png" height="50">
+            </div>
+        </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active" style="color:#ffffff"><a href="#">Home <span class="sr-only" style="color:#ffffff">(current)</span></a></li>
+        <li ><a href="../../" style="color:#ffffff">Home <span class="sr-only">(current)</span></a></li>
         
-        <li class="dropdown">
+       <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#ffffff">Appointment<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Doctor</a></li>
@@ -72,8 +81,9 @@ include_once '../../config.php';
             <li><a href="#">Sample Collection</a></li>
             <li><a href="#">Diagnostics Report Delivery</a></li>
           </ul>
-        </li>
-        <li><a href="#" style="color:#ffffff">About US</a></li>
+        </li> -->
+       <li class='active'><a href="./" style="color: #ffffff;">Doctor's Appointment</a></li>
+       <li><a href="../labs/" style="color: #ffffff;">Labs & Tests</a></li>
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
@@ -82,10 +92,12 @@ include_once '../../config.php';
           <button type="submit" class="btn btn-info"> <i class="glyphicon glyphicon-search"></i></button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-          <li ><a href="master/" style="color:#ffffff"><i class="glyphicon glyphicon-log-in" style="color:#ffffff"></i> Login</a></li>
+          <li ><a href="../../master/" style="color:#ffffff"><i class="glyphicon glyphicon-log-in" style="color:#ffffff"></i> Login</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+  </div>
+      
+      <!-- /.container-fluid -->
 </nav>
     <img class='img-fluid hidden-sm hidden-xs' src='../../images/doctor_banner.jpg' style="position: fixed; z-index: -2">
 

@@ -139,3 +139,73 @@ function otpchk(otp,otpkey)
 window.closeModal = function(){
     $('#gamodal').modal('hide');
 };
+
+var tests=new Array();
+    
+function addtesttile(t)
+    {
+        var ht="";
+        var srchbtn="<hr> <button class='btn btn-info btn-sm' role='button' onclick='srchtests()'>Search</button>";
+        if(t!="")
+        {
+            if(document.getElementById('testsel').value=='na')
+            {
+                document.getElementById('testsel').value=t;
+            }
+            else{
+                    document.getElementById('testsel').value=document.getElementById('testsel').value+"ʭ"+t;
+                    console.log(document.getElementById('testsel').value);
+                }
+            tests.push(t);
+        }
+        var l=tests.length;
+        for(i=0;i<=l-1;i++)
+        {
+            
+            ht=ht+'<span class="label label-info" style="margin: 10px; cursor:pointer;font-size:12px; display: inline-block" data-toggle="tooltip" onclick="remtests('+i+')">'+tests[i]+'</span>';
+        }
+        if(l>0)
+        {
+           ht=ht+srchbtn; 
+        }
+        else
+        {
+            ht="No Test(s) selected or Added.";
+        }
+        $('#tests').html(ht);
+        $('[data-toggle="tooltip"]').attr("data-original-title","Click on the item to remove");
+        $('[data-toggle="tooltip"]').tooltip('show');
+        setTimeout(function()
+        {
+            $('[data-toggle="tooltip"]').tooltip('hide');
+            $('#testsearch').val('');
+        },500);
+        $('#testsearch').val('');
+    }
+    
+function remtests(j)
+{
+    var tmplist=new Array();
+    var l=tests.length;
+    for(i=0;i<=l-1;i++)
+    {
+        if(i!=j)
+        {
+            tmplist.push(tests[i]);
+        }
+        
+    }
+    tests=new Array();
+    l2=tmplist.length;
+    for(p=0;p<=l2-1;p++)
+    {
+        tests.push(tmplist[p]);
+    }
+    addtesttile("");
+}
+
+
+function srchtests()
+{
+    document.getElementById('tsrch').submit();
+}

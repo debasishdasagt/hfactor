@@ -59,15 +59,15 @@
             <div class="hidden-lg hidden-md" style="background: rgba(255,255,255,0.7); border-radius: 3px; position: relative">
                 <img src="images/logo.png" height="50">
             </div>
-            
+        </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active" style="color:#ffffff"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+        <li class="active" style="color:#ffffff"><a href="./">Home </a></li>
         
-        <li class="dropdown">
+       <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#ffffff">Appointment<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Doctor</a></li>
@@ -77,8 +77,9 @@
             <li><a href="#">Sample Collection</a></li>
             <li><a href="#">Diagnostics Report Delivery</a></li>
           </ul>
-        </li>
-        <li><a href="#" style="color:#ffffff">About US</a></li>
+        </li> -->
+       <li><a href="modules/patient" style="color: #ffffff;">Doctor's Appointment</a></li>
+       <li><a href="modules/labs/" style="color: #ffffff;">Labs & Tests</a></li>
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">

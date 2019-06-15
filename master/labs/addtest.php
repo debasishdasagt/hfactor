@@ -71,9 +71,12 @@ $rolecd= $roleckr['user_role_code'];
 `record_status`,
 `record_created_on`)
 VALUES('$test_id','$t_name','$t_cat','$t_desc','$uid','N','A',now())";
+                
+               
 
                $save_test=  mysqli_query($conn, $sql);
-               if($save_test)
+               $updateq=  mysqli_query($conn,"update d_lab_tests set test_name=replace(test_name,' - ','-') where record_status='A'" );
+               if($save_test && $updateq)
                {
                    $tsavestatus='saved';
                }
