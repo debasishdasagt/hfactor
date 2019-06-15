@@ -397,11 +397,27 @@ div.content {
     font-size: 12px;
 }
 
+.tile_sp
+{
+    background: #2193b0;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    margin: 10px;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px #000000;
+    min-height: 150px;
+    max-width: 370px;
+}
+
 .srchimg
 {
     width: 70px;
     height: 70px;
     overflow: hidden;
+    background-color: #4288b5;
 }
 
 .srchsubtxt
@@ -411,6 +427,17 @@ div.content {
     padding: 7px 0px 7px 0px;
 }
 
+.tile_sp .srchsubtxt
+{
+    font-size: 12px;
+    color: #D6FBFF;
+    border-top: none;
+    padding: 0px 0px 0px 0px;
+    
+}
+.tile_sp > a{
+    color: white;
+}
 
 .vgap
 {

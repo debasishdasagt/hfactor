@@ -196,9 +196,18 @@ function remtests(j)
         
     }
     tests=new Array();
+    document.getElementById('testsel').value='na';
     l2=tmplist.length;
     for(p=0;p<=l2-1;p++)
     {
+        if(document.getElementById('testsel').value=='na')
+            {
+                document.getElementById('testsel').value=tmplist[p];
+            }
+            else{
+                    document.getElementById('testsel').value=document.getElementById('testsel').value+"ʭ"+tmplist[p];
+                    console.log(document.getElementById('testsel').value);
+                }
         tests.push(tmplist[p]);
     }
     addtesttile("");

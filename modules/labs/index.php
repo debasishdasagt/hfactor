@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-
+<?php
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
+include_once '../../config.php';
+?>
 <html lang="en" >
 
 <head>
@@ -108,7 +111,7 @@
     
     
 <div class="row2" style="z-index:1" >
-        <div class="container" style="max-width: 80%">
+        <div class="container">
             
              <div class="hidden-lg hidden-md " style="min-height: 150px">
                         <br><br><br>
@@ -118,7 +121,7 @@
         produce excellent outcomes for everyone</p>  
 </div>
             <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12"  style="margin-top: 20px">
                 <div class='input-group input-group-sm'>
                     
                     <input type="text" class="form-control" placeholder="Add Test(s) to search..."  id="testsearch">
@@ -141,42 +144,27 @@
                    
                     
                     
-                        <?php
-                        $getidq=  mysqli_query($conn,"select patient_id,chamber_id,app_completed from d_chamber_appointment where record_status='A' and id='$par1'");
-                        $getidr= mysqli_fetch_array($getidq);
-                        $patient_id=$getidr['patient_id'];
-                        $chamber_id=$getidr['chamber_id'];
-                        $appocomp=$getidr['app_completed'];
-                        $pnameq=  mysqli_query($conn, "select get_patient_name('$patient_id') as pname");
-                        $pnamer= mysqli_fetch_array($pnameq);
-                        $chnameq=  mysqli_query($conn, "select get_chamber_info('$chamber_id') as chname");
-                        $chnamer= mysqli_fetch_array($chnameq);
-                        
-                        ?>
-                        
+                       
                     
-                    <div class="col-lg-12 text-left"><h1 style="color: #cccccc">  Hey <?php echo $pnamer['pname']?></h1>
-                    
-                    As we can see that you have visited <?php echo $chnamer['chname']?>
-                    <?php
-        $recptestq=  mysqli_query($conn, "select patient_id,test_id,get_test_name(test_id) as t_name from d_tests_recommended where patient_id='$patient_id' and record_status='A'");
-        if(mysqli_num_rows($recptestq)>0)
-        {
-            echo " and following test(s) has been recommanded by the Doctor ";
-        }
-        else{ echo ".";}
-        
-        if(mysqli_num_rows($recptestq)>0)
-        {
-            echo "<ul>";
-            while($tnames=mysqli_fetch_array($recptestq))
+                  <?php
+                  if(isset($_POST['tests']))
+                  {
+                      $tests=  mysqli_real_escape_string($conn,$_POST['tests']);
+                      $ts=  explode('ʭ', $tests);
+                      $td="";
+                      foreach($ts as $stt)
+                      {
+                          $st=  explode(" - ", $stt);
+                          if($td != "")
+                          {
+                              $td=$td.",'".$st[1]."'";
+                          }
+                          else{ $td="'".$st[1]."'";}
+                      }
+            $gettetscountq=  mysqli_query($conn, "select lab_name,lab_id,count(test_id) as tc from test_pricing where test_name in ($td) group by lab_id order by tc desc");
+            //echo "select lab_name,lab_id,count(test_id) as tc from test_pricing where test_name in ($td) group by lab_id order by tc desc";
+            if(mysqli_num_rows($gettetscountq)>0)
             {
-                
-                echo "<li>".$tnames['t_name']."</li>";
-            }
-            echo "</ul> Please find the best laboratory from below to get your tests done"
-            . "<br><br>";
-            $gettetscountq=  mysqli_query($conn, "select lab_name,lab_id,count(test_id) as tc from patient_test_pricing where patient_id='$patient_id' group by lab_id order by tc desc");
             while($gettetscountr=  mysqli_fetch_array($gettetscountq))
             {
                 $lid=$gettetscountr['lab_id'];
@@ -202,14 +190,14 @@
                                         </div>
                                         
                                     </td>
-                                    <td style="width: 50%" valign="top">
+                                    <td style="width: 50%" valign="top" align="left">
                                         <div class="labtiletd2c1">
-                                            <div class="labtiletdtitle hidden-lg hidden-md hidden-sm" data-toggle="tooltip" data-placement="bottom" title="<?php echo $getlabaddressr['lab_address'].", Mob:".$getlabaddressr['lab_contact']; ?>">
+                                            <div class="labtiletdtitle hidden-lg hidden-md hidden-sm" data-toggle="tt" data-placement="bottom" title="<?php echo $getlabaddressr['lab_address'].", Mob:".$getlabaddressr['lab_contact']; ?>">
                                                 <?php echo  $gettetscountr['lab_name'];?>
                                             </div>
                                         <?php
                                         $tp=0;
-                                        $gettq=  mysqli_query($conn, "select test_name,test_rate from patient_test_pricing where patient_id='$patient_id' and lab_id='$lid'");
+                                        $gettq=  mysqli_query($conn, "select test_name,test_rate from test_pricing where test_name in ($td) and lab_id='$lid'");
                                         echo "Available Tests:<ul>";
                                         while($gettr=  mysqli_fetch_array($gettq))
                                         {
@@ -232,9 +220,89 @@
                     
                     
             <?php
-        }}
-            
-            ?>
+                  }}
+                  else
+                  {?>
+                    
+                    
+                    <div style="margin-top: 50px; font-size: 18px; color: #cccccc"> <i class="glyphicon glyphicon-ban-circle" style="font-size:36px"></i> <br>No Labs Found for Selected Tests.</div>
+                    
+                    <?php
+                  }}
+                  else{
+                    ?>
+                    
+                    
+                    <br><br>
+                    
+                    <?php
+                    
+                    $csql="SELECT  `lab_id`, `lab_name`, `lab_address`, `lab_contact`, `lab_area_pin`,"
+                            . "`lab_doctor`, `opening_time`, `closing_time`, `sunday_open`, `monday_open`, "
+                            . "`tuesday_open`, `wednesday_open`, `thursday_open`, `friday_open`, `saturday_open`, "
+                            . "`record_status`, `record_created_on`, `record_updated_on`, `d_labscol` FROM `d_labs`"
+                            . " WHERE record_status='A'";
+                $dc=  mysqli_query($conn, $csql);
+                
+                    
+                while($dcr=  mysqli_fetch_array($dc))
+                {
+                    $days="";
+                    if($dcr['sunday_open'] == 'on')
+                    {$days=$days."Sunday, ";}
+                    if($dcr['monday_open'] == 'on')
+                    {$days=$days."Monday, ";}
+                    if($dcr['tuesday_open'] == 'on')
+                    {$days=$days."Tuesday, ";}
+                    if($dcr['wednesday_open'] == 'on')
+                    {$days=$days."Webnesday, ";}
+                    if($dcr['thursday_open'] == 'on')
+                    {$days=$days."Thursday, ";}
+                    if($dcr['friday_open'] == 'on')
+                    {$days=$days."Friday, ";}
+                    if($dcr['saturday_open'] == 'on')
+                    {$days=$days."Satuday";}
+                    
+                    
+                    ?>
+                
+                <div class='col-lg-4 col-md-4 col-sm-6 col-xs-12 tile_sp'>
+                    
+                    <table width='100%' border='0' cellspacing='0' cellpadding="0">
+                        <tr>
+                            <td rowspan="2" width='75' align="left"><div class='thumbnail srchimg' style="margin-bottom: 0px; font-size: 50px; color: #eeeeee"><i class="glyphicon glyphicon-briefcase"></i></div></td><td style="boder-bottom: 1px solid #cccccc; color: #ffffff"><strong><?php echo  $dcr['lab_name'];?></strong></td>
+                        </tr>
+                        <tr>
+                            <td class='srchsubtxt' align="left" style="padding-left: 8px">
+                                <strong>Doctor:</strong> <?php echo  $dcr['lab_doctor'];?><br><strong>Address:</strong><?php echo  $dcr['lab_address'];?></td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2" class='srchsubtxt' align="left">
+                                <strong>Time:</strong> <?php echo  $dcr['opening_time'];?> to <?php echo  $dcr['closing_time'];?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class='srchsubtxt' align="left">
+                                <strong>Days:</strong> <?php echo  $days;?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align='right' align="left" style="padding: 5px;" >
+                                <a  href='testsav.php?labid=<?php echo  $dcr['id'];?>' style="color:white;font-weight: bold;">Available Tests<i class="glyphicon glyphicon-menu-right"> </i></a>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    
+                    
+                </div>
+                
+                
+                <?php
+                }   
+ }
+                ?>   
                     
                     
                     </div>
@@ -299,7 +367,7 @@ e-mail: info@biht.in
         <h5 class="modal-title">Doctor's Appointment</h5>
       </div>
       <div class="modal-body">
-          <iframe id='appointmentframe'></iframe>   
+          <iframe id='tests'></iframe>   
         
         
         
@@ -360,6 +428,10 @@ e-mail: info@biht.in
     
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
+});
+
+$(document).ready(function(){
+  $('[data-toggle="tt"]').tooltip();
 });
   
 </script>
