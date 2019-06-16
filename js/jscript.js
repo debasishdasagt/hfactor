@@ -269,23 +269,56 @@ function visitedp(pid)
     
     function aftervisit(id)
     {
+        var appcomp;
         if(document.getElementById('app_comp').checked)
-        {var appcomp= true;}
-        else{var appcomp= false;}
+        {appcomp= true;}
+        else{appcomp= false;}
         var sendreq= true;
         $.ajax({
             type: "POST",
             url: "savetestreco.php",
-            data: {data: tests, pid: id,appocomp: appcomp, sendfreq: sendreq},
+            dataType:'json',
+            data: {dataa: tests, pid: id,appocomp: appcomp, sendfreq: sendreq},
             cache: false,
             success: function(data)
             {
                 if(data.success)
                 {
-                    $('#msg').removeClass('hidden');
-                    $('#msg').html(data.msg);
+                    $('#vform').addClass('hidden');
+                    $('#msgform').removeClass('hidden');
+                    $('#msg').val(data.msg);
+                    $('#mob').val(data.mob);
                 }
             }
             
-        })
+        });
     }
+    
+  function copytext(element,btn) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).val()).select();
+  document.execCommand("copy");
+  $temp.remove();
+  $(btn).html("Copied");
+}
+
+
+function sendfreqsms()
+{
+    var msgbody=$('#msg').val();
+    var mobnum=$('#mob').val();
+    $.ajax({
+        url: "sendsms.php",
+        type: "POST",
+        dataType: "json",
+        data: {msg: msgbody,mob: mobnum},
+        success: function(data)
+        {
+            if(data.success)
+            {
+                $('#frsmssendbtn').html("SMS Sent");
+            }
+        }
+    });
+}

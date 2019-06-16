@@ -543,3 +543,6 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
    border-bottom: 1px solid #eeeeee;
    font-size: 12px;
 }
+.inputtyped { 
+     padding-top: 0px; /* margin-top: 2px; ... */
+}

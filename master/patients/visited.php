@@ -95,6 +95,7 @@ if($rolecd=='1003')
             
     ?>
     <div class='container'>
+        <div id="vform">
         <div class="row">
             <div class="col-lg-12">
                 <div class='input-group input-group-sm'>
@@ -128,11 +129,20 @@ if($rolecd=='1003')
             <div class="col-lg-12 text-right">
                 <button class="btn btn-success btn-sm" role="button" onclick="aftervisit('<?php echo $_GET['pid']; ?>')">Submit</button>
             </div>
-            <textarea class="form-control rounded-0 hidden" id="msg" rows="3"></textarea>
+            
         </div>
         <?php
     }}
         ?>
+        </div>
+        <div class="row hidden" id="msgform" style="text-align: right">
+            <textarea class="form-control rounded-0" id="msg" name="msg" rows="3" style="text-align: left"></textarea>
+            <input type="hidden" id="mob" name="mob">
+                <div class="btn-group btn-group-sm" style="margin-top:10px">
+                <button class="btn btn-default" onclick="copytext('#msg','#copybtn')" id="copybtn">Copy</button>
+                <button class="btn btn-default" onclick="sendfreqsms()" id="frsmssendbtn">Send By SMS</button>
+            </div>
+        </div>
     </div>
     <script src='../../js/jquery-3.2.1.min.js'></script>
     <script src='../../js/jquery-ui.min.js'></script>

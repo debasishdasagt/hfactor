@@ -130,7 +130,21 @@ order by `d_chamber_appointment`.`app_date`, `d_chamber_appointment`.`app_time_f
                            
                              <td>
                                 
-                                <a href='#' class='btn btn-info btn-xs' role='Button'>Visited</a>
+                                <?php
+                                    if($appr['app_completed']=='Y')
+                                    {
+                                    ?>
+                                    
+                                    <button class='btn btn-info btn-xs' role='Button' id="<?php echo $appr['id'].'_btn'; ?>" onclick="visitedp('<?php echo $appr['id']; ?>')">Visited</button>
+                                    <?php
+                                    }
+                                    else{
+                                        ?>
+                                    <button class='btn btn-info btn-xs disabled' role='Button' id="<?php echo $appr['id'].'_btn'; ?>" onclick="visitedp('<?php echo $appr['id']; ?>')">Visited</button>
+                                
+                                            <?php
+                                    }
+                                    ?>
                                 
                             </td>
                     
@@ -144,7 +158,29 @@ order by `d_chamber_appointment`.`app_date`, `d_chamber_appointment`.`app_time_f
                 </div>
             </div>
             
-            
+            <div id="visitedmodal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" id="clsbtn">&times;</button>
+        <h5 class="modal-title">Patient Visited</h5>
+      </div>
+      <div class="modal-body">
+          <iframe id='appointmentframe' styl="height: 300px"></iframe>   
+        
+        
+        
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div> 
             
             
             
@@ -155,7 +191,7 @@ order by `d_chamber_appointment`.`app_date`, `d_chamber_appointment`.`app_time_f
     </div>
     <script src='../../js/jquery-3.2.1.min.js'></script>
     <script src='../../bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
-    <script type="text/javascript" src="../../js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../../js/jscript.js" charset="UTF-8"></script>
     <script type="text/javascript">
         $('.form_time').datetimepicker({
         weekStart: 1,

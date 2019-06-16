@@ -68,7 +68,7 @@ session_destroy();
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Mobile Number</span>
-                        <input type="text" class="form-control" name="pmob" id="pmob" placeholder="Valied Mobile Number">
+                        <input type="number" class="form-control" name="pmob" id="pmob" placeholder="Valied Mobile Number">
                     </div>
                 </div>
                 <div class="col-lg-12" style="text-align: right;">

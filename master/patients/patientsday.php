@@ -121,11 +121,8 @@ order by `d_chamber_appointment`.`app_time_from`, `d_chamber_appointment`.`slot_
                                 <?php echo $appr['mobile_number']; ?>
                             </td>
                             <td>
-                                <div class="input-group date form_time input-group-sm" data-date="" data-date-format="hh:ii" data-link-field="c_t" data-link-format="hh:ii">
-                                <input class="form-control input-sm" size="16" type="text" value="<?php if($appr['app_reporting_time']!="00:00:00"){echo substr($appr['app_reporting_time'],0,5);} else {echo "";}?>" readonly placeholder="HH:MM" id='<?php echo $appr['id']."rep"; ?>'>
-				<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-                                </div>
-                                <input type="hidden" name="c_t" id='c_t' value="<?php if($appr['app_reporting_time']!="00:00:00"){echo substr($appr['app_reporting_time'],0,5);} else {echo "";}?>">
+                                <input class="form-control input-sm" style="padding-top: 0px" size="16" type="time" value="<?php if($appr['app_reporting_time']!="00:00:00"){echo substr($appr['app_reporting_time'],0,5);} else {echo "";}?>" placeholder="HH:MM" id='<?php echo $appr['id']."rep"; ?>'>
+				
                             </td>
                             <td align="center">
                                 <input type="text" class='form-control input-sm' placeholder="Remarks" id='<?php echo $appr['id']."rem"; ?>' value="<?php if($appr['app_remarks']!=""){echo $appr['app_remarks'];} else {echo "";}?>">
@@ -185,7 +182,7 @@ order by `d_chamber_appointment`.`app_time_from`, `d_chamber_appointment`.`slot_
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" id="clsbtn">&times;</button>
         <h5 class="modal-title">Patient Visited</h5>
       </div>
       <div class="modal-body">
@@ -212,19 +209,9 @@ order by `d_chamber_appointment`.`app_time_from`, `d_chamber_appointment`.`slot_
     </div>
     <script src='../../js/jquery-3.2.1.min.js'></script>
     <script src='../../bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
-    <script type="text/javascript" src="../../js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
     <script type="text/javascript" src="../../js/jscript.js" charset="UTF-8"></script>
     <script type="text/javascript">
-        $('.form_time').datetimepicker({
-        weekStart: 1,
-        todayBtn:  1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 1,
-		minView: 0,
-		maxView: 1,
-		forceParse: 0
-    });
+       
     
     $(document).ready(function(){
   $("#srchlab").on("keyup", function() {
