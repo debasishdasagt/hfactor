@@ -233,6 +233,34 @@
             </div>
         </div>
     </div>
+    
+    
+    
+    
+    <div id="regmodal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header" style="border-bottom:0px">
+        <button type="button" class="close" data-dismiss="modal" id="clsbtn">&times;</button>
+        <h5 class="modal-title">Register Yourself..</h5>
+      </div>
+      <div class="modal-body">
+          <iframe id='appointmentframe' styl="height: 300px"></iframe>   
+        
+        
+        
+        
+      </div>
+      <div class="modal-footer" style="border-top:0px">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>            
+           
     <div id="footer">
         <div class="container" style="width:80%">
             <div class="row" >
@@ -279,7 +307,13 @@ e-mail: info@biht.in
     <script src='js/jquery-3.2.1.min.js'></script>
     <script src='bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
 
-  
+    <script>
+        $(document).ready(function()
+        {
+            $('#regmodal').modal('show');
+        })
+        
+        </script>
 
 </body>
 

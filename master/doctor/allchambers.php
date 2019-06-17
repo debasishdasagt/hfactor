@@ -72,15 +72,6 @@ if(isset($_GET['doctorid']))
     `d_chambers`.`chamber_name`,
     `d_chambers`.`chamber_address`,
     `d_chambers`.`chamber_area_pin`,
-    `d_chambers`.`opening_time`,
-    `d_chambers`.`closing_time`,
-    `d_chambers`.`sunday_open`,
-    `d_chambers`.`monday_open`,
-    `d_chambers`.`tuesday_open`,
-    `d_chambers`.`wednesday_open`,
-    `d_chambers`.`thursday_open`,
-    `d_chambers`.`friday_open`,
-    `d_chambers`.`saturday_open`,
     (select `d_doctor_info`.`d_name` from  `d_doctor_info` where `d_doctor_info`.`doctor_code`= d_chambers.doctor_code and `d_doctor_info`.record_status='A') as d_name,
     (select `d_doctor_info`.`d_speciality` from  `d_doctor_info` where `d_doctor_info`.`doctor_code`= d_chambers.doctor_code and `d_doctor_info`.record_status='A') as d_spcl
 FROM `d_chambers` where record_status='A' and 
@@ -167,15 +158,6 @@ concat(chamber_name,chamber_address,chamber_area_pin) like '%$stxt%' ";
     `d_chambers`.`chamber_name`,
     `d_chambers`.`chamber_address`,
     `d_chambers`.`chamber_area_pin`,
-    `d_chambers`.`opening_time`,
-    `d_chambers`.`closing_time`,
-    `d_chambers`.`sunday_open`,
-    `d_chambers`.`monday_open`,
-    `d_chambers`.`tuesday_open`,
-    `d_chambers`.`wednesday_open`,
-    `d_chambers`.`thursday_open`,
-    `d_chambers`.`friday_open`,
-    `d_chambers`.`saturday_open`,
     (select `d_doctor_info`.`d_name` from  `d_doctor_info` where `d_doctor_info`.`doctor_code`= d_chambers.doctor_code and `d_doctor_info`.record_status='A') as d_name,
     (select `d_doctor_info`.`d_speciality` from  `d_doctor_info` where `d_doctor_info`.`doctor_code`= d_chambers.doctor_code and `d_doctor_info`.record_status='A') as d_spcl
 FROM `d_chambers` where record_status='A' ";
