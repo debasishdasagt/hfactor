@@ -546,3 +546,9 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
 .inputtyped { 
      padding-top: 0px; /* margin-top: 2px; ... */
 }
+
+.fstmodal
+{background: rgb(19,75,184);
+background: linear-gradient(135deg, rgba(19,75,184,1) 15%, rgba(92,162,226,1) 51%, rgba(140,180,217,1) 100%);
+
+}

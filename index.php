@@ -237,20 +237,21 @@
     
     
     
-    <div id="regmodal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
+    <div id="regmodal" class="modal fade " role="dialog">
+        <div class="modal-dialog modal-lg" >
 
     <!-- Modal content-->
-    <div class="modal-content">
-        <div class="modal-header" style="border-bottom:0px">
-        <button type="button" class="close" data-dismiss="modal" id="clsbtn">&times;</button>
-        <h5 class="modal-title">Register Yourself..</h5>
-      </div>
+    <div class="modal-content fstmodal">
+        
       <div class="modal-body">
-          <iframe id='appointmentframe' styl="height: 300px"></iframe>   
+          
+          <form method="post" id="firstcust">
+              <div class="input-group input-group-sm" style="width:60%">
+              <input type="number" class="form-control">
+              <span class="btn btn-success input-group-addon"><i class="glyphicon glyphicon-menu-right"></i></span>
+              </div>
         
-        
-        
+          </form>
         
       </div>
       <div class="modal-footer" style="border-top:0px">
