@@ -237,25 +237,57 @@
     
     
     
-    <div id="regmodal" class="modal fade " role="dialog">
+    <div id="regmodal" class="modal fade " role="dialog" style="background-color: rgba(0,0,0,0.8)">
         <div class="modal-dialog modal-lg" >
 
     <!-- Modal content-->
     <div class="modal-content fstmodal">
         
-      <div class="modal-body">
-          
-          <form method="post" id="firstcust">
-              <div class="input-group input-group-sm" style="width:60%">
-              <input type="number" class="form-control">
-              <span class="btn btn-success input-group-addon"><i class="glyphicon glyphicon-menu-right"></i></span>
-              </div>
+        <div class="modal-body">
+            <div class="container" style="width:80%; min-height: 250px; max-height: 400px; overflow: auto; text-align: center">
+                
+                    
+                        <form method="post" id="firstcust">
+                            <div class="row">
+                            <div class="col-lg-12" >
+                            <div class="input-group" id="mobnum" style="margin-top:80px">
+                                <input type="text" class="form-control" name="mob" id="mob" onkeypress="return isNumber(event)" placeholder="Please Enter Your Mobile Number" maxlength="10">
+                            <span class="btn btn-success input-group-addon"><i class="glyphicon glyphicon-menu-right"></i></span>
+                            </div>
+                            </div>
+                            </div>
+                            <div id="otherinfo"> 
+                                
+                                <div class="alert alert-info alert-dismissable" style="margin-top: 20px;text-align: left">
+       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Hey, </strong> Please Enter following details. We won't ask you for these details again.</div>
         
-          </form>
         
+                                <div class="row" style="margin-top:20px">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <input type="text" name="pname" placeholder="Your Name" class="form-control input-sm">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-addon">Date of Birth</span>
+                                <input type="date" name="pdob" placeholder="Date of Birth" class="form-control" style="padding-top:0px">
+                                </div>
+                            </div>
+                            </div>
+                                <div class="row" style="margin-top:20px">
+                                    <div class="col-lg-12">
+                                        <input type="text" name="paddress" placeholder="Your Address" class="form-control input-sm">
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" class="btn btn-success" value="Get Appointment" style="margin-top: 30px">
+
+                        </form>
+                
+          </div>
       </div>
       <div class="modal-footer" style="border-top:0px">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -309,6 +341,17 @@ e-mail: info@biht.in
     <script src='bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
 
     <script>
+        
+        function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ( (charCode > 31 && charCode < 48) || charCode > 57) {
+            return false;
+        }
+        return true;
+    }
+        
+        
         $(document).ready(function()
         {
             $('#regmodal').modal('show');
