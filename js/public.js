@@ -224,3 +224,36 @@ function showtest(lid)
         $('#tmodal').modal('show');
         $('#testsf').attr('src','labtests.php?lid='+lid);
     }
+    
+function checkmob(item)
+{
+    var v=document.getElementById('mob').value;
+    if (v.length>=10)
+    {
+        $.ajax({
+            url : 'modules/patient/checkpatient.php',
+            type : 'GET',
+            dataType : 'json',
+            data : {m: v},
+            success:function(data,status)
+            {
+                if(data.success)
+                {
+                    $('#mobnum').animate({marginTop:"80px"});
+                    $('#otherinfo').collapse('hide');
+                    $('input[name="pname"]').removeAttr("required");
+                    $('input[name="pdob"]').removeAttr("required");
+                    $('input[name="paddress"]').removeAttr("required");
+                }
+                else
+                {
+                    $('#mobnum').animate({marginTop:"30px"});
+                    $('#otherinfo').collapse('show');
+                    $('input[name="pname"]').attr("required","true");
+                    $('input[name="pdob"]').attr("required","true");
+                    $('input[name="paddress"]').attr("required","true");
+                }
+            }
+        })
+    }
+}

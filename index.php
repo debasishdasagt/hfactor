@@ -250,13 +250,16 @@
                         <form method="post" id="firstcust">
                             <div class="row">
                             <div class="col-lg-12" >
-                            <div class="input-group" id="mobnum" style="margin-top:80px">
-                                <input type="text" class="form-control" name="mob" id="mob" onkeypress="return isNumber(event)" placeholder="Please Enter Your Mobile Number" maxlength="10">
-                            <span class="btn btn-success input-group-addon"><i class="glyphicon glyphicon-menu-right"></i></span>
+                            <div class="input-group" id="mobnum">
+                                <input type="text" class="form-control" name="mob" id="mob" onkeypress="return isNumber(event)" onkeyup="checkmob()"
+                                       placeholder="Please Enter Your 10 Digit Mobile Number" maxlength="10" required="true"
+                                       oninvalid="this.setCustomValidity('Please Enter your Mobile Number')"
+                                       oninput="this.setCustomValidity('')">
+                                <span class="btn btn-success input-group-addon" onclick="checkmob()"><i class="glyphicon glyphicon-menu-right"></i></span>
                             </div>
                             </div>
                             </div>
-                            <div id="otherinfo"> 
+                            <div id="otherinfo" class="collapse"> 
                                 
                                 <div class="alert alert-info alert-dismissable" style="margin-top: 20px;text-align: left">
        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -287,7 +290,7 @@
           </div>
       </div>
       <div class="modal-footer" style="border-top:0px">
-        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Go To Website</button>
       </div>
     </div>
 
@@ -339,6 +342,8 @@ e-mail: info@biht.in
     
     <script src='js/jquery-3.2.1.min.js'></script>
     <script src='bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
+    <script src='js/public.js'></script>
+
 
     <script>
         
@@ -354,7 +359,9 @@ e-mail: info@biht.in
         
         $(document).ready(function()
         {
+            $('#mobnum').css('margin-top', '80px');
             $('#regmodal').modal('show');
+            
         })
         
         </script>
