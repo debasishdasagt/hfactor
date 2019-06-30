@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+include_once 'config.php';
+session_start();
+unset($_SESSION['tmpappid']);
+
+?>
 <html lang="en" >
 
 <head>
@@ -52,12 +58,24 @@
         <span class="icon-bar"></span>
       </button>
         <a class="navbar-brand" href="#" style="color:#ffffff;">
-            <div class="hidden-sm hidden-xs" style="background: rgba(255,255,255,0.7); border-radius: 3px; position: relative; top:-32px; padding:3px">
-                <img src="images/logo.png" height="60">
+            <div class=" hidden-xs hidden-sm"  style="
+                 /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#5b5b5b+0,dbdbdb+100&0.58+0,1+45,1+100 */
+                background: -moz-linear-gradient(top,  rgba(91,91,91,0.58) 0%, rgba(149,149,149,1) 45%, rgba(219,219,219,1) 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(top,  rgba(91,91,91,0.58) 0%,rgba(149,149,149,1) 45%,rgba(219,219,219,1) 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom,  rgba(91,91,91,0.58) 0%,rgba(149,149,149,1) 45%,rgba(219,219,219,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#945b5b5b', endColorstr='#dbdbdb',GradientType=0 ); /* IE6-9 */
+
+                 ;margin-top: -35px;
+                 position: relative; padding:0px 3px 3px 3px; height: 90px; width: 220px; border-radius: 0px 0px 10px 10px;
+                 box-shadow: 0px 5px 4px #444444">
+                <img src="images/logo.png" width="100%">
+            </div>
+            <div class="hidden-lg hidden-md hidden-xs" style="margin-top: -40px; margin-left: -0px; position: relative">
+                <img src="images/logo.png" width="90%">
             </div>
             
-            <div class="hidden-lg hidden-md" style="background: rgba(255,255,255,0.7); border-radius: 3px; position: relative">
-                <img src="images/logo.png" height="50">
+            <div class="hidden-lg hidden-md hidden-sm" style="margin-top: -30px; margin-left: -25px; position: relative">
+                <img src="images/logo.png" width="90%">
             </div>
         </a>
     </div>
@@ -251,10 +269,10 @@
                             <div class="row">
                             <div class="col-lg-12" >
                             <div class="input-group" id="mobnum">
-                                <input type="text" class="form-control" name="mob" id="mob" onkeypress="return isNumber(event)" onkeyup="checkmob()"
+                                <input type="text" class="form-control" name="pmob" id="mob" onkeypress="return isNumber(event)" onkeyup="checkmob()"
                                        placeholder="Please Enter Your 10 Digit Mobile Number" maxlength="10" required="true"
                                        oninvalid="this.setCustomValidity('Please Enter your Mobile Number')"
-                                       oninput="this.setCustomValidity('')">
+                                       oninput="this.setCustomValidity('')" autocomplete="off">
                                 <span class="btn btn-success input-group-addon" onclick="checkmob()"><i class="glyphicon glyphicon-menu-right"></i></span>
                             </div>
                             </div>
@@ -356,13 +374,43 @@ e-mail: info@biht.in
         return true;
     }
         
-        
+        <?php if(!isset($_SESSION['pmobile']))
+        { ?>
         $(document).ready(function()
         {
             $('#mobnum').css('margin-top', '80px');
             $('#regmodal').modal('show');
             
         })
+        <?php } ?>
+        
+        
+        
+$('#firstcust').on('submit',function()
+{
+    var that = $(this),
+    content=that.serialize();
+
+    $.ajax({
+        url: 'modules/patient/fcustotphandler.php',
+        dataType: 'json',
+        type: 'post',
+        data: content,
+        success: function(data)
+        {
+            if(data.success)
+            {
+                var otp=prompt("Please Enter The OTP received in you phone");
+                ncustotpchk(otp,data.otpkey);
+            }
+            else
+            {
+                alert(data.err);
+            }
+        }
+    });
+    return false;
+});
         
         </script>
 

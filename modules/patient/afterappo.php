@@ -42,7 +42,7 @@
           
           
           
-      </div>
+      
   <div class="container-fluid" id="navcontainer">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -52,15 +52,35 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <a class="navbar-brand" href="#" style="color:#ffffff">H-Factor</a>
+        <a class="navbar-brand" href="#" style="color:#ffffff;">
+            <div class=" hidden-xs hidden-sm"  style="
+                 /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#5b5b5b+0,dbdbdb+100&0.58+0,1+45,1+100 */
+                background: -moz-linear-gradient(top,  rgba(91,91,91,0.58) 0%, rgba(149,149,149,1) 45%, rgba(219,219,219,1) 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(top,  rgba(91,91,91,0.58) 0%,rgba(149,149,149,1) 45%,rgba(219,219,219,1) 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom,  rgba(91,91,91,0.58) 0%,rgba(149,149,149,1) 45%,rgba(219,219,219,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#945b5b5b', endColorstr='#dbdbdb',GradientType=0 ); /* IE6-9 */
+
+                 ;margin-top: -35px;
+                 position: relative; padding:0px 3px 3px 3px; height: 90px; width: 220px; border-radius: 0px 0px 10px 10px;
+                 box-shadow: 0px 5px 4px #444444">
+                <img src="images/logo.png" width="100%">
+            </div>
+            <div class="hidden-lg hidden-md hidden-xs" style="margin-top: -40px; margin-left: -0px; position: relative">
+                <img src="images/logo.png" width="90%">
+            </div>
+            
+            <div class="hidden-lg hidden-md hidden-sm" style="margin-top: -30px; margin-left: -25px; position: relative">
+                <img src="images/logo.png" width="90%">
+            </div>
+        </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active" style="color:#ffffff"><a href="#">Home <span class="sr-only" style="color:#ffffff">(current)</span></a></li>
+          <li ><a href="./index.php" style="color:#ffffff">Home </a></li>
         
-        <li class="dropdown">
+       <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#ffffff">Appointment<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Doctor</a></li>
@@ -70,8 +90,9 @@
             <li><a href="#">Sample Collection</a></li>
             <li><a href="#">Diagnostics Report Delivery</a></li>
           </ul>
-        </li>
-        <li><a href="#" style="color:#ffffff">About US</a></li>
+        </li> -->
+       <li><a href="modules/patient/" style="color: #ffffff;">Doctor's Appointment</a></li>
+       <li class='active'><a href="modules/labs" style="color: #ffffff;">Labs & Tests</a></li>
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">

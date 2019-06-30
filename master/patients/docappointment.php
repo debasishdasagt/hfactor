@@ -5,22 +5,28 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <?php
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
+include_once 'loginhandler.php';
 include_once '../../config.php';
-$pname="";
-$pmob="";
-$paddress="";
+$test_id="";
+$lsavestatus="0";
+$usertype="";
+$uid=$_SESSION['loginid'];
+$roleck= mysqli_query($conn, "select user_role_code from d_user_role where user_id='$uid' and record_status='A'");
+$roleckr=  mysqli_fetch_array($roleck);
+$rolecd= $roleckr['user_role_code'];
+$chamber_id="";
+if($rolecd=='1003')
+{
+    $chamberidq=  mysqli_query($conn, "select chamber_id from d_user_chamber_mapping where user_id='$uid' and record_status='A'");
+    $chamberr=  mysqli_fetch_array($chamberidq);
+    $chamber_id=$chamberr['chamber_id'];
+}
+
 session_start();
 unset($_SESSION['tmpappid']);
 
-if(isset($_SESSION['pmobile']))
-{
-    $pmob=$_SESSION['pmobile'];
-    $getPq=  mysqli_query($conn, "select patient_name,patient_address,mobile_number from d_patient_info where mobile_number='$pmob' and record_status='A' order by id desc limit 1");
-    $getPr= mysqli_fetch_array($getPq);
-    $pname=$getPr['patient_name'];
-    $pmob=$getPr['mobile_number'];
-    $paddress=$getPr['patient_address'];
-}
+
 ?>
 <html>
     <head>
@@ -31,6 +37,18 @@ if(isset($_SESSION['pmobile']))
     </head>
     <body>
         <div class="container">
+            <div class='btn-group btn-group-sm'>
+                <a class='btn btn-info' role='button' href="patientsday.php">Today's Patients</a>
+                <?php if($rolecd=='1003'){ ?>
+                <a class='btn btn-info' role='button' href="newpatient.php">New Patient</a>
+                <?php } else if($rolecd=='1001'){ ?>
+                <a class='btn btn-info' role='button' href="selectch.php">New Patient</a>
+                <?php } ?>
+                
+                <a class='btn btn-info' role='button' href="allpatients.php">All Patients</a>
+                
+                
+            </div><hr>
             <div class="row">
                 <form action="otphandler.php" method="post" id="getappfrm" >
                 <div class="col-lg-12">
@@ -101,6 +119,19 @@ if(isset($_SESSION['pmobile']))
     <script src='../../bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
     <script src='../../js/public.js'></script>
     <script>
+        
+        
+        <?php
+        if(isset($_GET['chid']))
+            {
+                ?>
+                    $('#chamber').val(<?php echo $_GET['chid']; ?>)
+                    getctimings();
+                    <?php
+            }
+        ?>
+        
+        
         
         function isNumber(evt) {
         evt = (evt) ? evt : window.event;

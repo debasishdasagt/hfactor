@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-
+var oldnewpatient="new";
 function showtt(id)
     {
         var idd="#"+id;
@@ -136,6 +136,38 @@ function otpchk(otp,otpkey)
     })
 }
 
+
+function ncustotpchk(otp,otpkey)
+{
+    var ur="";
+    if(oldnewpatient == "new")
+    {
+        ur='modules/patient/ncustverifyotp.php?otp='+otp+'&key='+otpkey+'&oldnew=new';
+    }
+    else if(oldnewpatient == "old")
+    {
+        ur='modules/patient/ncustverifyotp.php?otp='+otp+'&key='+otpkey+'&oldnew=old';
+    }
+    $.ajax({
+        url: ur,
+        type:'GET',
+        dataType: 'json',
+        success:function(data)
+        {
+            if(data.success)
+            {
+                //alert("You are a registered member now. Thank You !");
+                document.location="modules/patient";
+            }
+            else
+            {
+                alert(data.err);
+            }
+        }
+        
+    })
+}
+
 window.closeModal = function(){
     $('#gamodal').modal('hide');
 };
@@ -244,6 +276,10 @@ function checkmob(item)
                     $('input[name="pname"]').removeAttr("required");
                     $('input[name="pdob"]').removeAttr("required");
                     $('input[name="paddress"]').removeAttr("required");
+                    $('input[name="pname"]').val("");
+                    $('input[name="pdob"]').val("");
+                    $('input[name="paddress"]').val("");
+                    oldnewpatient="old";
                 }
                 else
                 {
@@ -252,6 +288,7 @@ function checkmob(item)
                     $('input[name="pname"]').attr("required","true");
                     $('input[name="pdob"]').attr("required","true");
                     $('input[name="paddress"]').attr("required","true");
+                    oldnewpatient="new";
                 }
             }
         })
