@@ -2,7 +2,7 @@
 
 error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 include_once 'loginhandler.php';
-include_once '../../master/smssender.php';
+include_once '../../modules/SMS/smshandler.php';
 include_once '../../config.php';
 $json=array(
     'success'=>false,
@@ -15,7 +15,7 @@ if(isset($_POST['mob']))
     $insmsgq=  mysqli_query($conn, "INSERT INTO `ihealthcare`.`d_sms_sent`
 (`sms_body`,`mob_number`,`record_status`,`record_created_on`)
 VALUES('$msg','$mob','A',now())");
-    if (smssend($mob,$msg))
+    if (sendsms($mob, $msg))
     {
         $json['success']=true;
         $json['err']="";

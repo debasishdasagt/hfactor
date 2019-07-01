@@ -1,7 +1,8 @@
 <?php
 header("Content-Type: text/javascript");
 date_default_timezone_set('Asia/Kolkata');
-include_once '../../config.php';
+include '../../config.php';
+include '../SMS/smshandler.php';
 $json= array(
     'success'=> false,
     'err'=>'',
@@ -32,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && $_POST['pmob'] != "")
     $getotpstq=  mysqli_query($conn, "select id from d_new_patient_otp where tmp_session_id='$tmpid' and otp_sent_date='$dt' and mobile_number='$mob' and record_status='A'");
     if(mysqli_num_rows($getotpstq)==0)
     {
-        $otpsent=  otpsend($mob,$msg);
+        $otpsent= sendsms($mob, $msg);
         $insotprec=  mysqli_query($conn,"INSERT INTO `d_new_patient_otp`
 (`tmp_session_id`,`mobile_number`,`otp`,`otp_expr_on`,`sent_count`,`otp_sent_date`,`otp_msg_body`,`otp_verification_status`,
 `record_status`,`record_created_on`) 
@@ -50,7 +51,7 @@ values('$tmpid','$mob','$otp','$et',1,'$dt','$msg','N','A',now())");
                 . "VALUES ('$tmpid','$pid','$pname','$padd','$mob','$pdob','self','A',now())");}
         
         
-        if($insotprec && $inspinfoq)
+        if($insotprec && $inspinfoq && $otpsent)
         {$json['success']=TRUE;}
         else{$json['success']=FALSE; $json['err']="Something Went wrong while saving data";}
     }
