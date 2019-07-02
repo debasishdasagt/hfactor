@@ -26,7 +26,7 @@ if(isset($_GET['otp']) && isset($_GET['key']))
                 FROM `tmp_chamber_appointment` where tmp_session_id='$key' and chamber_id='$chid' and record_status='A'");
         $updappq=  mysqli_query($conn, "update tmp_chamber_appointment set record_status='C' where tmp_session_id='$key' and chamber_id='$chid' and record_status='A'");
         
-        $inspinfoq=  mysqli_query($conn, "INSERT INTO `ihealthcare`.`d_patient_info`
+        $inspinfoq=  mysqli_query($conn, "INSERT INTO `d_patient_info`
                     (`patient_id`,`patient_name`,`patient_address`,`mobile_number`,`record_created_by`,`record_status`,`record_created_on`,`record_modified_on`)
                     SELECT `patient_id`,`patient_name`,`patient_address`,`mobile_number`,`record_created_by`,`record_status`,`record_created_on`,`record_modified_on`
                     FROM `tmp_patient_info` where tmp_session_id='$key' and record_status='A'");

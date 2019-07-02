@@ -84,7 +84,7 @@ if(isset($_GET['doctorid']))
     `d_doctor_info`.`record_status`,
     `d_doctor_info`.`record_created_on`,
     `d_doctor_info`.`record_modified_on`
-FROM `ihealthcare`.`d_doctor_info`
+FROM `d_doctor_info`
 where concat(`d_doctor_info`.`doctor_code`,`d_doctor_info`.`d_name`,
     `d_doctor_info`.`d_hospital`,
     `d_doctor_info`.`d_designation`,
@@ -141,7 +141,7 @@ where concat(`d_doctor_info`.`doctor_code`,`d_doctor_info`.`d_name`,
     `d_doctor_info`.`record_status`,
     `d_doctor_info`.`record_created_on`,
     `d_doctor_info`.`record_modified_on`
-FROM `ihealthcare`.`d_doctor_info`
+FROM `d_doctor_info`
 where doctor_code= '$doctor_code'");
                 $dr=  mysqli_fetch_array($doctr);
                 ?>
@@ -162,7 +162,7 @@ where doctor_code= '$doctor_code'");
                 $chamber_id= $cidr['cid'];
                 
                 
-                $sql="INSERT INTO `ihealthcare`.`d_chambers`
+                $sql="INSERT INTO `d_chambers`
 (
 `chamber_id`,
 `doctor_code`,

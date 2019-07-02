@@ -12,7 +12,7 @@ if(isset($_POST['mob']))
 {
     $msg=  mysqli_real_escape_string($conn,$_POST['msg']);
     $mob= mysqli_real_escape_string($conn,$_POST['mob']);
-    $insmsgq=  mysqli_query($conn, "INSERT INTO `ihealthcare`.`d_sms_sent`
+    $insmsgq=  mysqli_query($conn, "INSERT INTO `d_sms_sent`
 (`sms_body`,`mob_number`,`record_status`,`record_created_on`)
 VALUES('$msg','$mob','A',now())");
     if (smssend($mob,$msg))

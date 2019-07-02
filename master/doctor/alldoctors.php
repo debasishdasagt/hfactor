@@ -132,7 +132,7 @@ where concat(`d_doctor_info`.`doctor_code`,`d_doctor_info`.`d_name`,
     `d_doctor_info`.`record_status`,
     `d_doctor_info`.`record_created_on`,
     `d_doctor_info`.`record_modified_on`
-FROM `ihealthcare`.`d_doctor_info`
+FROM `d_doctor_info`
 where record_status='A'");
                     
                     while($resr=mysqli_fetch_array($srchres))
