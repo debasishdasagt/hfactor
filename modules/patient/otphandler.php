@@ -9,7 +9,8 @@ $json= array(
     'otpkey' => ''
 );
 
-session_start();
+if(!isset($_SESSION))
+{session_start();}
 if(!isset($_SESSION['tmpappid']))
 {
     $_SESSION['tmpappid']= getrandomstring(10);

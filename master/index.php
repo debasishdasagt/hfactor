@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -41,7 +44,7 @@ if($_SERVER['REQUEST_METHOD']=== "POST")
         if($res['c'] >= 1)
         {
             $login=true;
-            session_start();
+            
             $_SESSION['loginid']=$userid;
             $getroleq=  mysqli_query($conn, "select user_role_code from d_user_role where record_status='A' and user_id='$userid'");
             $rolr=  mysqli_fetch_array($getroleq);
@@ -95,7 +98,7 @@ if($_SERVER['REQUEST_METHOD']=== "POST")
               <form action="#" method="post">
                    <div class="input-group logininputs">
                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                       <input type="text" class="form-control" name="usrid" id="usrid" placeholder="User ID">
+                       <input type="text" class="form-control" name="usrid" id="usrid" placeholder="User ID" autocomplete="off">
                    </div>
                   <br>
                   <div class="input-group logininputs">

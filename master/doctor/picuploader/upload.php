@@ -16,7 +16,8 @@ if(isset($_FILES["myfile"]))
 	//If Any browser does not support serializing of multiple files using FormData() 
 	if(!is_array($_FILES["myfile"]["name"])) //single file
 	{
-            session_start();
+            if(!isset($_SESSION))
+{session_start();}
             $did=$_SESSION['doctorid'];
  	 	$fileName = $did."_".$_FILES["myfile"]["name"];
  		move_uploaded_file($_FILES["myfile"]["tmp_name"],$output_dir.$fileName);

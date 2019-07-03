@@ -14,7 +14,7 @@ include_once 'loginhandler.php';
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width= device-width, initial-scale = 1">
-  <title>H-Factor</title>
+  <title>eCure365</title>
   
   
   <link rel='stylesheet' href='../bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css'>

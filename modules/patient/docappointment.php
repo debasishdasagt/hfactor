@@ -9,7 +9,8 @@ include_once '../../config.php';
 $pname="";
 $pmob="";
 $paddress="";
-session_start();
+if(!isset($_SESSION))
+{session_start();}
 unset($_SESSION['tmpappid']);
 
 if(isset($_SESSION['pmobile']))

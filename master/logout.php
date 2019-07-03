@@ -5,7 +5,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-session_start();
+if(!isset($_SESSION))
+{session_start();}
 unset($_SESSION['loginid']);
 session_unset();
 session_destroy();

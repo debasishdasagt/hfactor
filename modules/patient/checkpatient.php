@@ -14,7 +14,8 @@ if(isset($_GET['m']))
     $pr= mysqli_fetch_array($pq);
     if(mysqli_num_rows($pq)>=1)
     {
-        session_start();
+        if(!isset($_SESSION))
+{session_start();}
         $_SESSION['pid']=$pr['patient_id'];
         $_SESSION['pmob']=$mob;
         $json['success']=true;

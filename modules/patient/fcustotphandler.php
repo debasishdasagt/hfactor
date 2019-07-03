@@ -9,7 +9,8 @@ $json= array(
     'otpkey' => ''
 );
 
-session_start();
+if(!isset($_SESSION))
+{session_start();}
 if(!isset($_SESSION['tmpappid']))
 {
     $_SESSION['tmpappid']= getrandomstring(10);
@@ -51,8 +52,19 @@ values('$tmpid','$mob','$otp','$et',1,'$dt','$msg','N','A',now())");
                 . "VALUES ('$tmpid','$pid','$pname','$padd','$mob','$pdob','self','A',now())");}
         
         
-        if($insotprec && $inspinfoq && $otpsent)
-        {$json['success']=TRUE;}
+        if($insotprec && $inspinfoq)
+        {
+            if($otpsent)
+            {
+                $json['success']=TRUE;
+            }
+            else
+            {
+                $json['success']=FALSE; $json['err']="Error occoured while sending OTP";
+            }
+            
+            
+        }
         else{$json['success']=FALSE; $json['err']="Something Went wrong while saving data";}
     }
 else

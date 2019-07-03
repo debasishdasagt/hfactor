@@ -16,11 +16,11 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{ \"sender\": \"SOCKET\", \"route\": \"4\", \"country\": \"91\", \"sms\": [ { \"message\": \"$msg\", \"to\": [ \"$numbr\" ] } ] }",
+  CURLOPT_POSTFIELDS => "{ \"sender\": \"eCureH\", \"route\": \"4\", \"country\": \"91\", \"sms\": [ { \"message\": \"$msg\", \"to\": [ \"$numbr\" ] } ] }",
   CURLOPT_SSL_VERIFYHOST => 0,
   CURLOPT_SSL_VERIFYPEER => 0,
   CURLOPT_HTTPHEADER => array(
-    "authkey: 283288AdJBDFSJ155d196a4a",
+    "authkey: 283450AQ5HlRIy5d1af592",
     "content-type: application/json"
   ),
 ));

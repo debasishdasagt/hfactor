@@ -23,7 +23,8 @@ if($rolecd=='1003')
     $chamber_id=$chamberr['chamber_id'];
 }
 
-session_start();
+if(!isset($_SESSION))
+{session_start();}
 unset($_SESSION['tmpappid']);
 
 

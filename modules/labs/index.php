@@ -9,9 +9,9 @@ include_once '../../config.php';
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width= device-width, initial-scale = 1">
-  <title>H-Factor</title>
+  <title>eCure365</title>
   
-  
+  <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
   <link rel='stylesheet' href='../../bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel='stylesheet' href='../../css/page_style.css'>
@@ -331,7 +331,7 @@ include_once '../../config.php';
         <div class="container" style="width:80%">
             <div class="row" >
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <h5>H-Factor</h5>
+                <h5>eCure365</h5>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <h5>Services</h5>
