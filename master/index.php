@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 ?>
 <!DOCTYPE html>
@@ -25,7 +26,6 @@ and open the template in the editor.
 <body style="background-color: #4288b5; padding: 0px; margin: 0px;">
     
 <?php
-
 include_once '../config.php';
 $login=false;
 $err="";
@@ -49,7 +49,6 @@ if($_SERVER['REQUEST_METHOD']=== "POST")
             $getroleq=  mysqli_query($conn, "select user_role_code from d_user_role where record_status='A' and user_id='$userid'");
             $rolr=  mysqli_fetch_array($getroleq);
             $_SESSION['rolecode']=$rolr['user_role_code'];
-            
             header("Location: memberdashboard.php");
             
         }
@@ -85,7 +84,11 @@ if($_SERVER['REQUEST_METHOD']=== "POST")
        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <strong>Error! </strong> <?php echo $err; ?>
     </div> 
-      <?php }?>
+      <?php }
+      
+      
+      ob_end_flush();
+      ?>
       
       
       <div class="row">

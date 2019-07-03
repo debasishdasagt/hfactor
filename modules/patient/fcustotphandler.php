@@ -1,4 +1,5 @@
 <?php
+ob_start();
 header("Content-Type: text/javascript");
 date_default_timezone_set('Asia/Kolkata');
 include '../../config.php';
@@ -39,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && $_POST['pmob'] != "")
 (`tmp_session_id`,`mobile_number`,`otp`,`otp_expr_on`,`sent_count`,`otp_sent_date`,`otp_msg_body`,`otp_verification_status`,
 `record_status`,`record_created_on`) 
 values('$tmpid','$mob','$otp','$et',1,'$dt','$msg','N','A',now())");
+
         
         $inspinfoq=true;
         if($pname != "")
@@ -50,6 +52,8 @@ values('$tmpid','$mob','$otp','$et',1,'$dt','$msg','N','A',now())");
             $inspinfoq= mysqli_query($conn, "INSERT INTO `tmp_patient_info`(`tmp_session_id`, `patient_id`, `patient_name`, `patient_address`, "
                 . "`mobile_number`,`patient_dob`, `record_created_by`, `record_status`, `record_created_on`) "
                 . "VALUES ('$tmpid','$pid','$pname','$padd','$mob','$pdob','self','A',now())");}
+                
+        
         
         
         if($insotprec && $inspinfoq)
@@ -111,8 +115,4 @@ function getotp($n) {
     return $randomString; 
 } 
 
-
-function otpsend($mob,$otp)
-{
-    
-}
+ob_end_flush();

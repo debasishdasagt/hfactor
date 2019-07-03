@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 header("Content-Type: text/javascript");
 date_default_timezone_set('Asia/Kolkata');
 include_once '../../config.php';
@@ -43,3 +43,4 @@ if(isset($_GET['otp']) && isset($_GET['key']))
     else{$json['success']=FALSE;$json['err']='OTP Verification Failed';}
 }
 echo json_encode($json);
+ob_end_flush();

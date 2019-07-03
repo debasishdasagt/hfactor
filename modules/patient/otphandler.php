@@ -1,4 +1,5 @@
 <?php
+ob_start();
 header("Content-Type: text/javascript");
 date_default_timezone_set('Asia/Kolkata');
 include_once '../../config.php';
@@ -54,7 +55,18 @@ values('$tmpid','$chamberid','$mob','$otp','$et',1,'$dt','$msg','N','A',now())")
         $instmpappq=  mysqli_query($conn, "INSERT INTO `tmp_chamber_appointment`( `tmp_session_id`, `slot_seq`, `patient_id`, `chamber_id`, `app_time_from`, `app_time_to`,
                 `app_date`, `app_reporting_time`, `app_confirmed`, `app_completed`, `app_remarks`, `record_status`, 
                 `record_created_on`) 
-                VALUES ('$tmpid',get_app_seq('$chamberid','$tim[0]','$tim[1]','$appdat'),'$pid','$chamberid','$tim[0]','$tim[1]','$appdat','','','','','A',now())");
+                VALUES ('$tmpid',get_app_seq('$chamberid','$tim[0]','$tim[1]','$appdat'),'$pid','$chamberid','$tim[0]','$tim[1]','$appdat','00:00:00','','','','A',now())");
+                
+                
+                
+                if(!$instmpappq)
+                {
+                 printf("Error: %s\n", mysqli_error($conn));
+    exit();
+                }
+                
+                
+                
         
         if($insotprec && $instmpappq && $instmppinfoq && $otpsent)
         {$json['success']=TRUE;}
@@ -104,8 +116,5 @@ function getotp($n) {
     return $randomString; 
 } 
 
-
-function otpsend($mob,$otp)
-{
-    
-}
+ob_end_flush();
+?>

@@ -2,6 +2,7 @@
 header("Content-Type: text/javascript");
 date_default_timezone_set('Asia/Kolkata');
 include_once '../../config.php';
+include_once '../../modules/SMS/smshandler.php';
 $json= array(
     'success'=> false,
     'err'=>'',
@@ -39,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && $_POST['pmob'] != "")
     $getotpstq=  mysqli_query($conn, "select id from d_appointment_otp where tmp_session_id='$tmpid' and otp_sent_date='$dt' and mobile_number='$mob' and chamber_id='$chamberid' and record_status='A'");
     if(mysqli_num_rows($getotpstq)==0)
     {
-        $otpsent=  otpsend($mob,$msg);
+        $otpsent=  sendsms($mob, $msg);
         $insotprec=  mysqli_query($conn,"INSERT INTO `d_appointment_otp`
 (`tmp_session_id`,`chamber_id`,`mobile_number`,`otp`,`otp_expr_on`,`sent_count`,`otp_sent_date`,`otp_msg_body`,`otp_verification_status`,
 `record_status`,`record_created_on`) 
@@ -53,9 +54,9 @@ values('$tmpid','$chamberid','$mob','$otp','$et',1,'$dt','$msg','N','A',now())")
         $instmpappq=  mysqli_query($conn, "INSERT INTO `tmp_chamber_appointment`( `tmp_session_id`, `slot_seq`, `patient_id`, `chamber_id`, `app_time_from`, `app_time_to`,
                 `app_date`, `app_reporting_time`, `app_confirmed`, `app_completed`, `app_remarks`, `record_status`, 
                 `record_created_on`) 
-                VALUES ('$tmpid',get_app_seq('$chamberid','$tim[0]','$tim[1]','$appdat'),'$pid','$chamberid','$tim[0]','$tim[1]','$appdat','','','','','A',now())");
+                VALUES ('$tmpid',get_app_seq('$chamberid','$tim[0]','$tim[1]','$appdat'),'$pid','$chamberid','$tim[0]','$tim[1]','$appdat','00:00:00','','','','A',now())");
         
-        if($insotprec && $instmpappq && $instmppinfoq)
+        if($insotprec && $instmpappq && $instmppinfoq && $otpsent)
         {$json['success']=TRUE;}
         else{$json['success']=FALSE; $json['err']="Something Went wrong while saving data";}
     }

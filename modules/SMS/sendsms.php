@@ -1,4 +1,5 @@
 <?php
+ob_start();
 $msg="Failed !";
 $numbr="9774308994";
 if(isset($_GET['msg']))
@@ -35,3 +36,5 @@ if ($err) {
 } else {
   echo $response;
 }
+
+ob_end_flush();

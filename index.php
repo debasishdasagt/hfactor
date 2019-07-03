@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+ob_start();
 include_once 'config.php';
 if(!isset($_SESSION))
 {session_start();}
@@ -157,7 +158,7 @@ unset($_SESSION['tmpappid']);
                     <h4>
                         DOCTOR'S APPOINTMENT
                     </h4>
-                    <p style="text-align: justify">
+                    <p>
                         healthcare is the maintenance or improvement of health via the prevention, diagnosis, and treatment of disease, illness, injury, and other physical and mental impairments in people. Health care is delivered by health professionals in allied health fields. Physicians and ealth via the prephysician associates are a part of these health professionals.
                     </p>
                     <div class="pull-left"> <a href="modules/patient/" class="btn btn-warning btn-sm" role="button">PROCEED</a> </div>
@@ -168,9 +169,9 @@ unset($_SESSION['tmpappid']);
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"><div class="tile" id="tile2">
                 
                     <h4>
-                        DIAGNOSTICS SERVICES
+                        DIAGNOSTIC SERVICES
                     </h4>
-                    <p style="text-align: justify">
+                    <p>
                         Diagnosis is the identification of the nature and cause of a certain phenomenon. Diagnosis is used in many different disciplines, with variations in the use of logic, analytics, and experience, to determine "cause and effect". In systems engineering and computer science, it is typically used to determine the causes of symptoms, mitigations, and solutions
                     </p>
                     <div class="pull-left"> <a href="modules/labs/" class="btn btn-warning btn-sm" role="button">PROCEED</a> </div>
@@ -182,8 +183,8 @@ unset($_SESSION['tmpappid']);
                 <h4>
                        NURSING SERVICES
                     </h4>
-                    <p style="text-align: justify">
-                        Nursing is a profession within the health care sector focused on the care of individuals, families, and communities so they may attain, maintain, or recover optimal health and quality of life. Nurses may be differentiated from other health care providers by their approach to patient care, training, and scope of practice. Nurses practice in many specialties with differing levels of prescription authority's</p>
+                    <p>
+                        Nursing is a profession within the health care sector focused on the care of individuals, families, and communities so they may attain, maintain, or recover optimal health and quality of life. Nurses may be differentiated from other health care providers by their approach to patient care, training, and scope of practice.</p>
                     <div class="pull-left"> <a href="#" class="btn btn-warning btn-sm" role="button">PROCEED</a> </div>
                 
                 
@@ -320,6 +321,8 @@ unset($_SESSION['tmpappid']);
             <div class="row" >
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <h5>eCure365</h5>
+                
+                help@ecure365.com
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <h5>Services</h5>
@@ -333,10 +336,10 @@ unset($_SESSION['tmpappid']);
                 <h5>Contact Us</h5>
                 <p>
                 <h6>Head Office</h6>
-                
+                BIH Technologies Pvt. Ltd.<br>
                 TMC Road, Hapania, 1st Floor of UBI ATM
                 <br>Sadar, Agartala, West Tripura, Tripura-799014<br>
-e-mail: info@biht.in
+e-mail: ecure365@biht.in
                 </p>
             </div>
                 <div class="col-lg-3 col-md-12 col-sm-6 col-xs-12">
@@ -382,7 +385,9 @@ e-mail: info@biht.in
             $('#regmodal').modal('show');
             
         })
-        <?php } ?>
+        <?php } 
+        
+        ob_end_flush();?>
         
         
         
