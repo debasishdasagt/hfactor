@@ -302,7 +302,7 @@ unset($_SESSION['tmpappid']);
                                     </div>
                                 </div>
                             </div>
-                            <input type="submit" class="btn btn-success" value="Get Appointment" style="margin-top: 30px">
+                            <input type="submit" class="btn btn-success disabled" id="newcustsubmit" value="Get Appointment" style="margin-top: 30px">
 
                         </form>
                 
@@ -406,11 +406,21 @@ $('#firstcust').on('submit',function()
             if(data.success)
             {
                 var otp=prompt("Please Enter The OTP received in you phone");
-                ncustotpchk(otp,data.otpkey);
+               if(otp != null)
+               {
+                   
+                   ncustotpchk(otp,data.otpkey);
+               }
+               else
+               {
+                   $('#newcustsubmit').val("Resend OTP");
+               }
+                //ncustotpchk(otp,data.otpkey);
             }
             else
             {
                 alert(data.err);
+                $('#newcustsubmit').val("Resend OTP");
             }
         }
     });

@@ -77,10 +77,15 @@ else
     $getotpstatusr=  mysqli_fetch_array($getotpstatusq);
     if($getotpstatusr['sent_count']<3)
     {
-        $otpsent=  otpsend($mob,$msg);
+        $otpsent=  sendsms($mob, $msg);
         $count=$getotpstatusr['sent_count']+1;
         $otpcountupd=  mysqli_query($conn, "update d_new_patient_otp set sent_count='$count' where tmp_session_id='$tmpid' and otp_sent_date='$dt' and mobile_number='$mob' and record_status='A'");
-        $json['success']=TRUE;
+        if( $otpcountupd && $otpsent)
+        {
+            $json['success']=TRUE;
+        }
+        
+        else{$json['success']=FALSE;$json['err']="Somthing went wrong while resending OTP";};
     }
     else{$json['success']=FALSE;$json['err']="Maximum Number of attempt has been acceded.";};
 }

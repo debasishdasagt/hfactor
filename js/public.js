@@ -279,6 +279,7 @@ function checkmob(item)
                     $('input[name="pname"]').val("");
                     $('input[name="pdob"]').val("");
                     $('input[name="paddress"]').val("");
+                    $('#newcustsubmit').removeClass('disabled');
                     oldnewpatient="old";
                 }
                 else
@@ -288,9 +289,14 @@ function checkmob(item)
                     $('input[name="pname"]').attr("required","true");
                     $('input[name="pdob"]').attr("required","true");
                     $('input[name="paddress"]').attr("required","true");
+                    $('#newcustsubmit').removeClass('disabled');
                     oldnewpatient="new";
                 }
             }
         })
+    }
+    else
+    {
+        $('#newcustsubmit').addClass('disabled');
     }
 }
