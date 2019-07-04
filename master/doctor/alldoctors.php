@@ -16,7 +16,7 @@ include_once '../../config.php';
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width= device-width, initial-scale = 1">
-  <title>i-Health Care Login</title>
+  <title>eCure365</title>
   <link rel='stylesheet' href='../../bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css'>
   <link rel='stylesheet' href='../../css/page_style.css'>
   
@@ -150,7 +150,7 @@ where record_status='A'");
                         </tr>
                         <tr>
                             <td colspan="2" align='right'>
-                                <a class='btn btn-info btn-xs' role='button' href='?doctorid=<?php echo  $resr['doctor_code'];?>'>Select</a>
+                                <a class='btn btn-info btn-xs' role='button' href='vieweditdoctor.php?doctorid=<?php echo  $resr['doctor_code'];?>'>Select</a>
                             </td>
                         </tr>
                     </table>

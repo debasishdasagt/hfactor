@@ -17,7 +17,7 @@ and open the template in the editor.
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width= device-width, initial-scale = 1">
-  <title>i-Health Care Login</title>
+  <title>eCure365</title>
   <link rel='stylesheet' href='../bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel='stylesheet' href='../css/page_style.css'>
@@ -110,8 +110,9 @@ if($_SERVER['REQUEST_METHOD']=== "POST")
                    </div>
                   <br>
                   <input type="submit" value="Login" class="btn btn-success btn-sm logininputs" role="button"> 
+                  <a href="javascript:history.go(-1)" class="btn btn-danger btn-sm logininputs" role="button" style="margin-top: 3px">Close</a>
               </form><br>
-              <a href="#" class="btn btn-link" role="link">Forget or Reset Password</a>
+              
               
               <br>
           </div>

@@ -6,6 +6,7 @@ and open the template in the editor.
 -->
 <?php
 include_once 'loginhandler.php';
+include_once '../../config.php';
 ?>
 
 <html lang="en" >
@@ -38,13 +39,28 @@ include_once 'loginhandler.php';
             <div class="well" style="text-align: center">
                 <h4>New Doctor Registration</h4>
             </div>
+            
+            
+            
+            <?php
+            if(isset($_GET['doctorid']))
+            {
+                $did=$_GET['doctorid'];
+                $getdinfoq=  mysqli_query($conn, "SELECT `id`, `doctor_code`, `d_name`, `d_hospital`, "
+                        . "`d_designation`, `d_expirience`, `d_degree`, `d_speciality`, `d_fee`, `d_mob`, "
+                        . "`d_email`, `d_profile_image`, `record_status`, `record_created_on`, `record_modified_on` "
+                        . "FROM `d_doctor_info` where doctor_code='$did' and record_status='A'");
+                $docinfor=  mysqli_fetch_array($getdinfoq);
+                
+            }
+            ?>
             <div class="row">
                 <form id='newdoc'>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <br>
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Name</span>
-                        <input type="text" class="form-control" placeholder="Doctor's Name" id='dname'>
+                        <input type="text" class="form-control" placeholder="Doctor's Name" id='dname' value="<?php echo $docinfor['d_name']; ?>">
                     </div>
                 </div>
                     
@@ -54,7 +70,7 @@ include_once 'loginhandler.php';
                         <br>
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Hospital / Nursing Home</span>
-                        <input type="text" class="form-control" placeholder="Doctor's Hospital" id='dhospital'>
+                        <input type="text" class="form-control" placeholder="Doctor's Hospital" id='dhospital' value="<?php echo $docinfor['d_hospital']; ?>">
                     </div>
                 </div>
                     
@@ -63,7 +79,7 @@ include_once 'loginhandler.php';
                         <br>
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Designation</span>
-                        <input type="text" class="form-control" placeholder="Designation in Hospital" id='ddesignation'>
+                        <input type="text" class="form-control" placeholder="Designation in Hospital" id='ddesignation' value="<?php echo $docinfor['d_designation']; ?>">
                     </div>
                 </div>
                     
@@ -72,7 +88,7 @@ include_once 'loginhandler.php';
                         <br>
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Experience </span>
-                        <input type="text" class="form-control" placeholder="Doctor's Expirience" id='dexpirience'>
+                        <input type="text" class="form-control" placeholder="Doctor's Expirience" id='dexpirience' value="<?php echo $docinfor['d_expirience']; ?>">
                     </div>
                 </div>
                     
@@ -81,7 +97,7 @@ include_once 'loginhandler.php';
                         <br>
                         <div class="input-group input-group-sm">
                         <span class="input-group-addon">Doctor's Degree</span>
-                        <input type="text" class="form-control" placeholder="Qualifications" id='ddegree'>
+                        <input type="text" class="form-control" placeholder="Qualifications" id='ddegree' value="<?php echo $docinfor['d_degree']; ?>">
                     </div>
                    
                 </div>
@@ -91,7 +107,7 @@ include_once 'loginhandler.php';
                         <br>
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">E-Mail ID</span>
-                        <input type="text" class="form-control" placeholder="e-mail address" id='demail'>
+                        <input type="text" class="form-control" placeholder="e-mail address" id='demail' value="<?php echo $docinfor['d_email']; ?>">
                     </div>
                 </div>
                     
@@ -100,7 +116,7 @@ include_once 'loginhandler.php';
                         <br>
                      <div class="input-group input-group-sm">
                         <span class="input-group-addon">Mobile Number</span>
-                        <input type="text" class="form-control" placeholder="Contact Number" id='dmob'>
+                        <input type="text" class="form-control" placeholder="Contact Number" id='dmob' value="<?php echo $docinfor['d_mob']; ?>">
                     </div>
                         
                 </div>
@@ -110,7 +126,7 @@ include_once 'loginhandler.php';
                         <br>
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Consultation Fee</span>
-                        <input type="text" class="form-control" placeholder="Doctor's Consultation Fee" id='dfee'>
+                        <input type="text" class="form-control" placeholder="Doctor's Consultation Fee" id='dfee' value="<?php echo $docinfor['d_fee']; ?>">
                     </div>
                 </div>
                     
@@ -118,7 +134,7 @@ include_once 'loginhandler.php';
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <br>
                      <div class="dropdown">
-                            <button class="btn btn-warning dropdown-toggle btn-sm" type="button" data-toggle="dropdown" id='dspecialdd'>Doctor's Speciality
+                            <button class="btn btn-warning dropdown-toggle btn-sm" type="button" data-toggle="dropdown" id='dspecialdd'><?php echo $docinfor['d_speciality']; ?>
                             <span class="caret"></span></button>
                             <ul class="dropdown-menu" id='dspecial'>
                               <li><a href='#'>CARDIOLOGIST</a></li>
@@ -151,7 +167,7 @@ include_once 'loginhandler.php';
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-6 " style="text-align: right">
                         <br>
                        
-                        <a class='btn btn-info btn-sm' role='Button' href='#' onclick="javascript:saved()" id='sdbtn'>Submit</a>
+                        <a class='btn btn-info btn-sm' role='Button' href='#' onclick="javascript:updated('<?php echo $docinfor['doctor_code']; ?>')" id='sdbtn'>Submit</a>
                 </div>
                     
                     
