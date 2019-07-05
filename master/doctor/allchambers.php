@@ -122,7 +122,7 @@ concat(chamber_name,chamber_address,chamber_area_pin) like '%$stxt%' ";
                         </tr>
                         <tr>
                             <td colspan="2" align='right'>
-                                <a class='btn btn-danger btn-xs' role='button' href='deletechamber.php?chid=<?php echo  $dcr['id'];?>'>Delete Chamber</a>
+                                <a class='btn btn-danger btn-xs' role='button' href='deletechamber.php?chid=<?php echo  $dcr['id'];?>'><i class="glyphicon glyphicon-trash"></i></a>
                             </td>
                         </tr>
                     </table>
@@ -207,7 +207,11 @@ FROM `d_chambers` where record_status='A' ";
                         </tr>
                         <tr>
                             <td colspan="2" align='right'>
-                                <a class='btn btn-danger btn-xs' role='button' href='deletechamber.php?chid=<?php echo  $dcr['id'];?>'>Delete Chamber</a>
+                                <div class="btn-group btn-group-xs">
+                                <a class='btn btn-info' role='button' href='updatechamber.php?chid=<?php echo  $dcr['id'];?>'><i class="glyphicon glyphicon-edit"></i></a>
+                            
+                                <a class='btn btn-danger' role='button' href='deletechamber.php?chid=<?php echo  $dcr['id'];?>'><i class="glyphicon glyphicon-trash"></i></a>
+                                </div>
                             </td>
                         </tr>
                     </table>

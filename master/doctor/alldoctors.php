@@ -98,7 +98,12 @@ where concat(`d_doctor_info`.`doctor_code`,`d_doctor_info`.`d_name`,
                         </tr>
                         <tr>
                             <td colspan="2" align='right'>
-                                <a class='btn btn-info btn-xs' role='button' href='?doctorid=<?php echo  $resr['doctor_code'];?>'>Select</a>
+                                <div class="btn-group btn-group-xs">
+                                    <a class='btn btn-info' role='button' href='vieweditdoctor.php?doctorid=<?php echo  $resr['doctor_code'];?>'><i class="glyphicon glyphicon-edit"></i></a>
+                                
+                                <a class='btn btn-danger' role='button' href='deletedoctor.php?doctorid=<?php echo  $resr['doctor_code'];?>'><i class="glyphicon glyphicon-trash"></i></a>
+                            
+                                </div>
                             </td>
                         </tr>
                     </table>
@@ -150,7 +155,12 @@ where record_status='A'");
                         </tr>
                         <tr>
                             <td colspan="2" align='right'>
-                                <a class='btn btn-info btn-xs' role='button' href='vieweditdoctor.php?doctorid=<?php echo  $resr['doctor_code'];?>'>Select</a>
+                                <div class="btn-group btn-group-xs">
+                                    <a class='btn btn-info' role='button' href='vieweditdoctor.php?doctorid=<?php echo  $resr['doctor_code'];?>'><i class="glyphicon glyphicon-edit"></i></a>
+                                
+                                <a class='btn btn-danger' role='button' href='deletedoctor.php?doctorid=<?php echo  $resr['doctor_code'];?>'><i class="glyphicon glyphicon-trash"></i></a>
+                            
+                                </div>
                             </td>
                         </tr>
                     </table>

@@ -11,6 +11,12 @@ $("#dspecial a").click(function(e)
     $("#dspecialdd").html(ds);
 });
 
+
+function setspcl(s)
+{
+    ds= s;
+    console.log(ds);
+}
 function saved()
 {
     $.post("savedoctor.php",{dname: $("#dname").val(),
@@ -353,4 +359,30 @@ function sendfreqsms()
             }
         }
     });
+}
+
+
+function removeimg(did)
+{
+    $.ajax({
+            type: "POST",
+            url: "removedocimg.php",
+            dataType:'json',
+            data: {docid: did},
+            cache: false,
+            success: function(data)
+            {
+                if(data.success)
+                {
+                    $("#remdocimgbtn").addClass('disabled');
+                    $("#remdocimgbtn").html("Removed");
+                }
+                else
+                {
+                    $("#remdocimgbtn").addClass('disabled');
+                    $("#remdocimgbtn").html("Error !");
+                }
+            }
+            
+        });
 }

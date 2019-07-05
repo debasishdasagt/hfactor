@@ -332,6 +332,8 @@ include_once '../../config.php';
             <div class="row" >
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <h5>eCure365</h5>
+                
+                help@ecure365.com
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <h5>Services</h5>
@@ -345,10 +347,10 @@ include_once '../../config.php';
                 <h5>Contact Us</h5>
                 <p>
                 <h6>Head Office</h6>
-                
+                BIH Technologies Pvt. Ltd.<br>
                 TMC Road, Hapania, 1st Floor of UBI ATM
                 <br>Sadar, Agartala, West Tripura, Tripura-799014<br>
-e-mail: info@biht.in
+e-mail: ecure365@biht.in
                 </p>
             </div>
                 <div class="col-lg-3 col-md-12 col-sm-6 col-xs-12">

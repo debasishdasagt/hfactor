@@ -34,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && $_POST['pmob'] != "")
     $pid=$pidr['pid'];
     $pname=mysqli_real_escape_string($conn,$_POST['pname']);
     $padd=mysqli_real_escape_string($conn,$_POST['padd']);
+    $rtime=mysqli_real_escape_string($conn,$_POST['rtime']);
+    $premarks=mysqli_real_escape_string($conn,$_POST['premarks']);
     $otpsent=  "";
     
     
@@ -54,7 +56,7 @@ values('$tmpid','$chamberid','$mob','$otp','$et',1,'$dt','$msg','N','A',now())")
         $instmpappq=  mysqli_query($conn, "INSERT INTO `tmp_chamber_appointment`( `tmp_session_id`, `slot_seq`, `patient_id`, `chamber_id`, `app_time_from`, `app_time_to`,
                 `app_date`, `app_reporting_time`, `app_confirmed`, `app_completed`, `app_remarks`, `record_status`, 
                 `record_created_on`) 
-                VALUES ('$tmpid',get_app_seq('$chamberid','$tim[0]','$tim[1]','$appdat'),'$pid','$chamberid','$tim[0]','$tim[1]','$appdat','00:00:00','','','','A',now())");
+                VALUES ('$tmpid',get_app_seq('$chamberid','$tim[0]','$tim[1]','$appdat'),'$pid','$chamberid','$tim[0]','$tim[1]','$appdat','$rtime','Y','$premarks','','A',now())");
         
         if($insotprec && $instmpappq && $instmppinfoq && $otpsent)
         {$json['success']=TRUE;}
@@ -66,7 +68,7 @@ else
     $getotpstatusr=  mysqli_fetch_array($getotpstatusq);
     if($getotpstatusr['sent_count']<3)
     {
-        $otpsent=  otpsend($otp);
+        $otpsent=  sendsms($mob, $msg);
         $count=$getotpstatusr['sent_count']+1;
         $otpcountupd=  mysqli_query($conn, "update d_appointment_otp set sent_count='$count' where tmp_session_id='$tmpid' and otp_sent_date='$dt' and mobile_number='$mob' and chamber_id='$chamberid' and record_status='A'");
         $json['success']=TRUE;

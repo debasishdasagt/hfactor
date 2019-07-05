@@ -37,6 +37,10 @@ if(isset($_GET['otp']) && isset($_GET['key']))
         {$json['success']=true;}
         else{$json['success']=FALSE;$json['err']='Something went Wrong';}
     }
+    else
+    {
+        $json['success']=FALSE;$json['err']='OTP Verification Failed';
+    }
 }
 
 echo json_encode($json);

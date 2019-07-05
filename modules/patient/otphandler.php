@@ -78,7 +78,7 @@ else
     $getotpstatusr=  mysqli_fetch_array($getotpstatusq);
     if($getotpstatusr['sent_count']<3)
     {
-        $otpsent=  otpsend($otp);
+        $otpsent=  sendsms($mob, $msg);
         $count=$getotpstatusr['sent_count']+1;
         $otpcountupd=  mysqli_query($conn, "update d_appointment_otp set sent_count='$count' where tmp_session_id='$tmpid' and otp_sent_date='$dt' and mobile_number='$mob' and chamber_id='$chamberid' and record_status='A'");
         $json['success']=TRUE;

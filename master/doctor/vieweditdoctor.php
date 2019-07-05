@@ -37,7 +37,7 @@ include_once '../../config.php';
                 <a class='btn btn-info' role='button' href="allchambers.php">All Chambers</a>
             </div><hr>
             <div class="well" style="text-align: center">
-                <h4>New Doctor Registration</h4>
+                <h4>View / Edit Doctor</h4>
             </div>
             
             
@@ -48,7 +48,7 @@ include_once '../../config.php';
                 $did=$_GET['doctorid'];
                 $getdinfoq=  mysqli_query($conn, "SELECT `id`, `doctor_code`, `d_name`, `d_hospital`, "
                         . "`d_designation`, `d_expirience`, `d_degree`, `d_speciality`, `d_fee`, `d_mob`, "
-                        . "`d_email`, `d_profile_image`, `record_status`, `record_created_on`, `record_modified_on` "
+                        . "`d_email`, ifnull(`d_doctor_info`.`d_profile_image`,'dummy_doctor_image.png') as image, `record_status`, `record_created_on`, `record_modified_on` "
                         . "FROM `d_doctor_info` where doctor_code='$did' and record_status='A'");
                 $docinfor=  mysqli_fetch_array($getdinfoq);
                 
@@ -137,37 +137,40 @@ include_once '../../config.php';
                             <button class="btn btn-warning dropdown-toggle btn-sm" type="button" data-toggle="dropdown" id='dspecialdd'><?php echo $docinfor['d_speciality']; ?>
                             <span class="caret"></span></button>
                             <ul class="dropdown-menu" id='dspecial'>
-                              <li><a href='#'>CARDIOLOGIST</a></li>
-<li><a href='#'>CARDIOLOGY</a></li>
-<li><a href='#'>CHILD SPECIALIST</a></li>
-<li><a href='#'>DENTIST</a></li>
-<li><a href='#'>DERMATOLOGIST (SKIN)</a></li>
-<li><a href='#'>DIABETOLOGIST</a></li>
-<li><a href='#'>E.N.T</a></li>
-<li><a href='#'>EYE SPECIALIST</a></li>
-<li><a href='#'>GYNAECOLOGIST</a></li>
-<li><a href='#'>HOMEOPATHY</a></li>
-<li><a href='#'>MEDICINE</a></li>
-<li><a href='#'>NEPHROLOGIST</a></li>
-<li><a href='#'>NEUROLOGIST</a></li>
-<li><a href='#'>NEUROSURGEON</a></li>
-<li><a href='#'>ONCOLOGY</a></li>
-<li><a href='#'>ORTHOPEDIC</a></li>
-<li><a href='#'>PAEDIA NEPHROLOGIST</a></li>
-<li><a href='#'>PSYCHIATRIST</a></li>
-<li><a href='#'>RHEUMATOLOGIST</a></li>
-<li><a href='#'>SPINE SURGEON</a></li>
-<li><a href='#'>SURGEON</a></li>
-<li><a href='#'>UROLOGIST</a></li></ul>
+                                <li><a href='#'>CARDIOLOGIST</a></li>
+                                <li><a href='#'>CARDIOLOGY</a></li>
+                                <li><a href='#'>CHILD SPECIALIST</a></li>
+                                <li><a href='#'>DENTIST</a></li>
+                                <li><a href='#'>DERMATOLOGIST (SKIN)</a></li>
+                                <li><a href='#'>DIABETOLOGIST</a></li>
+                                <li><a href='#'>E.N.T</a></li>
+                                <li><a href='#'>EYE SPECIALIST</a></li>
+                                <li><a href='#'>GYNAECOLOGIST</a></li>
+                                <li><a href='#'>HOMEOPATHY</a></li>
+                                <li><a href='#'>MEDICINE</a></li>
+                                <li><a href='#'>NEPHROLOGIST</a></li>
+                                <li><a href='#'>NEUROLOGIST</a></li>
+                                <li><a href='#'>NEUROSURGEON</a></li>
+                                <li><a href='#'>ONCOLOGY</a></li>
+                                <li><a href='#'>ORTHOPEDIC</a></li>
+                                <li><a href='#'>PAEDIA NEPHROLOGIST</a></li>
+                                <li><a href='#'>PSYCHIATRIST</a></li>
+                                <li><a href='#'>RHEUMATOLOGIST</a></li>
+                                <li><a href='#'>SPINE SURGEON</a></li>
+                                <li><a href='#'>SURGEON</a></li>
+                                <li><a href='#'>UROLOGIST</a></li></ul>
                         </div>
+                        
                 </div>
                     
                     
                     
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-6 " style="text-align: right">
                         <br>
-                       
-                        <a class='btn btn-info btn-sm' role='Button' href='#' onclick="javascript:updated('<?php echo $docinfor['doctor_code']; ?>')" id='sdbtn'>Submit</a>
+                        <a href="alldoctors.php" class="btn btn-danger btn-sm " role="button" >Close</a>
+              
+                        <a class='btn btn-info btn-sm' role='Button' href='#' onclick="javascript:updated('<?php echo $docinfor['doctor_code']; ?>')" id='sdbtn'>Update</a>
+                        
                 </div>
                     
                     
@@ -182,20 +185,21 @@ include_once '../../config.php';
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Doctor Registration</h4>
+        <h4 class="modal-title">Doctor Updated Successfully</h4>
       </div>
-      <div class="modal-body">
-          <h4>Doctor has been registered Successfully</h4>
-        <hr>
-        <div id="fileuploader">Upload</div>
+        <div class="modal-body" >
+         
+        <div class='thumbnail srchimg' style="margin-bottom: 0px"><img class='img-rounded img-responsive' src='<?php echo  "picuploader/uploads/".$docinfor['image'];?>'></div>
+        <?php if($docinfor['image']!='dummy_doctor_image.png'){ ?>Current Picture <a id="remdocimgbtn" class="btn btn-xs btn-danger" role="button" href="javascript:removeimg('<?php echo $did;?>')"> <i class="glyphicon glyphicon-trash"></i> Remove </a><?php } ?>
+        <br> <br>
+        <div id="fileuploader">Upload New Pic</div>
         <br>
-        <h4>Upload Doctor's Profile Picture</h4>
-        <hr>
         
-        <a href='addchamber.php' class='btn btn-info btn-sm' role='button'>Add Chamber</a> for the Doctor.
+        
+        
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <a href="alldoctors.php" class="btn btn-success" role="button"> Done </a>
       </div>
     </div>
 
@@ -214,6 +218,8 @@ $(document).ready(function()
 	fileName:"myfile"
 	});
 });
+
+setspcl('<?php echo $docinfor['d_speciality']; ?>');
 </script>
     </body>
 </html>

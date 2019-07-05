@@ -122,7 +122,8 @@ $('#getappfrm').on('submit',function()
 {
     var that = $(this),
     content=that.serialize();
-
+    $('#getapp').addClass('disabled');
+    $('#getapp').val("Please Wait....");
     $.ajax({
         url: 'otphandler.php',
         dataType: 'json',
@@ -133,11 +134,23 @@ $('#getappfrm').on('submit',function()
             if(data.success)
             {
                 var otp=prompt("Please Enter The OTP received in you phone");
-                otpchk(otp,data.otpkey);
+                if(otp != null)
+               {
+                   
+                   otpchk(otp,data.otpkey);
+               }
+               else
+               {
+                   $('#getapp').val("Resend OTP");
+                   $('#getapp').removeClass("disabled");
+               }
+                
             }
             else
             {
                 alert(data.err);
+                $('#getapp').val("Resend OTP");
+                $('#getapp').removeClass("disabled");
             }
         }
     });

@@ -10,36 +10,29 @@ $dmob=  mysqli_real_escape_string($conn,$_POST["dmob"]);
 $demail=  mysqli_real_escape_string($conn,$_POST["demail"]);
 $dfee=  mysqli_real_escape_string($conn,$_POST["dfee"]);
 $ddesignation=  mysqli_real_escape_string($conn,$_POST["ddesignation"]);
-$doc_code_r=  mysqli_query($conn, "select get_doctor_id() as did");
-if (!$doc_code_r) {
-    printf("Error: %s\n", mysqli_error($conn));
-    exit();
-}
-$doc_code_a=  mysqli_fetch_array($doc_code_r);
-$doc_code=$doc_code_a['did'];
-$_SESSION['doctorid']=$doc_code;
-$ins=  mysqli_query($conn, "INSERT INTO `d_doctor_info`
-(doctor_code,`d_name`,
-`d_hospital`,
-`d_designation`,
-`d_expirience`,
-`d_degree`,
-`d_speciality`,
-`d_fee`,
-`d_mob`,
-`d_email`,
-`record_status`,
-`record_created_on`)
-VALUES
-(
-        '$doc_code','$dname','$dhospital','$ddesignation','$dexpirience','$ddegree','$dspeciality','$dfee','$dmob','$demail','A',now()
-)");
 
-if($ins)
+$doc_code=mysqli_real_escape_string($conn,$_POST["docid"]);
+$_SESSION['doctorid']=$doc_code;
+$upd=  mysqli_query($conn, "Update `d_doctor_info` set
+ `d_name`='$dname',
+`d_hospital`='$dhospital',
+`d_designation`='$ddesignation',
+`d_expirience`='$dexpirience',
+`d_degree`='$ddegree',
+`d_speciality`='$dspeciality',
+`d_fee`='$dfee',
+`d_mob`='$dmob',
+`d_email`='$demail',
+`record_modified_on`=now()
+where doctor_code='$doc_code' and record_status='A'");
+
+if($upd)
 {
     echo "1";
 }
  else {
      echo "0";
+     printf("Error: %s\n", mysqli_error($conn));
+    exit();
  }
 ?>

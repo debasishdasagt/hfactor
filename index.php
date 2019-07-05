@@ -287,10 +287,10 @@ unset($_SESSION['tmpappid']);
         
                                 <div class="row" style="margin-top:20px">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <input type="text" name="pname" placeholder="Your Name" class="form-control input-sm">
+                                <input type="text" name="pname" placeholder="Your Name" class="form-control input-sm"  style="margin-top: 5px">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="input-group input-group-sm">
+                                <div class="input-group input-group-sm" style="margin-top: 5px">
                                     <span class="input-group-addon">Date of Birth</span>
                                 <input type="date" name="pdob" placeholder="Date of Birth" class="form-control" style="padding-top:0px">
                                 </div>
@@ -395,7 +395,8 @@ $('#firstcust').on('submit',function()
 {
     var that = $(this),
     content=that.serialize();
-
+    $('#newcustsubmit').val("Please Wait..");
+    $('#newcustsubmit').addClass("disabled");
     $.ajax({
         url: 'modules/patient/fcustotphandler.php',
         dataType: 'json',
@@ -414,6 +415,7 @@ $('#firstcust').on('submit',function()
                else
                {
                    $('#newcustsubmit').val("Resend OTP");
+                   $('#newcustsubmit').removeClass("disabled");
                }
                 //ncustotpchk(otp,data.otpkey);
             }
@@ -421,6 +423,7 @@ $('#firstcust').on('submit',function()
             {
                 alert(data.err);
                 $('#newcustsubmit').val("Resend OTP");
+                $('#newcustsubmit').removeClass("disabled");
             }
         }
     });

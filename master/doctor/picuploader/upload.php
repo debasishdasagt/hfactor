@@ -17,7 +17,7 @@ if(isset($_FILES["myfile"]))
 	if(!is_array($_FILES["myfile"]["name"])) //single file
 	{
             if(!isset($_SESSION))
-{session_start();}
+            {session_start();}
             $did=$_SESSION['doctorid'];
  	 	$fileName = $did."_".$_FILES["myfile"]["name"];
  		move_uploaded_file($_FILES["myfile"]["tmp_name"],$output_dir.$fileName);

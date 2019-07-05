@@ -130,6 +130,9 @@ function otpchk(otp,otpkey)
             else
             {
                 alert(data.err);
+                console.log("Enablling Button....");
+                $('#getapp').val("Resend OTP");
+                   $('#getapp').removeClass("disabled");
             }
         }
         
@@ -162,6 +165,9 @@ function ncustotpchk(otp,otpkey)
             else
             {
                 alert(data.err);
+                $('#newcustsubmit').val("Resend OTP");
+                   $('#newcustsubmit').removeClass("disabled");
+
             }
         }
         

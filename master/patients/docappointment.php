@@ -86,13 +86,13 @@ unset($_SESSION['tmpappid']);
                 <div class="col-lg-12">
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Name</span>
-                        <input type="text" class="form-control" name="pname" id="pname" placeholder="Patient's Name" value="<?php echo $pname; ?>">
+                        <input type="text" class="form-control" name="pname" id="pname" placeholder="Patient's Name" required="true">
                     </div>
                 </div><br>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Address</span>
-                        <input type="text" class="form-control" name="padd" id="padd" placeholder="Patient's Address" value="<?php echo $paddress; ?>">
+                        <input type="text" class="form-control" name="padd" id="padd" placeholder="Patient's Address" >
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -103,7 +103,22 @@ unset($_SESSION['tmpappid']);
                                        maxlength="10" required="true"
                                        oninvalid="this.setCustomValidity('Please Enter Valied Mobile Number')"
                                        oninput="this.setCustomValidity('')"
-                                       value="<?php echo $pmob; ?>"
+                                     
+                               >
+                    </div>
+                    </div>
+                
+                    <hr>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">Reporting Time</span>
+                        <input type="time" class="form-control" name="rtime" id="rtime" required="true">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">Remarks</span>
+                        <input type="text" class="form-control" name="premarks" id="premarks" placeholder="Remarks"
                                >
                     </div>
                 </div>
@@ -112,7 +127,7 @@ unset($_SESSION['tmpappid']);
                 </div>
                 </form>
                 
-            </div>
+            
         </div>
         
         
@@ -154,6 +169,8 @@ $('#getappfrm').on('submit',function()
     var that = $(this),
     content=that.serialize();
 
+    $('#getapp').val("Please Wait..");
+    $('#getapp').addClass("disabled");
     $.ajax({
         url: 'otphandler.php',
         dataType: 'json',
@@ -164,11 +181,23 @@ $('#getappfrm').on('submit',function()
             if(data.success)
             {
                 var otp=prompt("Please Enter The OTP received in you phone");
-                otpchk(otp,data.otpkey);
+               if(otp != null)
+               {
+                   
+                   otpchk(otp,data.otpkey);
+               }
+               else
+               {
+                   $('#getapp').val("Resend OTP");
+                   $('#getapp').removeClass("disabled");
+               }
+                //ncustotpchk(otp,data.otpkey);
             }
             else
             {
                 alert(data.err);
+                $('#getapp').val("Resend OTP");
+                $('#getapp').removeClass("disabled");
             }
         }
     });
