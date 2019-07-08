@@ -22,8 +22,8 @@ if(isset($_GET['otp']) && isset($_GET['key']))
         if($_GET['oldnew']=="new")
         {
         $inspinfoq=  mysqli_query($conn, "INSERT INTO `d_patient_info`
-                    (`patient_id`,`patient_name`,`patient_address`,`mobile_number`,patient_dob,`record_created_by`,`record_status`,`record_created_on`,`record_modified_on`)
-                    SELECT `patient_id`,`patient_name`,`patient_address`,`mobile_number`,`patient_dob`,`record_created_by`,`record_status`,`record_created_on`,`record_modified_on`
+                    (`patient_id`,`patient_name`,`patient_address`,`area_pin`,`mobile_number`,patient_dob,`record_created_by`,`record_status`,`record_created_on`,`record_modified_on`)
+                    SELECT `patient_id`,`patient_name`,`patient_address`,`area_pin`,`mobile_number`,`patient_dob`,`record_created_by`,`record_status`,`record_created_on`,`record_modified_on`
                     FROM `tmp_patient_info` where tmp_session_id='$key' and record_status='A'");
         
         $updpinfoq=  mysqli_query($conn, "update tmp_patient_info set record_status='C' where tmp_session_id='$key' and record_status='A'");

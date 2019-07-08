@@ -52,7 +52,7 @@ unset($_SESSION['tmpappid']);
             </div><hr>
             <div class="row">
                 <form action="otphandler.php" method="post" id="getappfrm" >
-                <div class="col-lg-12">
+                    <div class="col-lg-12" style="margin-bottom: 10px">
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Select Chamber</span>
                         <select class="form-control" name="chamber" id="chamber" onchange="getctimings()" data-toggle="tooltip" data-placement="bottom">
@@ -72,7 +72,7 @@ unset($_SESSION['tmpappid']);
                 </div>
                     
                     <br>
-                <div class="col-lg-12">
+                <div class="col-lg-12" style="margin-bottom: 10px">
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Select Time</span>
                         <select class="form-control" name="chamber_time" id="chamber_time" data-toggle="tooltip" data-placement="bottom">
@@ -83,19 +83,21 @@ unset($_SESSION['tmpappid']);
                 </div>
                     <input type="hidden" value="" name="appdate" id="appdate">
                     <hr>
-                <div class="col-lg-12">
+                <div class="col-lg-12" style="margin-bottom: 10px">
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Name</span>
                         <input type="text" class="form-control" name="pname" id="pname" placeholder="Patient's Name" required="true">
                     </div>
                 </div><br>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="col-lg-12" style="margin-bottom: 10px">
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Address</span>
                         <input type="text" class="form-control" name="padd" id="padd" placeholder="Patient's Address" >
+                        <input type="text" name="ppin" placeholder="PIN Code" class="form-control">
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <br>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 10px">
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Mobile Number</span>
                         <input type="text" class="form-control" name="pmob" id="pmob" placeholder="Valied Mobile Number"
@@ -108,21 +110,21 @@ unset($_SESSION['tmpappid']);
                     </div>
                     </div>
                 
-                    <hr>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 10px">
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Reporting Time</span>
                         <input type="time" class="form-control" name="rtime" id="rtime" required="true">
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 10px">
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Remarks</span>
                         <input type="text" class="form-control" name="premarks" id="premarks" placeholder="Remarks"
                                >
                     </div>
                 </div>
-                <div class="col-lg-12" style="text-align: right;">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: right;">
                     <input type="submit" class="btn btn-success disabled btn-sm" id="getapp" role="button" value="Get Verification OTP" style=" margin-top: 10px">
                 </div>
                 </form>

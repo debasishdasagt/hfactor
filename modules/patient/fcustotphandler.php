@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && $_POST['pmob'] != "")
     
     $pname=mysqli_real_escape_string($conn,$_POST['pname']);
     $padd=mysqli_real_escape_string($conn,$_POST['paddress']);
+    $ppin=mysqli_real_escape_string($conn,$_POST['ppin']);
     $pdob=mysqli_real_escape_string($conn,$_POST['pdob']);
     $otpsent=  "";
     $getotpstq=  mysqli_query($conn, "select id from d_new_patient_otp where tmp_session_id='$tmpid' and otp_sent_date='$dt' and mobile_number='$mob' and record_status='A'");
@@ -49,9 +50,9 @@ values('$tmpid','$mob','$otp','$et',1,'$dt','$msg','N','A',now())");
             $pidr= mysqli_fetch_array($pidq);
             $pid=$pidr['pid'];
             
-            $inspinfoq= mysqli_query($conn, "INSERT INTO `tmp_patient_info`(`tmp_session_id`, `patient_id`, `patient_name`, `patient_address`, "
+            $inspinfoq= mysqli_query($conn, "INSERT INTO `tmp_patient_info`(`tmp_session_id`, `patient_id`, `patient_name`, `patient_address`, `area_pin`,"
                 . "`mobile_number`,`patient_dob`, `record_created_by`, `record_status`, `record_created_on`) "
-                . "VALUES ('$tmpid','$pid','$pname','$padd','$mob','$pdob','self','A',now())");}
+                . "VALUES ('$tmpid','$pid','$pname','$padd','$ppin','$mob','$pdob','self','A',now())");}
                 
         
         
