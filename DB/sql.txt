@@ -1,0 +1,5 @@
+ALTER TABLE `d_patient_info` 
+ADD COLUMN `area_pin` VARCHAR(45) NULL DEFAULT NULL AFTER `patient_address`;
+
+ALTER TABLE `tmp_patient_info` 
+ADD COLUMN `area_pin` VARCHAR(45) NULL AFTER `patient_address`;

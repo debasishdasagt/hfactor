@@ -1,6 +1,7 @@
 <?php
 header("Content-Type: text/javascript");
 date_default_timezone_set('Asia/Kolkata');
+include_once 'loginhandler.php';
 include_once '../../config.php';
 include_once '../../modules/SMS/smshandler.php';
 $json= array(
@@ -8,9 +9,11 @@ $json= array(
     'err'=>'',
     'otpkey' => ''
 );
-
+$uid="NA";
 if(!isset($_SESSION))
-{session_start();}
+{session_start();
+$uid=$_SESSION['loginid'];
+}
 if(!isset($_SESSION['tmpappid']))
 {
     $_SESSION['tmpappid']= getrandomstring(10);
@@ -51,7 +54,7 @@ values('$tmpid','$chamberid','$mob','$otp','$et',1,'$dt','$msg','N','A',now())")
         
         $instmppinfoq= mysqli_query($conn, "INSERT INTO `tmp_patient_info`(`tmp_session_id`, `patient_id`, `patient_name`, `patient_address`, "
                 . "`mobile_number`, `record_created_by`, `record_status`, `record_created_on`) "
-                . "VALUES ('$tmpid','$pid','$pname','$padd','$mob','self','A',now())");
+                . "VALUES ('$tmpid','$pid','$pname','$padd','$mob','$uid','A',now())");
         
         $instmpappq=  mysqli_query($conn, "INSERT INTO `tmp_chamber_appointment`( `tmp_session_id`, `slot_seq`, `patient_id`, `chamber_id`, `app_time_from`, `app_time_to`,
                 `app_date`, `app_reporting_time`, `app_confirmed`, `app_completed`, `app_remarks`, `record_status`, 

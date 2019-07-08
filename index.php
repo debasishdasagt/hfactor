@@ -298,7 +298,12 @@ unset($_SESSION['tmpappid']);
                             </div>
                                 <div class="row" style="margin-top:20px">
                                     <div class="col-lg-12">
-                                        <input type="text" name="paddress" placeholder="Your Address" class="form-control input-sm">
+                                        <div class="input-group input-group-sm" style="width: 100%">
+                                        <input type="text" name="paddress" placeholder="Your Address" class="form-control">
+                                        <span class="input-group-btn" style="width:0px;"></span>
+                                        <input type="text" name="ppin" placeholder="PIN Code" class="form-control">
+                                        
+                                        </div>
                                     </div>
                                 </div>
                             </div>
