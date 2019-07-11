@@ -93,7 +93,7 @@ unset($_SESSION['tmpappid']);
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Address</span>
                         <input type="text" class="form-control" name="padd" id="padd" placeholder="Patient's Address" >
-                        <input type="text" name="ppin" placeholder="PIN Code" class="form-control">
+                        <input type="text" name="ppin" placeholder="PIN Code" class="form-control" required="true">
                     </div>
                 </div>
                 <br>

@@ -16,11 +16,12 @@ unset($_SESSION['tmpappid']);
 if(isset($_SESSION['pmobile']))
 {
     $pmob=$_SESSION['pmobile'];
-    $getPq=  mysqli_query($conn, "select patient_name,patient_address,mobile_number from d_patient_info where mobile_number='$pmob' and record_status='A' order by id desc limit 1");
+    $getPq=  mysqli_query($conn, "select patient_name,patient_address,area_pin,mobile_number from d_patient_info where mobile_number='$pmob' and record_status='A' order by id desc limit 1");
     $getPr= mysqli_fetch_array($getPq);
     $pname=$getPr['patient_name'];
     $pmob=$getPr['mobile_number'];
     $paddress=$getPr['patient_address'];
+    $ppin=$getPr['area_pin'];
 }
 ?>
 <html>
@@ -76,7 +77,7 @@ if(isset($_SESSION['pmobile']))
                         <span class="input-group-addon">Address</span>
                         <input type="text" class="form-control" name="padd" id="padd" placeholder="Patient's Address" value="<?php echo $paddress; ?>">
                         <span class="input-group-btn" style="width:0px;"></span>
-                        <input type="text" name="ppin" placeholder="PIN Code" class="form-control">
+                        <input type="text" name="ppin" placeholder="PIN Code" class="form-control" required="true" value="<?php echo $ppin; ?>">
                     </div>
                     
                 </div>
