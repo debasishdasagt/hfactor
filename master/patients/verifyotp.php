@@ -34,7 +34,11 @@ if(isset($_GET['otp']) && isset($_GET['key']))
         $updtotpq= mysqli_query($conn, "update d_appointment_otp set otp_verification_status='Y',record_status='V' where tmp_session_id='$key' and otp='$otp' and record_status='A' and now()< otp_expr_on");
         
         if($insappq && $inspinfoq && $updappq && $updpinfoq && $updtotpq)
-        {$json['success']=true;}
+        {$json['success']=true;
+        session_start();
+        unset($_SESSION['tmpappid']);
+        unset($_SESSION['otp']);
+        }
         else{$json['success']=FALSE;$json['err']='Something went Wrong';}
     }
     else

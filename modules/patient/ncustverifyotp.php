@@ -33,9 +33,10 @@ if(isset($_GET['otp']) && isset($_GET['key']))
         
         if($inspinfoq && $updpinfoq && $updtotpq)
         {$json['success']=true;
-        if(!isset($_SESSION))
-{session_start();}
+        
+        session_start();
         unset($_SESSION['tmpappid']);
+        unset($_SESSION['otp']);
         $_SESSION['pmobile']=$pmobile;
         }
         else{$json['success']=FALSE;$json['err']='Something went Wrong';}

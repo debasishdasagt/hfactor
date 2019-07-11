@@ -186,7 +186,7 @@ $('#getappfrm').on('submit',function()
                if(otp != null)
                {
                    
-                   otpchk(otp,data.otpkey);
+                   otpchkprivate(otp,data.otpkey);
                }
                else
                {

@@ -5,10 +5,7 @@
         <group>
             <file>file:/C:/xampp/htdocs/hfactor/index.php</file>
             <file>file:/C:/xampp/htdocs/hfactor/master/patients/docappointment.php</file>
-            <file>file:/C:/xampp/htdocs/hfactor/master/patients/verifyotp.php</file>
-            <file>file:/C:/xampp/htdocs/hfactor/master/patients/otphandler.php</file>
-            <file>file:/C:/xampp/htdocs/hfactor/modules/patient/fcustotphandler.php</file>
-            <file>file:/C:/xampp/htdocs/hfactor/modules/patient/ncustverifyotp.php</file>
+            <file>file:/C:/xampp/htdocs/hfactor/modules/patient/docappointment.php</file>
         </group>
     </open-files>
 </project-private>

@@ -71,12 +71,16 @@ if(isset($_SESSION['pmobile']))
                         <input type="text" class="form-control" name="pname" id="pname" placeholder="Patient's Name" value="<?php echo $pname; ?>">
                     </div>
                 </div><br>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="col-lg-12">
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Address</span>
                         <input type="text" class="form-control" name="padd" id="padd" placeholder="Patient's Address" value="<?php echo $paddress; ?>">
+                        <span class="input-group-btn" style="width:0px;"></span>
+                        <input type="text" name="ppin" placeholder="PIN Code" class="form-control">
                     </div>
+                    
                 </div>
+                <br>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">Mobile Number</span>

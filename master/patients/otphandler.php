@@ -10,7 +10,6 @@ $json= array(
     'otpkey' => ''
 );
 $uid="NA";
-isession_start();
 $uid=$_SESSION['loginid'];
 
 if(!isset($_SESSION['tmpappid']))
@@ -25,8 +24,22 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && $_POST['pmob'] != "")
     $dt=date("Y-m-d");
     $ct=date("Y-m-d H:i:s");
     $et=date("Y-m-d H:i:s",strtotime($ct." +30 minutes"));
-    $otp=  getotp(6);
-    $msg="OTP for Appointment Booking is $otp";
+    $otp="";
+    if(!isset($_SESSION['otp']))
+    {$_SESSION['otp']= "";
+    $_SESSION['otp']=  getotp(6);
+    $otp=$_SESSION['otp'];
+    }
+    
+    else{
+            if($_SESSION['otp']=="")
+            {
+                $_SESSION['otp']=  getotp(6);
+            }
+            $otp=$_SESSION['otp'];
+        }
+    
+    $msg="OTP for Registration is $otp";
     $mob=  mysqli_real_escape_string($conn,$_POST['pmob']);
     $chamberid=mysqli_real_escape_string($conn,$_POST['chamber']);
     $tim=  explode("-",mysqli_real_escape_string($conn,$_POST['chamber_time']));
@@ -76,7 +89,9 @@ else
         $otpcountupd=  mysqli_query($conn, "update d_appointment_otp set sent_count='$count' where tmp_session_id='$tmpid' and otp_sent_date='$dt' and mobile_number='$mob' and chamber_id='$chamberid' and record_status='A'");
         $json['success']=TRUE;
     }
-    else{$json['success']=FALSE;$json['err']="Maximum Number of attempt has been acceded.";};
+    else{$json['success']=FALSE;$json['err']="Maximum Number of attempt has been acceded.";
+    unset($_SESSION['otp']);
+    };
 }
 echo json_encode($json);
 }

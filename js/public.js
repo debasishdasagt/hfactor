@@ -139,6 +139,32 @@ function otpchk(otp,otpkey)
     })
 }
 
+function otpchkprivate(otp,otpkey)
+{
+    $.ajax({
+        url: 'verifyotp.php?otp='+otp+'&key='+otpkey,
+        type:'GET',
+        dataType: 'json',
+        success:function(data)
+        {
+            if(data.success)
+            {
+                alert("Appointment Booked Successfully");
+                location.reload();
+                
+            }
+            else
+            {
+                alert(data.err);
+                console.log("Enablling Button....");
+                $('#getapp').val("Resend OTP");
+                   $('#getapp').removeClass("disabled");
+            }
+        }
+        
+    })
+}
+
 
 function ncustotpchk(otp,otpkey)
 {

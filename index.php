@@ -2,8 +2,8 @@
 <?php
 ob_start();
 include_once 'config.php';
-if(!isset($_SESSION))
-{session_start();}
+
+session_start();
 unset($_SESSION['tmpappid']);
 
 ?>

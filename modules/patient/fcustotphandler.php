@@ -10,8 +10,7 @@ $json= array(
     'otpkey' => ''
 );
 
-if(!isset($_SESSION))
-{session_start();}
+
 if(!isset($_SESSION['tmpappid']))
 {
     $_SESSION['tmpappid']= getrandomstring(10);
@@ -24,7 +23,21 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && $_POST['pmob'] != "")
     $dt=date("Y-m-d");
     $ct=date("Y-m-d H:i:s");
     $et=date("Y-m-d H:i:s",strtotime($ct." +30 minutes"));
-    $otp=  getotp(6);
+    $otp="";
+    if(!isset($_SESSION['otp']))
+    {$_SESSION['otp']= "";
+    $_SESSION['otp']=  getotp(6);
+    $otp=$_SESSION['otp'];
+    }
+    
+    else{
+            if($_SESSION['otp']=="")
+            {
+                $_SESSION['otp']=  getotp(6);
+            }
+            $otp=$_SESSION['otp'];
+        }
+    
     $msg="OTP for Registration is $otp";
     $mob=  mysqli_real_escape_string($conn,$_POST['pmob']);
     
@@ -36,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && $_POST['pmob'] != "")
     $getotpstq=  mysqli_query($conn, "select id from d_new_patient_otp where tmp_session_id='$tmpid' and otp_sent_date='$dt' and mobile_number='$mob' and record_status='A'");
     if(mysqli_num_rows($getotpstq)==0)
     {
+       
         $otpsent= sendsms($mob, $msg);
         $insotprec=  mysqli_query($conn,"INSERT INTO `d_new_patient_otp`
 (`tmp_session_id`,`mobile_number`,`otp`,`otp_expr_on`,`sent_count`,`otp_sent_date`,`otp_msg_body`,`otp_verification_status`,
@@ -74,6 +88,7 @@ values('$tmpid','$mob','$otp','$et',1,'$dt','$msg','N','A',now())");
     }
 else
 {
+    
     $getotpstatusq=  mysqli_query($conn,"select sent_count from d_new_patient_otp where tmp_session_id='$tmpid' and otp_sent_date='$dt' and mobile_number='$mob' and record_status='A'");
     $getotpstatusr=  mysqli_fetch_array($getotpstatusq);
     if($getotpstatusr['sent_count']<3)
@@ -88,7 +103,9 @@ else
         
         else{$json['success']=FALSE;$json['err']="Somthing went wrong while resending OTP";};
     }
-    else{$json['success']=FALSE;$json['err']="Maximum Number of attempt has been acceded.";};
+    else{$json['success']=FALSE;$json['err']="Maximum Number of attempt has been acceded.";
+    unset($_SESSION['otp']);
+    };
 }
 echo json_encode($json);
 }

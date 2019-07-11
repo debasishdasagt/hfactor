@@ -24,8 +24,22 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && $_POST['pmob'] != "")
     $dt=date("Y-m-d");
     $ct=date("Y-m-d H:i:s");
     $et=date("Y-m-d H:i:s",strtotime($ct." +30 minutes"));
-    $otp=  getotp(6);
-    $msg="OTP for Appointment Booking is $otp";
+    $otp="";
+    if(!isset($_SESSION['otp']))
+    {$_SESSION['otp']= "";
+    $_SESSION['otp']=  getotp(6);
+    $otp=$_SESSION['otp'];
+    }
+    
+    else{
+            if($_SESSION['otp']=="")
+            {
+                $_SESSION['otp']=  getotp(6);
+            }
+            $otp=$_SESSION['otp'];
+        }
+    
+    $msg="OTP for Registration is $otp";
     $mob=  mysqli_real_escape_string($conn,$_POST['pmob']);
     $chamberid=mysqli_real_escape_string($conn,$_POST['chamber']);
     $tim=  explode("-",mysqli_real_escape_string($conn,$_POST['chamber_time']));
@@ -35,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && $_POST['pmob'] != "")
     $pid=$pidr['pid'];
     $pname=mysqli_real_escape_string($conn,$_POST['pname']);
     $padd=mysqli_real_escape_string($conn,$_POST['padd']);
+    $ppin=mysqli_real_escape_string($conn,$_POST['ppin']);
     $otpsent=  "";
     
     
@@ -48,9 +63,9 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && $_POST['pmob'] != "")
 values('$tmpid','$chamberid','$mob','$otp','$et',1,'$dt','$msg','N','A',now())");
         
         
-        $instmppinfoq= mysqli_query($conn, "INSERT INTO `tmp_patient_info`(`tmp_session_id`, `patient_id`, `patient_name`, `patient_address`, "
+        $instmppinfoq= mysqli_query($conn, "INSERT INTO `tmp_patient_info`(`tmp_session_id`, `patient_id`, `patient_name`, `patient_address`,`area_pin`, "
                 . "`mobile_number`, `record_created_by`, `record_status`, `record_created_on`) "
-                . "VALUES ('$tmpid','$pid','$pname','$padd','$mob','self','A',now())");
+                . "VALUES ('$tmpid','$pid','$pname','$padd','$ppin','$mob','self','A',now())");
         
         $instmpappq=  mysqli_query($conn, "INSERT INTO `tmp_chamber_appointment`( `tmp_session_id`, `slot_seq`, `patient_id`, `chamber_id`, `app_time_from`, `app_time_to`,
                 `app_date`, `app_reporting_time`, `app_confirmed`, `app_completed`, `app_remarks`, `record_status`, 
@@ -83,7 +98,9 @@ else
         $otpcountupd=  mysqli_query($conn, "update d_appointment_otp set sent_count='$count' where tmp_session_id='$tmpid' and otp_sent_date='$dt' and mobile_number='$mob' and chamber_id='$chamberid' and record_status='A'");
         $json['success']=TRUE;
     }
-    else{$json['success']=FALSE;$json['err']="Maximum Number of attempt has been acceded.";};
+    else{$json['success']=FALSE;$json['err']="Maximum Number of attempt has been acceded.";
+    unset($_SESSION['otp']);
+    };
 }
 echo json_encode($json);
 }
