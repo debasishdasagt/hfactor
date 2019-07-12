@@ -553,3 +553,10 @@ background-color: linear-gradient(135deg, rgba(19,75,184,1) 15%, rgba(92,162,226
 background-image: url('../images/firstback.jpg')
 
 }
+
+
+.ratestars
+{
+    cursor: pointer;
+    
+}

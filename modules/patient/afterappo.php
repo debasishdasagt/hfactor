@@ -228,9 +228,49 @@
             ?>
                     
                     
+                    <div style="padding-top: 70px; font-size: 14px; font-style: italic"><i class="glyphicon glyphicon-exclamation-sign"></i> Please Share your experience with us. So that we can improve our services and to avoid such inconvenience ( if any ) to other patients as well as you in near future.</div>
+                    
+                    
+                    <?php
+                    $gtdnameq=  mysqli_query($conn, "select d_name,doctor_code from d_doctor_info where doctor_code="
+                            . "(select doctor_code from d_chambers where chamber_id='$chamber_id' and record_status='A' limit 1)"
+                            . " and record_status='A'");
+                    $gtdnamer=  mysqli_fetch_array($gtdnameq);
+                    
+                    
+                    
+                    ?>
                     </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="text-align: left">
+                        <br> <h5>Rate Doctor :<b> <?php echo $gtdnamer['d_name']?></b></h5>
                         
-                   
+                        <div style="color: #51b9f4; font-size: 24px; width: 100%; text-align: center; border-top: 1px solid #cccccc; padding-top: 10px">
+                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
+                            <i class="glyphicon glyphicon-star ratestars"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
+                            <input type="text" class="form-control input-sm" id="" placeholder="Your Feedback">
+                            <input type="hidden" id="doctorstars" name="chamberstars">
+                            <a href="" class="btn btn-sm btn-info" >Submit</a>
+                        </div>
+                        
+                    </div>    
+                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="text-align: left">
+                       <br> <h5>Rate The Chamber :<b> <?php echo $chnamer['chname']?></b></h5>
+                        
+                        <div style="color: #51b9f4; font-size: 24px; width: 100%; text-align: center; border-top: 1px solid #cccccc; padding-top: 10px">
+                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
+                            <i class="glyphicon glyphicon-star ratestars"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
+                            <input type="text" class="form-control input-sm" id="" placeholder="Your Feedback">
+                            <input type="hidden" id="chamberstars" name="chamberstars">
+                            <a href="" class="btn btn-sm btn-info">Submit</a>
+                        </div>
+                        
+                    </div>    
                     
                     
                     
