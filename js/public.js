@@ -332,3 +332,76 @@ function checkmob(item)
         $('#newcustsubmit').addClass('disabled');
     }
 }
+
+
+function starrating(eid,stars,val,typ)
+{
+    clrratingstars(eid,typ);
+    switch(stars)
+    {
+        case '1':
+            
+            $('#'+eid+typ+'_'+1).removeClass("glyphicon-star-empty");
+            $('#'+eid+typ+'_'+1).addClass("glyphicon-star");
+            $('#'+val).val('1');
+            break;
+        
+        case '2':
+            $('#'+eid+typ+'_'+1).removeClass("glyphicon-star-empty");
+            $('#'+eid+typ+'_'+2).removeClass("glyphicon-star-empty");
+            $('#'+eid+typ+'_'+1).addClass("glyphicon-star");
+            $('#'+eid+typ+'_'+2).addClass("glyphicon-star");
+            $('#'+val).val('2');
+            break;
+        case '3':
+            $('#'+eid+typ+'_'+1).removeClass("glyphicon-star-empty");
+            $('#'+eid+typ+'_'+2).removeClass("glyphicon-star-empty");
+            $('#'+eid+typ+'_'+3).removeClass("glyphicon-star-empty");
+            $('#'+eid+typ+'_'+1).addClass("glyphicon-star");
+            $('#'+eid+typ+'_'+2).addClass("glyphicon-star");
+            $('#'+eid+typ+'_'+3).addClass("glyphicon-star");
+            $('#'+val).val('3');
+            break;
+            
+        case '4':
+            $('#'+eid+typ+'_'+1).removeClass("glyphicon-star-empty");
+            $('#'+eid+typ+'_'+2).removeClass("glyphicon-star-empty");
+            $('#'+eid+typ+'_'+3).removeClass("glyphicon-star-empty");
+            $('#'+eid+typ+'_'+4).removeClass("glyphicon-star-empty");
+            $('#'+eid+typ+'_'+1).addClass("glyphicon-star");
+            $('#'+eid+typ+'_'+2).addClass("glyphicon-star");
+            $('#'+eid+typ+'_'+3).addClass("glyphicon-star");
+            $('#'+eid+typ+'_'+4).addClass("glyphicon-star");
+            $('#'+val).val('4');
+            break;
+        case '5':
+            $('#'+eid+typ+'_'+1).removeClass("glyphicon-star-empty");
+            $('#'+eid+typ+'_'+2).removeClass("glyphicon-star-empty");
+            $('#'+eid+typ+'_'+3).removeClass("glyphicon-star-empty");
+            $('#'+eid+typ+'_'+4).removeClass("glyphicon-star-empty");
+            $('#'+eid+typ+'_'+5).removeClass("glyphicon-star-empty");
+            $('#'+eid+typ+'_'+1).addClass("glyphicon-star");
+            $('#'+eid+typ+'_'+2).addClass("glyphicon-star");
+            $('#'+eid+typ+'_'+3).addClass("glyphicon-star");
+            $('#'+eid+typ+'_'+4).addClass("glyphicon-star");
+            $('#'+eid+typ+'_'+5).addClass("glyphicon-star");
+            $('#'+val).val('5');
+            break;
+       
+    }
+    
+}
+
+function clrratingstars(eid,typ)
+{
+    $('#'+eid+typ+'_'+1).removeClass("glyphicon-star");
+    $('#'+eid+typ+'_'+2).removeClass("glyphicon-star");
+    $('#'+eid+typ+'_'+3).removeClass("glyphicon-star");
+    $('#'+eid+typ+'_'+4).removeClass("glyphicon-star");
+    $('#'+eid+typ+'_'+5).removeClass("glyphicon-star"); 
+    $('#'+eid+typ+'_'+1).addClass("glyphicon-star-empty");
+    $('#'+eid+typ+'_'+2).addClass("glyphicon-star-empty");
+    $('#'+eid+typ+'_'+3).addClass("glyphicon-star-empty");
+    $('#'+eid+typ+'_'+4).addClass("glyphicon-star-empty");
+    $('#'+eid+typ+'_'+5).addClass("glyphicon-star-empty");
+}

@@ -245,13 +245,13 @@
                         <br> <h5>Rate Doctor :<b> <?php echo $gtdnamer['d_name']?></b></h5>
                         
                         <div style="color: #51b9f4; font-size: 24px; width: 100%; text-align: center; border-top: 1px solid #cccccc; padding-top: 10px">
-                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
-                            <i class="glyphicon glyphicon-star ratestars"></i>
-                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
-                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
-                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars" id="<?php echo $gtdnamer['doctor_code']?>doc_1" onclick="starrating('<?php echo $gtdnamer['doctor_code']?>','1','doctorstars','doc')"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars" id="<?php echo $gtdnamer['doctor_code']?>doc_2" onclick="starrating('<?php echo $gtdnamer['doctor_code']?>','2','doctorstars','doc')"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars" id="<?php echo $gtdnamer['doctor_code']?>doc_3" onclick="starrating('<?php echo $gtdnamer['doctor_code']?>','3','doctorstars','doc')"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars" id="<?php echo $gtdnamer['doctor_code']?>doc_4" onclick="starrating('<?php echo $gtdnamer['doctor_code']?>','4','doctorstars','doc')"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars" id="<?php echo $gtdnamer['doctor_code']?>doc_5" onclick="starrating('<?php echo $gtdnamer['doctor_code']?>','5','doctorstars','doc')"></i>
                             <input type="text" class="form-control input-sm" id="" placeholder="Your Feedback">
-                            <input type="hidden" id="doctorstars" name="chamberstars">
+                            <input type="hidden" id="doctorstars" name="doctorstars" value="0">
                             <a href="" class="btn btn-sm btn-info" >Submit</a>
                         </div>
                         
@@ -260,13 +260,14 @@
                        <br> <h5>Rate The Chamber :<b> <?php echo $chnamer['chname']?></b></h5>
                         
                         <div style="color: #51b9f4; font-size: 24px; width: 100%; text-align: center; border-top: 1px solid #cccccc; padding-top: 10px">
-                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
-                            <i class="glyphicon glyphicon-star ratestars"></i>
-                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
-                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
-                            <i class="glyphicon glyphicon-star-empty ratestars"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars" id="<?php echo $chamber_id?>ch_1" onclick="starrating('<?php echo $chamber_id?>','1','chamberstars','ch')"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars" id="<?php echo $chamber_id?>ch_2" onclick="starrating('<?php echo $chamber_id?>','2','chamberstars','ch')"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars" id="<?php echo $chamber_id?>ch_3" onclick="starrating('<?php echo $chamber_id?>','3','chamberstars','ch')"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars" id="<?php echo $chamber_id?>ch_4" onclick="starrating('<?php echo $chamber_id?>','4','chamberstars','ch')"></i>
+                            <i class="glyphicon glyphicon-star-empty ratestars" id="<?php echo $chamber_id?>ch_5" onclick="starrating('<?php echo $chamber_id?>','5','chamberstars','ch')"></i>
+           
                             <input type="text" class="form-control input-sm" id="" placeholder="Your Feedback">
-                            <input type="hidden" id="chamberstars" name="chamberstars">
+                            <input type="hidden" id="chamberstars" name="chamberstars" value="0">
                             <a href="" class="btn btn-sm btn-info">Submit</a>
                         </div>
                         
