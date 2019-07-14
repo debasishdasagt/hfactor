@@ -405,3 +405,35 @@ function clrratingstars(eid,typ)
     $('#'+eid+typ+'_'+4).addClass("glyphicon-star-empty");
     $('#'+eid+typ+'_'+5).addClass("glyphicon-star-empty");
 }
+
+
+function submitrating(type,stars,fb,appid,patientid,eid)
+{
+    var r=$('#'+stars).val();
+    var f=$('#'+fb).val();
+    if(r=='0' && f=='')
+    {
+        alert("Nothing to Submit");
+    }
+    else
+    {
+        $.ajax({
+
+            url: 'modules/patient/saverating.php',
+            type: 'POST',
+            data: {rtype:type,rating:r,feedback:f,app:appid,pid:patientid,id:eid},
+            dataType: 'JSON',
+            success:function(data,status)
+            {
+                if(data.success)
+                {
+                    alert(data.err);
+                }
+                else
+                {
+                    alert(data.err);
+                }
+            }
+        })
+    }
+}

@@ -554,6 +554,15 @@ background-image: url('../images/firstback.jpg')
 
 }
 
+.ratingbox
+{
+    
+    background-color: #ffffff;
+    box-shadow: 0px 0px 5px #000000;
+    margin:5px;
+    padding: 5px;
+}
+
 
 .ratestars
 {

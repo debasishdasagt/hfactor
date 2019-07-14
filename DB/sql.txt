@@ -3,3 +3,21 @@ ADD COLUMN `area_pin` VARCHAR(45) NULL DEFAULT NULL AFTER `patient_address`;
 
 ALTER TABLE `tmp_patient_info` 
 ADD COLUMN `area_pin` VARCHAR(45) NULL AFTER `patient_address`;
+
+
+12/07/19======
+CREATE TABLE `d_rating_feedback` (
+  `id` INT NULL AUTO_INCREMENT,
+  `r_type` VARCHAR(500) NULL DEFAULT NULL,
+  `r_for` VARCHAR(50) NULL DEFAULT NULL,
+  `r_stars` INT NULL DEFAULT NULL,
+  `r_feedback` VARCHAR(500) NULL DEFAULT NULL,
+  `record_status` VARCHAR(45) NULL DEFAULT NULL,
+  `record_created_on` DATETIME NULL DEFAULT NULL,
+  `record_updated_on` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`id`));
+
+ALTER TABLE `d_rating_feedback` 
+ADD COLUMN `app_id` VARCHAR(45) NULL AFTER `r_feedback`;
+ALTER TABLE `d_rating_feedback` 
+ADD COLUMN `patient_id` VARCHAR(45) NULL DEFAULT NULL AFTER `app_id`;

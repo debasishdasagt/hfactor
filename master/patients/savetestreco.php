@@ -19,6 +19,8 @@ if(isset($_POST['appocomp']) && $_POST['appocomp'])
     $getmobq=  mysqli_query($conn,"select mobile_number from d_patient_info where patient_id='$patient_id' and record_status='A'");
     $getmobr= mysqli_fetch_array($getmobq);
     $json['mob']=$getmobr['mobile_number'];
+    $getdocq=  mysqli_query($conn, "select d_name from d_doctor_info where doctor_code in(select doctor_code from d_chambers where chamber_id='$chamber_id' and record_status='A') and record_status='A'");
+    $getdocr= mysqli_fetch_array($getdocq);
     $appcomp=mysqli_real_escape_string($conn,$_POST['appocomp']);
     $sendfreq=mysqli_real_escape_string($conn,$_POST['sendfreq']);
     
@@ -40,7 +42,7 @@ VALUES('$chamber_id','$patient_id','$tmparr[0]','A',now())");
         {
             $intermnalurl="modules/patient/afterappo.php";
             $publicurl="r.php?q=".getrandomstring(6);
-            $smsbody="Thank you for visiting : <Chamber Name>.  Please visit: http://".$_SERVER['HTTP_HOST']."/hfactor/".$publicurl." to find best labs arround you";
+            $smsbody="Thank you for consulting Dr. ".$getdocr['d_name']." with us.  Please visit http://".$_SERVER['HTTP_HOST']."/".$publicurl." to find best labs arround you and to share your valuable feedback with us" ;
             $insredirectq=  mysqli_query($conn, "INSERT INTO `d_redirect_url`(`public_url`,`internal_url`,`p1`,`record_status`,`record_created_on`)
 VALUES('$publicurl','$intermnalurl','$pid','Y',now())");
             

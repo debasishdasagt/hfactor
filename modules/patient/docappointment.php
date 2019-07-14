@@ -9,6 +9,7 @@ include_once '../../config.php';
 $pname="";
 $pmob="";
 $paddress="";
+$ppin="";
 if(!isset($_SESSION))
 {session_start();}
 unset($_SESSION['tmpappid']);
