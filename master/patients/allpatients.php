@@ -39,14 +39,7 @@ if($rolecd=='1003')
 </head>
 <body>
     <div class='container'>
-            <div class='btn-group btn-group-sm'>
-                <a class='btn btn-info' role='button' href="patientsday.php">Today's Patients</a>
-                
-                <a class='btn btn-info' role='button' href="newpatient.php">New Patient</a>
-                <a class='btn btn-info' role='button' href="allpatients.php">All Patients</a>
-                
-                
-            </div><hr>
+            <?php include_once 'menu.php'; ?><hr>
             
           
             

@@ -30,11 +30,7 @@ include_once 'loginhandler.php';
 </head>
     <body>
         <div class="container">
-            <div class='btn-group btn-group-sm'>
-                <a class='btn btn-info' role='button' href="alldoctors.php">All Doctors</a>
-                <a class='btn btn-info' role='button' href="addchamber.php">Add  Chamber</a>
-                <a class='btn btn-info' role='button' href="allchambers.php">All Chambers</a>
-            </div><hr>
+            <?php include_once 'menu.php'; ?><hr>
             <div class="well" style="text-align: center">
                 <h4>New Doctor Registration</h4>
             </div>
