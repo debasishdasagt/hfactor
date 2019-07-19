@@ -61,14 +61,14 @@ unset($_SESSION['tmpappid']);
       </button>
         <a class="navbar-brand" href="#" style="color:#ffffff;">
             <div class=" hidden-xs hidden-sm"  style="
-                 /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#5b5b5b+0,dbdbdb+100&0.58+0,1+45,1+100 */
-                background: -moz-linear-gradient(top,  rgba(91,91,91,0.58) 0%, rgba(149,149,149,1) 45%, rgba(219,219,219,1) 100%); /* FF3.6-15 */
-                background: -webkit-linear-gradient(top,  rgba(91,91,91,0.58) 0%,rgba(149,149,149,1) 45%,rgba(219,219,219,1) 100%); /* Chrome10-25,Safari5.1-6 */
-                background: linear-gradient(to bottom,  rgba(91,91,91,0.58) 0%,rgba(149,149,149,1) 45%,rgba(219,219,219,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#945b5b5b', endColorstr='#dbdbdb',GradientType=0 ); /* IE6-9 */
+                 /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#bababa+0,fcfcfc+100&0.58+0,1+45,1+100 */
+background: -moz-linear-gradient(top,  rgba(186,186,186,0.58) 0%, rgba(216,216,216,1) 45%, rgba(252,252,252,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(186,186,186,0.58) 0%,rgba(216,216,216,1) 45%,rgba(252,252,252,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(186,186,186,0.58) 0%,rgba(216,216,216,1) 45%,rgba(252,252,252,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#94bababa', endColorstr='#fcfcfc',GradientType=0 ); /* IE6-9 */
 
                  ;margin-top: -35px;
-                 position: relative; padding:0px 3px 3px 3px; height: 90px; width: 220px; border-radius: 0px 0px 10px 10px;
+                 position: relative; padding:0px 3px 3px 3px; height: 80px; width: 220px; border-radius: 0px 0px 10px 10px;
                  box-shadow: 0px 5px 4px #444444">
                 <img src="images/logo.png" width="100%">
             </div>
