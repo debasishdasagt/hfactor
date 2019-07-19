@@ -13,7 +13,7 @@ unset($_SESSION['tmpappid']);
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width= device-width, initial-scale = 1">
-  <title>eCure365</title>
+  <title>Doctor 24/7</title>
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel='stylesheet' href='bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css'>
@@ -60,7 +60,7 @@ unset($_SESSION['tmpappid']);
         <span class="icon-bar"></span>
       </button>
         <a class="navbar-brand" href="#" style="color:#ffffff;">
-            <div class=" hidden-xs hidden-sm"  style="
+            <div  id='logodiv' class=" hidden-xs hidden-sm"  style="
                  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#bababa+0,fcfcfc+100&0.58+0,1+45,1+100 */
 background: -moz-linear-gradient(top,  rgba(186,186,186,0.58) 0%, rgba(216,216,216,1) 45%, rgba(252,252,252,1) 100%); /* FF3.6-15 */
 background: -webkit-linear-gradient(top,  rgba(186,186,186,0.58) 0%,rgba(216,216,216,1) 45%,rgba(252,252,252,1) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -73,11 +73,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#94bababa', e
                 <img src="images/logo.png" width="100%">
             </div>
             <div class="hidden-lg hidden-md hidden-xs" style="margin-top: -40px; margin-left: -0px; position: relative">
-                <img src="images/logo.png" width="90%">
+                <img src="images/logo_glow.png"  style="width: 180px; margin-top: 12px;" >
             </div>
             
             <div class="hidden-lg hidden-md hidden-sm" style="margin-top: -30px; margin-left: -25px; position: relative">
-                <img src="images/logo.png" width="90%">
+                <img src="images/logo_glow.png" style="width: 150px; margin-top: 12px;">
             </div>
         </a>
     </div>
@@ -325,9 +325,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#94bababa', e
         <div class="container" style="width:80%">
             <div class="row" >
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <h5>eCure365</h5>
+                <h5>Doctor 24/7</h5>
                 
-                help@ecure365.com
+                help@doctor247.in
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <h5>Services</h5>
@@ -344,7 +344,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#94bababa', e
                 BIH Technologies Pvt. Ltd.<br>
                 TMC Road, Hapania, 1st Floor of UBI ATM
                 <br>Sadar, Agartala, West Tripura, Tripura-799014<br>
-e-mail: ecure365@biht.in
+e-mail: doctor247@biht.in
                 </p>
             </div>
                 <div class="col-lg-3 col-md-12 col-sm-6 col-xs-12">

@@ -24,7 +24,7 @@ if($rolecd=='1003')
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width= device-width, initial-scale = 1">
-  <title>i-Health Care</title>
+  <title>Doctor 24/7</title>
   <link rel='stylesheet' href='../../bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css'>
   <link rel='stylesheet' href='../../css/page_style.css'>
    <link href="../../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">

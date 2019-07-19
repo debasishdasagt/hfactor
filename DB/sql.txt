@@ -21,3 +21,11 @@ ALTER TABLE `d_rating_feedback`
 ADD COLUMN `app_id` VARCHAR(45) NULL AFTER `r_feedback`;
 ALTER TABLE `d_rating_feedback` 
 ADD COLUMN `patient_id` VARCHAR(45) NULL DEFAULT NULL AFTER `app_id`;
+
+
+CREATE FUNCTION `get_doctor_name`(`d_id` varchar(45)) RETURNS varchar(500) CHARSET latin1
+BEGIN
+declare d_nam varchar(500);
+set d_nam:=(select ifnull(d_name,"") from d_doctor_info where doctor_code=d_id and record_status='A' );
+RETURN d_nam;
+END

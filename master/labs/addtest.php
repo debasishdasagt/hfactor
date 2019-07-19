@@ -24,7 +24,7 @@ $rolecd= $roleckr['user_role_code'];
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width= device-width, initial-scale = 1">
-  <title>eCure365</title>
+  <title>Doctor 24/7</title>
   <link rel='stylesheet' href='../../bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css'>
   <link rel='stylesheet' href='../../css/page_style.css'>
   <style>

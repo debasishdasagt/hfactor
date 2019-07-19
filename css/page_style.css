@@ -569,3 +569,9 @@ background-image: url('../images/firstback.jpg')
     cursor: pointer;
     
 }
+
+
+#logodiv
+{
+    transition: all 0.3s ease-in-out;
+}

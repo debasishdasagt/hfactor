@@ -437,3 +437,22 @@ function submitrating(type,stars,fb,appid,patientid,eid)
         })
     }
 }
+
+
+$(window).scroll(function()
+{
+    if($(window).scrollTop() > 200)
+    {
+        $('#logodiv').css("margin-top","-15px");
+        $('#logodiv').css("width","150px");
+        $('#logodiv').css("height","50px");
+        $('#header1').slideUp(100);
+    }
+    else
+    {
+        $('#logodiv').css("margin-top","-35px");
+        $('#logodiv').css("width","220px");
+        $('#logodiv').css("height","80px");
+        $('#header1').slideDown(200);
+    }
+});
