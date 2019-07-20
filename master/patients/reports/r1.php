@@ -29,7 +29,8 @@ and dca.chamber_id=dc.chamber_id and dca.record_status='A' and dca.app_date betw
         {
         ?>
 <div class="col-lg-12" style="text-align: right"><div class="btn-group btn-group-sm">
-                <button class="btn btn-default">PDF</button>
+                <a class="btn btn-default" href="reports/r1pdf.php?fd=<?php echo $fdate; ?>&td=<?php echo $tdate; ?>" target="blank">PDF</a> 
+  
                 <a class="btn btn-default" href="reports/r1csv.php?fd=<?php echo $fdate; ?>&td=<?php echo $tdate; ?>" target="blank">CSV</a> 
     </div></div>
 <table class="table table-bordered table-striped">
@@ -76,7 +77,8 @@ and dca.chamber_id=dc.chamber_id and dca.record_status='A' and dca.app_date betw
         {
         ?>
 <div class="col-lg-12" style="text-align: right"><div class="btn-group btn-group-sm">
-                <button class="btn btn-default">PDF</button>
+                <a class="btn btn-default" href="reports/r1pdf.php?fd=<?php echo $fdate; ?>&td=<?php echo $tdate; ?>" target="blank">PDF</a> 
+    
                 <a class="btn btn-default" href="reports/r1csv.php?fd=<?php echo $fdate; ?>&td=<?php echo $tdate; ?>" target="blank">CSV</a> 
     </div></div>
 <table class="table table-bordered table-striped">
