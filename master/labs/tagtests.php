@@ -154,6 +154,8 @@ FROM `d_labs` where record_status='A' and lab_id='$labcd'";
                                 <?php echo $testsr['test_name']; ?>
                             </td>
                             <td>
+                                <input type="radio" id="ttype_<?php echo $labsr['lab_id'].$testsr['test_code']; ?>" name="ttype_<?php echo $labsr['lab_id'].$testsr['test_code']; ?>" value="Sample Collect"> Sample Collect
+                                <input type="radio" id="ttype_<?php echo $labsr['lab_id'].$testsr['test_code']; ?>" name="ttype_<?php echo $labsr['lab_id'].$testsr['test_code']; ?>" value="Full Test"> Full Test
                                 <input type="number" class="form-control" id="rate_<?php echo $labsr['lab_id'].$testsr['test_code']; ?>" placeholder="Rate" style="max-width: 100px" <?php if($tagerate!='0') {echo "value='".$tagerate."'";} ?>>
                             </td>
                             <td align="center">

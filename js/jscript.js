@@ -83,13 +83,16 @@ function saved()
     function taguntag(lid,tid)
     {
         var rateid="rate_"+lid+tid;
+        var ttype="ttype_"+lid+tid;
         var btnid="btn_"+lid+tid;
         if(document.getElementById(rateid).value !="")
         {
             $.post("labtestmapping.php",{
                 labid: lid,
                 testid: tid,
-                rate: document.getElementById(rateid).value},
+                rate: document.getElementById(rateid).value,
+                ttyp: document.getElementById(ttype).value},
+            
             function(data,status)
             {
                 if(data==='1')
