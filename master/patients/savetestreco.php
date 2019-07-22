@@ -24,7 +24,7 @@ if(isset($_POST['appocomp']) && $_POST['appocomp'])
     $appcomp=mysqli_real_escape_string($conn,$_POST['appocomp']);
     $sendfreq=mysqli_real_escape_string($conn,$_POST['sendfreq']);
     
-    $remoldrecq=  mysqli_query($conn, "update d_tests_recommended set record_status='D' where record_status='A' and patient_id='$patient_id'");
+    $remoldrecq=  mysqli_query($conn, "update d_tests_recommended set record_status='D', record_updated_on=now() where record_status='A' and patient_id='$patient_id'");
     if(isset($_POST['dataa']))
     {
     $tests=$_POST['dataa'];

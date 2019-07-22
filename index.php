@@ -307,7 +307,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#94bababa', e
                                     </div>
                                 </div>
                             </div>
-                            <input type="submit" class="btn btn-success disabled" id="newcustsubmit" value="Get Appointment" style="margin-top: 30px">
+                            <input type="submit" class="btn btn-success disabled" disabled="disabled" id="newcustsubmit" value="Get Appointment" style="margin-top: 30px">
 
                         </form>
                 
