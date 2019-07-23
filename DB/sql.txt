@@ -29,3 +29,11 @@ declare d_nam varchar(500);
 set d_nam:=(select ifnull(d_name,"") from d_doctor_info where doctor_code=d_id and record_status='A' );
 RETURN d_nam;
 END
+
+
+
+ALTER TABLE `ihealthcare`.`lab_test_mapping` 
+ADD COLUMN `test_or_sample` VARCHAR(500) NULL DEFAULT NULL AFTER `test_id`;
+
+
+update lab_test_mapping set test_or_sample='Full Test' where record_status='A';

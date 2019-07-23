@@ -131,16 +131,19 @@ FROM `d_labs` where record_status='A' and lab_id='$labcd'";
                     {
                      while($testsr=  mysqli_fetch_array($tests))
                     {   $tagerate='0';
+                        $torsc='';
                          $testcd=$testsr['test_code'];
                          $labcd=$labsr['lab_id'];
                          $cktag=mysqli_query($conn,"SELECT `lab_test_mapping`.`id`,
-                                `lab_test_mapping`.`test_rate`
+                                `lab_test_mapping`.`test_rate`,`lab_test_mapping`.`test_or_sample`
                             FROM `lab_test_mapping` where record_status='A' and lab_id='$labcd' and test_id='$testcd'");
                          
                          $ck=  mysqli_num_rows($cktag);
                          if($ck>0)
                          {$ckr=  mysqli_fetch_array($cktag);
-                         $tagerate=$ckr['test_rate'];}
+                         $tagerate=$ckr['test_rate'];
+                         $torsc=$ckr['test_or_sample'];
+                         }
                          
                          ?>
                         
@@ -153,11 +156,23 @@ FROM `d_labs` where record_status='A' and lab_id='$labcd'";
                             <td>
                                 <?php echo $testsr['test_name']; ?>
                             </td>
-                            <td>
-                                <input type="radio" id="ttype_<?php echo $labsr['lab_id'].$testsr['test_code']; ?>" name="ttype_<?php echo $labsr['lab_id'].$testsr['test_code']; ?>" value="Sample Collect"> Sample Collect
-                                <input type="radio" id="ttype_<?php echo $labsr['lab_id'].$testsr['test_code']; ?>" name="ttype_<?php echo $labsr['lab_id'].$testsr['test_code']; ?>" value="Full Test"> Full Test
-                                <input type="number" class="form-control" id="rate_<?php echo $labsr['lab_id'].$testsr['test_code']; ?>" placeholder="Rate" style="max-width: 100px" <?php if($tagerate!='0') {echo "value='".$tagerate."'";} ?>>
-                            </td>
+                                    <td><table border='0'>
+                                            <tr>
+                                                <td style="padding: 3px">
+                                                    <input type="radio" id="ttype_<?php echo $labsr['lab_id'].$testsr['test_code']."sc"; ?>" name="ttype_<?php echo $labsr['lab_id'].$testsr['test_code']; ?>" value="Sample Collect" <?php if($torsc=='Sample Collect') {echo "checked='checked'";} ?>> Sample Collect
+                                
+                                                </td>
+                                                <td style="padding: 3px">
+                                                   <input type="radio" id="ttype_<?php echo $labsr['lab_id'].$testsr['test_code']."ft"; ?>" name="ttype_<?php echo $labsr['lab_id'].$testsr['test_code']; ?>" value="Full Test" <?php if($torsc=='Full Test') {echo "checked='checked'";} ?>> Full Test
+                                 
+                                                </td>
+                                                <td style="padding: 3px">
+                                                    <input type="number" class="form-control" id="rate_<?php echo $labsr['lab_id'].$testsr['test_code']; ?>" placeholder="Rate" style="max-width: 100px" <?php if($tagerate!='0') {echo "value='".$tagerate."'";} ?>>
+                            
+                                                </td>
+                                            </tr>
+                                </table>
+                                </td>
                             <td align="center">
                             <?php
                             if($ck>0)

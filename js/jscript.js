@@ -85,13 +85,21 @@ function saved()
         var rateid="rate_"+lid+tid;
         var ttype="ttype_"+lid+tid;
         var btnid="btn_"+lid+tid;
-        if(document.getElementById(rateid).value !="")
+        var tt="~";
+        
+        if(document.getElementById(ttype+"sc").checked)
+        {tt="Sample Collect";}
+        if(document.getElementById(ttype+"ft").checked)
+        {tt="Full Test";}
+        
+        console.log(tt+" 2");
+        if(document.getElementById(rateid).value !="" && tt != "~")
         {
             $.post("labtestmapping.php",{
                 labid: lid,
                 testid: tid,
                 rate: document.getElementById(rateid).value,
-                ttyp: document.getElementById(ttype).value},
+                ttyp: tt},
             
             function(data,status)
             {
