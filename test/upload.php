@@ -1,4 +1,8 @@
 <?php
+header("Content-Type: text/javascript");
+date_default_timezone_set('Asia/Kolkata');
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
+
 $json=array(
     'success'=>false,
     'err'=>'',
@@ -21,7 +25,7 @@ $filetype = array('jpeg','jpg','png','gif','PNG','JPEG','JPG');
 
              @move_uploaded_file($key['tmp_name'],$path);
              $fileName=$path;
-             $returned_data = triphoto_getGPS($fileName);
+             $returned_data = triphoto_getGPS($path);
              $json['success']= true;
              $json['err']='done uploading';
              $json['file']= $path;
