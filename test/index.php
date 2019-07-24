@@ -8,16 +8,36 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <style>          
+          #map { 
+            height: 200px;    
+            width: 300px; 
+            position: relative;
+            z-index: 4;
+            left:300px;
+          }         
+          
+          #imagecon
+          {
+              width: 300px; height: 200px; background-color: #cccccc; overflow: hidden;
+              position: absolute;
+              z-index: 8;
+          }
+          
+          #imgmap
+          {
+              margin-bottom: 20px;
+          }
+        </style>  
         <script src="../js/jquery-3.4.1.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM3kDtr3fESrA2j5JtNDrF5D0uvjiftQM&callback=initMap" async defer></script>
     <script>
-        
+        var lon,lat;
         function submitForm() {
 
-    var fcnt = $('#filecount').val();
+    
     var fname = $('#filename').val();
     var imgclean = $('#file');
-    if(fcnt<=5)
-    {
     data = new FormData();
     data.append('file', $('#file')[0].files[0]);
 
@@ -27,7 +47,7 @@ and open the template in the editor.
     var ext =  imgname.substr( (imgname.lastIndexOf('.') +1) );
     if(ext=='jpg' || ext=='jpeg' || ext=='png' || ext=='gif' || ext=='PNG' || ext=='JPG' || ext=='JPEG')
     {
-     if(size<=1000000)
+     if(size<=5000000)
      {
     $.ajax({
       url: "upload.php",
@@ -35,89 +55,64 @@ and open the template in the editor.
       data: data,
       enctype: 'multipart/form-data',
       processData: false,  // tell jQuery not to process the data
-      contentType: false   // tell jQuery not to set contentType
+      contentType: false,   // tell jQuery not to set contentType
+      dataType:'json'
     }).done(function(data) {
-       if(data!='FILE_SIZE_ERROR' || data!='FILE_TYPE_ERROR' )
+       if(data.success)
        {
-        fcnt = parseInt(fcnt)+1;
-        $('#filecount').val(fcnt);
-        var img = '<div class="dialog" id ="img_'+fcnt+'" ><img src="local_cdn/'+data+'"><a href="#" id="rmv_'+fcnt+'" onclick="return removeit('+fcnt+')" class="close-classic">Remove</a></div><input type="hidden" id="name_'+fcnt+'" value="'+data+'">';
-        $('#prv').append(img);
-        if(fname!=='')
-        {
-          fname = fname+','+data;
-        }else
-        {
-          fname = data;
-        }
-         $('#filename').val(fname);
-          imgclean.replaceWith( imgclean = imgclean.clone( true ) );
+           $('#mainimg').attr("src",data.file);
+           lon=data.loga;
+           lat=data.lati;
+           initMap();
        }
        else
        {
-         imgclean.replaceWith( imgclean = imgclean.clone( true ) );
-         alert('SORRY SIZE AND TYPE ISSUE');
+           alert(data.err);
        }
-
     });
     return false;
   }//end size
   else
-  {
-      imgclean.replaceWith( imgclean = imgclean.clone( true ) );//Its for reset the value of file type
-    alert('Sorry File size exceeding from 1 Mb');
-  }
+  {alert('Sorry File size exceeding from 1 Mb');}
   }//end FILETYPE
   else
-  {
-     imgclean.replaceWith( imgclean = imgclean.clone( true ) );
-    alert('Sorry Only you can uplaod JPEG|JPG|PNG|GIF file type ');
-  }
-  }//end filecount
-  else
-  {    imgclean.replaceWith( imgclean = imgclean.clone( true ) );
-     alert('You Can not Upload more than 6 Photos');
-  }
+  {alert('Sorry Only you can uplaod JPEG|JPG|PNG|GIF file type ');}
+  
 }
-        
-        
-        
-        
-        function removeit (arg) {
-       var id  = arg;
-       // GET FILE VALUE
-       var fname = $('#filename').val();
-       var fcnt = $('#filecount').val();
-        // GET FILE VALUE
 
-       $('#img_'+id).remove();
-       $('#rmv_'+id).remove();
-       $('#img_'+id).css('display','none');
 
-        var dname  =  $('#name_'+id).val();
-        fcnt = parseInt(fcnt)-1;
-        $('#filecount').val(fcnt);
-        var fname = fname.replace(dname, "");
-        var fname = fname.replace(",,", "");
-        $('#filename').val(fname);
-        $.ajax({
-          url: 'delete.php',
-          type: 'POST',
-          data:{'name':dname},
-          success:function(a){
-            console.log(a);
-            }
-        });
-    } 
+
+var map;
         
+        function initMap() {                            
+            var latitude = lat; // YOUR LATITUDE VALUE
+            var longitude = lon; // YOUR LONGITUDE VALUE
+            
+            var myLatLng = {lat: latitude, lng: longitude};
+            
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: myLatLng,
+              zoom: 14                    
+            });
+                    
+            var marker = new google.maps.Marker({
+              position: myLatLng,
+              map: map,
+              title: latitude + ', ' + longitude 
+            });            
+        }
+
         </script>
     </head>
     <body>
-        <div class="rCol"> 
-     <div id ="prv" style="height:auto; width:auto; float:left; margin-bottom: 28px; margin-left: 200px;"></div>
-       </div>
-    <div class="rCol" style="clear:both;">
-
+        <div id='imgmap'>
+        <div id='imagecon'>
+            <img src='../images/logo.png' style='width: 100%' id='mainimg'>
+        </div>
+        <div id='map'>
+            
+        </div>
+        </div>
     <label > Upload Photo : </label> 
     <input type="file" id="file" name='file' onChange=" return submitForm();">
     <input type="hidden" id="filecount" value='0'>
