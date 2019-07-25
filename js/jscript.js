@@ -397,3 +397,52 @@ function removeimg(did)
             
         });
 }
+
+function getoffclist()
+{
+    var otyp=$('#otype').val();
+    if(otyp!="")
+    {
+    $.ajax(
+            {
+                type: 'GET',
+                url: 'getoffclist.php?otyp='+otyp,
+                dataType: 'json',
+                success: function(data,status)
+                {
+                    
+                    if(data.succss)
+                    {
+                        
+                        document.getElementById("offc").options.length = 0;
+                        addoffcoption(data.appdate,data.apptim1);
+                        addoffcoption(data.appdate,data.apptim2);
+                    }
+                    else
+                    {
+                        document.getElementById("offc").options.length = 0;
+                        
+                    }
+                }
+            }
+            );
+    }
+    else
+    {
+        document.getElementById("offc").options.length = 0;
+        
+    }
+}
+
+function addoffcoption(d,t)
+{
+    if(t!="")
+    {
+        var t24=t.split("-");
+        var x = document.getElementById("chamber_time");
+        var option = document.createElement("option");
+        option.text = d+"  ("+time24to12(t24[0])+" - "+time24to12(t24[1])+")";
+        option.value=t;
+        x.add(option);
+    }
+}

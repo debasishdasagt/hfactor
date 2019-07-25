@@ -70,6 +70,9 @@ and open the template in the editor.
                        {
                            initMap();
                            $('#imgmap').collapse('show');
+                           $('#longitude').val(lon);
+                           $('#latitude').val(lat);
+                           $('#uploadsec').css('margin-top','30px');
                        }
                            
                    }
@@ -120,22 +123,68 @@ var map;
     <body>
         <div class='container'>
             <div class='row'>
-        <div id='imgmap' class='collapse'>
-        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' id='imagecon'>
-            <img src='../images/logo.png'  id='mainimg'>
-        </div>
-        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' id='map'></div>
-        </div></div>
-            <div class='row'>
-                <div class='col-lg-12'>
-                    <table border='0'>
-                        <tr>
-                            <td><label > Upload Photo : </label> </td>
-                            <td><input type="file" id="file" name='file' onChange=" return submitForm();"></td>
-                        </tr>
-                    </table>
+                <div class='col-lg-12' style="margin-top: 100px; margin-bottom: 20px" id="uploadsec">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12"><input type="file" id="file" name='file'></div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="text-align: center"> <button class="btn btn-info btn-sm" onclick="return submitForm();">Upload</button></div>       
+                     
                 </div>
             </div>
+            
+            <div class='row'>
+        <div id='imgmap' class='collapse'>
+            <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' id='imagecon' style="margin-top: 10px">
+            <div style="max-height: 300px; overflow: hidden">
+            <img src='../images/logo.png'  id='mainimg'>
+            </div>
+        </div>
+            <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style="margin-top: 10px">
+                <div id="map"></div>
+            </div>
+            <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style="margin-top: 10px">
+                <table border='0'>
+                        <tr>
+                            <td>
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-addon">Office Type:</span>
+                                    <select id="otype" class="form-control" onchange="getoffclist()">
+                                        <option value="">Office Type</option>
+                                        <option value="Chamber">Chamber</option>
+                                        <option value="Lab">Lab.</option>
+                                    </select>
+                                </div>
+                            </td><td>
+                                <div class="input-group input-group-sm" style="margin-left:3px">
+                                    <span class="input-group-addon">Office</span>
+                                    <select id="offc" class="form-control">
+                                        <option value="">Office</option>
+                                        <option value="Chamber">Chamber</option>
+                                        <option value="Lab">Lab.</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+            <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style="margin-top: 10px">
+                <table border='0' cellpadding="5">
+                        <tr>
+                                    <td><div class="input-group input-group-sm">
+                                            <span class="input-group-addon">Longitude</span>
+                                            <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Longitude">
+                                </div>
+                                </td>
+                            <td>
+                                <div class="input-group input-group-sm" style="margin-left:3px">
+                                            <span class="input-group-addon">Latitude</span>
+                                            <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Latitude">
+                                </div>
+                                
+                        </tr>
+                    </table>
+            </div>
+        </div></div>
+            
+            
     
         </div>
     </body>
