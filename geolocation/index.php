@@ -10,7 +10,6 @@ and open the template in the editor.
         <title></title>
         <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
         <link rel='stylesheet' href='../bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css'>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel='stylesheet' href='../css/page_style.css'>
         <style>          
           #map { 
@@ -25,96 +24,14 @@ and open the template in the editor.
           {
               margin-bottom: 20px;
           }
+         
         </style>  
-        <script src="../js/jquery-3.4.1.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM3kDtr3fESrA2j5JtNDrF5D0uvjiftQM" async defer></script>
-    <script>
-        var lon,lat;
-        lon="";
-        lat="";
-        function submitForm() {
-
-    
-                var fname = $('#filename').val();
-                var imgclean = $('#file');
-                data = new FormData();
-                data.append('file', $('#file')[0].files[0]);
-
-                var imgname  =  $('input[type=file]').val();
-                 var size  =  $('#file')[0].files[0].size;
-
-                var ext =  imgname.substr( (imgname.lastIndexOf('.') +1) );
-                if(ext=='jpg' || ext=='jpeg' || ext=='JPG' || ext=='JPEG')
-                {
-                 if(size<=5000000)
-                 {
-                $.ajax({
-                  url: "upload.php",
-                  type: "POST",
-                  data: data,
-                  enctype: 'multipart/form-data',
-                  processData: false,  // tell jQuery not to process the data
-                  contentType: false,   // tell jQuery not to set contentType
-                  dataType:'json'
-                }).done(function(data) {
-                   if(data.success)
-                   {
-                       $('#mainimg').attr("src",data.file);
-                       lon=data.loga;
-                       lat=data.lati;
-                       if(lon==null || lat==null)
-                       {
-                           $('#imgmap').collapse('hide');
-                           alert("Geo Location Not Found");
-                       }else
-                       {
-                           initMap();
-                           $('#imgmap').collapse('show');
-                           $('#longitude').val(lon);
-                           $('#latitude').val(lat);
-                           $('#image').val(data.img);
-                           $('#uploadsec').css('margin-top','30px');
-                       }
-                           
-                   }
-                   else
-                   {
-                       alert(data.err);
-                   }
-                });
-                return false;
-              }//end size
-              else
-              {alert('Sorry File size exceeding from 1 Mb');}
-              }//end FILETYPE
-              else
-              {alert('Sorry Only you can uplaod JPEG|JPG|PNG|GIF file type ');}
-  
-}
-
-
-
-var map;
         
-        function initMap() {                            
-            var latitude = lat; // YOUR LATITUDE VALUE
-            var longitude = lon; // YOUR LONGITUDE VALUE
-            
-            var myLatLng = {lat: latitude, lng: longitude};
-            
-            map = new google.maps.Map(document.getElementById('map'), {
-              center: myLatLng,
-              zoom: 14                    
-            });
-                    
-            var marker = new google.maps.Marker({
-              position: myLatLng,
-              map: map,
-              title: latitude + ', ' + longitude 
-            });            
-        }
-
-        </script>
+    <script src='../js/jquery-3.2.1.min.js'></script>
+    <script src='../bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
+    <script src='../js/jscript.js'></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM3kDtr3fESrA2j5JtNDrF5D0uvjiftQM" async defer></script>
+   
     </head>
     
     
@@ -124,9 +41,12 @@ var map;
     <body>
         <div class='container'>
             <div class='row'>
-                <div class='col-lg-12' style="margin-top: 100px; margin-bottom: 20px" id="uploadsec">
+                <div class='col-lg-12' style="padding-top: 50px; padding-bottom: 50px; background-color: #eeeeee; border-radius: 5px" id="uploadsec">
                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12"><input type="file" id="file" name='file'></div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="text-align: center"> <button class="btn btn-info btn-sm" onclick="return submitForm();">Upload</button></div>       
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="text-align: right">
+                        
+                        <button class="btn btn-info btn-sm" onclick="return submitForm();" id="uploadbtn">Upload</button>
+                    </div>       
                      
                 </div>
             </div>
@@ -190,15 +110,5 @@ var map;
             
     
         </div>
-    </body>
-    
-    
-    
-    
-    
-    
-    <script src='../js/jquery-3.2.1.min.js'></script>
-    <script src='../bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
-    <script src='../js/jscript.js'></script>
-    
+    </body> 
 </html>

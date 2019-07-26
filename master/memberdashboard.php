@@ -46,6 +46,9 @@ include_once 'loginhandler.php';
   <?php if($_SESSION['rolecode']== '1001') { ?>
   <a href="#about"><i class="glyphicon glyphicon-briefcase"></i> Nursing Care</a>
   <?php } ?>
+  <?php if($_SESSION['rolecode']== '1001') { ?>
+  <a href="../geolocation/" target="adminframe"><i class="glyphicon glyphicon-map-marker"></i> Geo. Location</a>
+  <?php } ?>
   <a href="logout.php"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
 </div>
 

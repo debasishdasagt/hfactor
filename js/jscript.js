@@ -398,6 +398,106 @@ function removeimg(did)
         });
 }
 
+
+
+
+        var lon,lat;
+        lon="";
+        lat="";
+        function submitForm() {
+
+    
+                var fname = $('#filename').val();
+                var imgclean = $('#file');
+                data = new FormData();
+                data.append('file', $('#file')[0].files[0]);
+
+                var imgname  =  $('input[type=file]').val();
+                 var size  =  $('#file')[0].files[0].size;
+
+                var ext =  imgname.substr( (imgname.lastIndexOf('.') +1) );
+                if(ext=='jpg' || ext=='jpeg' || ext=='JPG' || ext=='JPEG')
+                {
+                 if(size<=5000000)
+                 {
+                     $('#uploadbtn').html("Uploading...");
+                       $('#uploadbtn').addClass('disable');
+                $.ajax({
+                  url: "upload.php",
+                  type: "POST",
+                  data: data,
+                  enctype: 'multipart/form-data',
+                  processData: false,  // tell jQuery not to process the data
+                  contentType: false,   // tell jQuery not to set contentType
+                  dataType:'json'
+                }).done(function(data) {
+                   if(data.success)
+                   {
+                       $('#uploadbtn').html("Upload");
+                       $('#uploadbtn').removeClass('disable');
+                       $('#mainimg').attr("src",data.file);
+                       lon=data.loga;
+                       lat=data.lati;
+                       if(lon==null || lat==null)
+                       {
+                           $('#uploadbtn').html("Upload");
+                       $('#uploadbtn').removeClass('disable');
+                           $('#imgmap').collapse('hide');
+                           alert("Geo Location Not Found");
+                       }else
+                       {
+                           initMap();
+                           $('#imgmap').collapse('show');
+                           $('#longitude').val(lon);
+                           $('#latitude').val(lat);
+                           $('#image').val(data.img);
+                           $('#uploadsec').css('padding-top','30px');
+                       }
+                           
+                   }
+                   else
+                   {
+                       $('#uploadbtn').html("Upload");
+                       $('#uploadbtn').removeClass('disable');
+                       alert(data.err);
+                   }
+                });
+                return false;
+              }//end size
+              else
+              {alert('Sorry File size exceeding from 5 Mb');}
+              }//end FILETYPE
+              else
+              {alert('Sorry Only you can uplaod JPEG|JPG|PNG|GIF file type ');}
+  
+}
+
+
+
+var map;
+        
+        function initMap() {                            
+            var latitude = lat; // YOUR LATITUDE VALUE
+            var longitude = lon; // YOUR LONGITUDE VALUE
+            
+            var myLatLng = {lat: latitude, lng: longitude};
+            
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: myLatLng,
+              zoom: 14                    
+            });
+                    
+            var marker = new google.maps.Marker({
+              position: myLatLng,
+              map: map,
+              title: latitude + ', ' + longitude 
+            });            
+        }
+
+
+
+
+
 function getoffclist()
 {
     var otyp=$('#otype').val();
@@ -450,17 +550,21 @@ function addoffcoption(d,t)
 
 function savegeodata()
 {
+    console.log($('#offc').val());
+    if($('#offc').val()!="")
+    {
     $.ajax({
             type: "POST",
             url: "savegeodata.php",
             dataType:'json',
-            data: {otype: $('#otype').val(), offc: $('#offc').val(), longitude: $('#longitude').val(), latitude: $('#longitude').val(), img: $('$image').val()},
+            data: {otype: $('#otype').val(), offc: $('#offc').val(), longitude: $('#longitude').val(), latitude: $('#latitude').val(), img: $('#image').val()},
             cache: false,
             success: function(data)
             {
                 if(data.success)
                 {
                     alert(data.err);
+                    document.location="./";
                 }
                 else
                 {
@@ -469,4 +573,9 @@ function savegeodata()
             }
             
         });
+    }
+    else
+    {
+        alert("Please Select Office");
+    }
 }

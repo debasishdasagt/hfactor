@@ -44,7 +44,7 @@ function showtt(id)
         $('#gamodal').modal('show');
         $('#appointmentframe').attr('src','docappointment.php?did='+did);
     }
-    
+ var l1,l2;   
 function getctimings()
 {
     var chid=$('#chamber').val();
@@ -67,6 +67,20 @@ function getctimings()
                         showttv('chamber',data.cremarks,5000);
                         showttv('chamber_time','',5000);
                         $('#getapp').removeClass('disabled');
+                        if(data.location)
+                        {
+                            $('#chimg').attr('src','../../geolocation/local_cdn_r/'+data.mapimg);
+                            l1=data.longitude;
+                            l2=data.latitude;
+                            //initMap(data.longitude,data.latitude,'chmap');
+                            $('#chmap').removeClass('hidden');
+                            console.log("Map Available");
+                        }
+                        else
+                        {
+                         $('#chmap').addClass('hidden');
+                            console.log("Map Unavailable");   
+                        }
                     }
                     else
                     {
@@ -88,6 +102,27 @@ function getctimings()
         $('#getapp').addClass('disabled');
     }
 }
+
+function initMap(lon,lat,mapdiv) {                            
+            var latitude = parseFloat(lat); // YOUR LATITUDE VALUE
+            var longitude = parseFloat(lon); // YOUR LONGITUDE VALUE
+            
+            var myLatLng = {lat: latitude, lng: longitude};
+            
+            map = new google.maps.Map(document.getElementById(mapdiv), {
+              center: myLatLng,
+              zoom: 15                    
+            });
+                    
+            var marker = new google.maps.Marker({
+              position: myLatLng,
+              map: map,
+              title: latitude + ', ' + longitude 
+            });            
+        }
+
+
+
 
 function addctoption(d,t)
 {
@@ -303,6 +338,7 @@ function checkmob(item)
             {
                 if(data.success)
                 {
+                    console.log("Enabling Btn");
                     $('#mobnum').animate({marginTop:"80px"});
                     $('#otherinfo').collapse('hide');
                     $('input[name="pname"]').removeAttr("required");
@@ -312,7 +348,9 @@ function checkmob(item)
                     $('input[name="pdob"]').val("");
                     $('input[name="paddress"]').val("");
                     $('#newcustsubmit').removeClass('disabled');
+                    $('#newcustsubmit').removeAttr('disabled');
                     oldnewpatient="old";
+                    
                 }
                 else
                 {
@@ -330,6 +368,7 @@ function checkmob(item)
     else
     {
         $('#newcustsubmit').addClass('disabled');
+        $('#newcustsubmit').attr('disabled','disabled');
     }
 }
 
@@ -456,3 +495,12 @@ $(window).scroll(function()
         $('#header1').slideDown(200);
     }
 });
+
+
+function showmap()
+{
+    console.log('Showing Map Modal');
+    initMap(l1,l2,'chmapmod');
+    $('#chlocationmodal').modal('show');
+    
+}

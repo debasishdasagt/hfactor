@@ -6,6 +6,10 @@ if(isset($_GET['cid']))
 {
     $res=array(
         'succss' => false,
+        'location'=>false,
+        'longitude'=>'',
+        'latitude'=>'',
+        'mapimg'=>'',
         'appdate' => '',
         'appwd' => '',
         'apptim1' => '',
@@ -17,6 +21,15 @@ if(isset($_GET['cid']))
     $dt= date("Y-m-d");
     $timing="";
     $wday=date("l",  strtotime($dt));
+    $getmapq=mysqli_query($conn,"select longitude,latitude,img from d_geo_location where offfice_type='Chamber' and office_name='$cid' and record_status='A'");
+    if(mysqli_num_rows($getmapq)>0)
+    {
+        $getmapr=  mysqli_fetch_array($getmapq);
+        $res['location']=true;
+        $res['longitude']=$getmapr['longitude'];
+        $res['latitude']=$getmapr['latitude'];
+        $res['mapimg']=$getmapr['img'];
+    }
     $cremarksq=  mysqli_query($conn, "select ifnull(chamber_remarks,'') as r from d_chambers where chamber_id='$cid' and record_status='A'");
     $cremarksr= mysqli_fetch_array($cremarksq);
     $res['cremarks']=$cremarksr['r'];

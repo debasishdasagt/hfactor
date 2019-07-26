@@ -39,7 +39,7 @@ ADD COLUMN `test_or_sample` VARCHAR(500) NULL DEFAULT NULL AFTER `test_id`;
 update lab_test_mapping set test_or_sample='Full Test' where record_status='A';
 
 
-
+-- Date: 16-7-2019 
 
 CREATE TABLE `d_geo_location` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -54,3 +54,5 @@ CREATE TABLE `d_geo_location` (
  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
 
+ALTER TABLE `ihealthcare`.`d_geo_location` 
+CHANGE COLUMN `latitude` `latitude` VARCHAR(500) NULL DEFAULT NULL AFTER `longitude`;

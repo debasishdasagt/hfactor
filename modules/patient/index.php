@@ -259,13 +259,13 @@ e-mail: doctor247@biht.in
   <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
-    <div class="modal-content">
+    <div class="modal-content" >
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h5 class="modal-title">Doctor's Appointment</h5>
       </div>
       <div class="modal-body">
-          <iframe id='appointmentframe'></iframe>   
+          <iframe id='appointmentframe' ></iframe>   
         
         
         

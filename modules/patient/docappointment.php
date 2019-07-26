@@ -52,7 +52,9 @@ if(isset($_SESSION['pmobile']))
                             }
                             ?>
                         </select>
+                        <span class="input-group-addon hidden" id="chmap" onclick="showmap()"><i class="glyphicon glyphicon-map-marker"></i> Location</span>
                     </div>
+                   <!--<button class="btn btn-info btn-sm hidden" onclick="showmap()" id="chmap"><i class="glyphicon glyphicon-map-marker"></i> Map</button> -->
                 </div>
                     
                     <br>
@@ -103,9 +105,40 @@ if(isset($_SESSION['pmobile']))
             </div>
         </div>
         
+        <div id="chlocationmodal" class="modal fade " role="dialog" style="background-color: rgba(0,0,0,0)">
+        <div class="modal-dialog modal-sm"  style=" width: 80%" >
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        
+        <div class="modal-body">
+            <div class="container" style="min-height: 100px; max-height: 200px; overflow: hidden; text-align: center">
+                
+                <table  border="0">
+                    <tr>
+                        <td>
+                            <img id="chimg" style="width:200px; height: 150px">
+                        </td>
+                        <td>
+                            <div id="chmapmod" style="width:400px; height: 150px"></div>
+                        </td>
+                    </tr>
+                </table>
+                        
+                
+          </div>
+      </div>
+      
+    </div>
+
+  </div>
+</div> 
+        
         
         <script src='../../js/jquery-3.2.1.min.js'></script>
     <script src='../../bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM3kDtr3fESrA2j5JtNDrF5D0uvjiftQM" async defer></script>
+   
     <script src='../../js/public.js'></script>
     <script>
         
