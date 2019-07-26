@@ -37,3 +37,20 @@ ADD COLUMN `test_or_sample` VARCHAR(500) NULL DEFAULT NULL AFTER `test_id`;
 
 
 update lab_test_mapping set test_or_sample='Full Test' where record_status='A';
+
+
+
+
+CREATE TABLE `d_geo_location` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `offfice_type` varchar(60) DEFAULT NULL,
+ `office_name` varchar(500) DEFAULT NULL,
+ `longitude` varchar(500) DEFAULT NULL,
+ `img` varchar(1000) DEFAULT NULL,
+ `latitude` varchar(500) DEFAULT NULL,
+ `record_status` varchar(10) DEFAULT NULL,
+ `record_created_on` datetime DEFAULT NULL,
+ `record_updated_on` datetime DEFAULT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+

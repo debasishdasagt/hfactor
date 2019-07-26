@@ -44,7 +44,7 @@ and open the template in the editor.
                  var size  =  $('#file')[0].files[0].size;
 
                 var ext =  imgname.substr( (imgname.lastIndexOf('.') +1) );
-                if(ext=='jpg' || ext=='jpeg' || ext=='png' || ext=='gif' || ext=='PNG' || ext=='JPG' || ext=='JPEG')
+                if(ext=='jpg' || ext=='jpeg' || ext=='JPG' || ext=='JPEG')
                 {
                  if(size<=5000000)
                  {
@@ -72,6 +72,7 @@ and open the template in the editor.
                            $('#imgmap').collapse('show');
                            $('#longitude').val(lon);
                            $('#latitude').val(lat);
+                           $('#image').val(data.img);
                            $('#uploadsec').css('margin-top','30px');
                        }
                            
@@ -158,6 +159,7 @@ var map;
                                     <select id="offc" class="form-control">
                                         <option value="">Office</option>
                                     </select>
+                                    <input type="hidden" id="image">
                                 </div>
                             </td>
                             <td>

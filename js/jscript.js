@@ -446,3 +446,27 @@ function addoffcoption(d,t)
         x.add(option);
     }
 }
+
+
+function savegeodata()
+{
+    $.ajax({
+            type: "POST",
+            url: "savegeodata.php",
+            dataType:'json',
+            data: {otype: $('#otype').val(), offc: $('#offc').val(), longitude: $('#longitude').val(), latitude: $('#longitude').val(), img: $('$image').val()},
+            cache: false,
+            success: function(data)
+            {
+                if(data.success)
+                {
+                    alert(data.err);
+                }
+                else
+                {
+                    alert(data.err);
+                }
+            }
+            
+        });
+}

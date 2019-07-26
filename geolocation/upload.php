@@ -7,16 +7,20 @@ $json=array(
     'success'=>false,
     'err'=>'',
     'file'=>'',
+    'img'=>'',
     'loga'=>'',
     'lati'=>''
 );
-$filetype = array('jpeg','jpg','png','gif','PNG','JPEG','JPG');
+$filetype = array('jpeg','jpg','JPEG','JPG');
    foreach ($_FILES as $key )
     {
 
           $name =time().$key['name'];
 
           $path='local_cdn/'.$name;
+          $rpath='local_cdn_r/'.$name;
+          $tpath='local_cdn_r/'.'thumbnail_'.$name;
+          $json['img']=$name;
           $file_ext =  pathinfo($name, PATHINFO_EXTENSION);
           if(in_array(strtolower($file_ext), $filetype))
           {
@@ -26,9 +30,10 @@ $filetype = array('jpeg','jpg','png','gif','PNG','JPEG','JPG');
              @move_uploaded_file($key['tmp_name'],$path);
              $fileName=$path;
              $returned_data = triphoto_getGPS($path);
+             resize_image($path, $rpath, $tpath, '300', '200');
              $json['success']= true;
              $json['err']='done uploading';
-             $json['file']= $path;
+             $json['file']= $rpath;
              $json['loga']= $returned_data['longitude'];
              $json['lati']= $returned_data['latitude'];
              echo json_encode($json);
@@ -50,6 +55,37 @@ $filetype = array('jpeg','jpg','png','gif','PNG','JPEG','JPG');
         }
     }
 
+    
+    
+    function resize_image($file, $dfile, $tfile, $w, $h, $crop=FALSE) {
+    list($width, $height) = getimagesize($file);
+    $r = $width / $height;
+    if ($crop) {
+        if ($width > $height) {
+            $width = ceil($width-($width*abs($r-$w/$h)));
+        } else {
+            $height = ceil($height-($height*abs($r-$w/$h)));
+        }
+        $newwidth = $w;
+        $newheight = $h;
+    } else {
+        if ($w/$h > $r) {
+            $newwidth = $h*$r;
+            $newheight = $h;
+        } else {
+            $newheight = $w/$r;
+            $newwidth = $w;
+        }
+    }
+    $src = imagecreatefromjpeg($file);
+    $dst = imagecreatetruecolor($newwidth, $newheight);
+    imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+    imagejpeg($dst,$dfile,100);
+    imagejpeg($dst,$tfile,75);
+    return $dfile;
+}
+    
+    
     
     
     function triphoto_getGPS($fileName)
