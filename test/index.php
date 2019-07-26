@@ -157,10 +157,11 @@ var map;
                                     <span class="input-group-addon">Office</span>
                                     <select id="offc" class="form-control">
                                         <option value="">Office</option>
-                                        <option value="Chamber">Chamber</option>
-                                        <option value="Lab">Lab.</option>
                                     </select>
                                 </div>
+                            </td>
+                            <td>
+                                <button class='btn btn-info btn-sm' onclick='savegeodata()' style="margin-left:3px">Submit</button>
                             </td>
                         </tr>
                     </table>

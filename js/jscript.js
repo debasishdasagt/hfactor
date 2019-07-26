@@ -411,17 +411,17 @@ function getoffclist()
                 success: function(data,status)
                 {
                     
-                    if(data.succss)
+                    if(data.success)
                     {
                         
                         document.getElementById("offc").options.length = 0;
-                        addoffcoption(data.appdate,data.apptim1);
-                        addoffcoption(data.appdate,data.apptim2);
+                        $('#offc').html(data.offc_name);
+                        console.log(data.offc_name);
                     }
                     else
                     {
                         document.getElementById("offc").options.length = 0;
-                        
+                        alert(data.err);
                     }
                 }
             }
