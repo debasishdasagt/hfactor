@@ -399,17 +399,15 @@ div.content {
 
 .tile_sp
 {
-    background: #2193b0;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    
     margin: 10px;
-    padding: 5px;
+    padding: 0px;
     font-size: 12px;
     border-radius: 3px;
     box-shadow: 0px 0px 5px #000000;
-    min-height: 160px;
+    min-height: 150px;
     max-width: 370px;
+    overflow: hidden;
 }
 
 .srchimg
@@ -499,13 +497,14 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
 }
 .labtiletd1c1
 {
-    background-color: #525064;
+    background-color: rgba(0,0,0,0.5);
     color: #ffffff;
     height: 150px;
     width: 100%;
     text-align: left;
     padding: 10px;
     font-size: 11px;
+    
 }
 
 .labtiletd1c1 > h5

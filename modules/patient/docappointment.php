@@ -52,7 +52,7 @@ if(isset($_SESSION['pmobile']))
                             }
                             ?>
                         </select>
-                        <span class="input-group-addon hidden" id="chmap" onclick="showmap()"><i class="glyphicon glyphicon-map-marker"></i> Location</span>
+                        <span class="input-group-addon hidden" id="chmap" onclick="showmap()" style="cursor: pointer"><i class="glyphicon glyphicon-map-marker"></i> Location</span>
                     </div>
                    <!--<button class="btn btn-info btn-sm hidden" onclick="showmap()" id="chmap"><i class="glyphicon glyphicon-map-marker"></i> Map</button> -->
                 </div>
@@ -106,21 +106,21 @@ if(isset($_SESSION['pmobile']))
         </div>
         
         <div id="chlocationmodal" class="modal fade " role="dialog" style="background-color: rgba(0,0,0,0)">
-        <div class="modal-dialog modal-sm"  style=" width: 80%" >
+        <div class="modal-dialog modal-sm"  style="width: 80%; padding: 0px; overflow: hidden" >
 
     <!-- Modal content-->
-    <div class="modal-content">
+    <div class="modal-content" style="padding: 0px; overflow: hidden">
         
-        <div class="modal-body">
-            <div class="container" style="min-height: 100px; max-height: 200px; overflow: hidden; text-align: center">
+        <div class="modal-body" style="padding: 0px; overflow: hidden">
+            <div class="container" style="min-height: 100px; max-height: 200px; overflow: hidden; text-align: center; padding: 0px; background-color: #ededee">
                 
                 <table  border="0">
                     <tr>
                         <td>
-                            <img id="chimg" style="width:200px; height: 150px">
+                            <img class="hidden-sm hidden-xs" id="chimg" style="width:200px; height: 150px">
                         </td>
                         <td>
-                            <div id="chmapmod" style="width:400px; height: 150px"></div>
+                            <div id="chmapmod" style="width:500px; height: 150px"></div>
                         </td>
                     </tr>
                 </table>

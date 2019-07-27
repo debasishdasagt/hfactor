@@ -11,6 +11,14 @@ include_once '../../config.php';
         <meta name="viewport" content="width= device-width, initial-scale = 1">
   <title>Doctor 24/7</title>
   
+  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM3kDtr3fESrA2j5JtNDrF5D0uvjiftQM" async defer></script>
+  <script src='../../js/jquery-3.2.1.min.js'></script>
+    <script src='../../js/jquery-ui.min.js'></script>
+    <script src='../../bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
+    <script src='../../js/public.js'></script>
+    
+  
   <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
   <link rel='stylesheet' href='../../bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -280,34 +288,64 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#94bababa', e
                 
                 <div class='col-lg-4 col-md-6 col-sm-6 col-xs-11 tile_sp'>
                     
-                    <table width='100%' border='0' cellspacing='0' cellpadding="0">
-                        <tr>
-                            <td rowspan="2" width='75' align="left"><div class='thumbnail srchimg' style="margin-bottom: 0px; font-size: 50px; color: #eeeeee"><i class="glyphicon glyphicon-briefcase"></i></div></td><td style="boder-bottom: 1px solid #cccccc; color: #ffffff"><strong><?php echo  $dcr['lab_name'];?></strong></td>
-                        </tr>
-                        <tr>
-                            <td class='srchsubtxt' align="left" style="padding-left: 8px">
-                                <strong>Doctor:</strong> <?php echo  $dcr['lab_doctor'];?><br><strong>Address:</strong><?php echo  $dcr['lab_address'];?></td>
-                        </tr>
-                        
-                        <tr>
-                            <td colspan="2" class='srchsubtxt' align="left">
-                                <strong>Time:</strong> <?php echo  $dcr['opening_time'];?> to <?php echo  $dcr['closing_time'];?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class='srchsubtxt' align="left">
-                                <strong>Days:</strong> <?php echo  $days;?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" align='right' align="left" style="padding: 5px;" >
-                                <a  href="javascript:showtest('<?php echo  $dcr['lab_id'];?>')" style="color:white;font-weight: bold;">Available Tests<i class="glyphicon glyphicon-menu-right"> </i></a>
-                            </td>
-                        </tr>
-                    </table>
                     
                     
+                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <tr>
+                                    <td style="width:50%; overflow: hidden" class="hidden-xs">
+                                        <?php
+                                            $getmapq=mysqli_query($conn,"select longitude,latitude,img from d_geo_location where offfice_type='Lab' and office_name='".$dcr['lab_id']."' and record_status='A'");
+                                                if(mysqli_num_rows($getmapq)>0)
+                                                {
+                                                    $getmapr=  mysqli_fetch_array($getmapq);
+                                                    $l1=$getmapr['longitude'];
+                                                    $l2=$getmapr['latitude'];
+                                                    $img=$getmapr['img'];
+                                                    
+                                                }
+                                            ?>
+                                        
+                                        <div style="position: absolute; background-color:#818181; <?php if(mysqli_num_rows($getmapq)>0){ echo "background-image: url('../../geolocation/local_cdn_r/thumbnail_".$img."')" ; } ?> ;min-height: 150px; width: 300px; z-index: 4 " id='<?php echo  "labthumb_".$dcr['lab_id'];?>'></div>
+                                        <div class="labtiletd1c1" style="position:relative; z-index: 5"><h5><strong><?php echo  $dcr['lab_name'];?></strong></h5>
+                                        
+                                       <strong>Doctor:</strong> <?php echo  $dcr['lab_doctor'];?>
+                                       <br><strong>Time:</strong> <?php echo  $dcr['opening_time'];?> to <?php echo  $dcr['closing_time'];?>
+                                       <br><strong>Days:</strong> <?php echo  $days;?>
+                                        </div>
+                                        
+                                    </td>
+                                    <td style="width: 50%" valign="top" align="left">
+                                        <div style="position: absolute;background-color: #ededee;min-height: 150px; width: 250px; z-index: 6 " id='<?php echo  "labmap_".$dcr['lab_id'];?>'></div>
+                                        
+                                        <?php
+                                          if(mysqli_num_rows($getmapq)>0)
+                                          {
+                                              ?>
+                                        
+                                        <script type="text/javascript">
+                                            console.log("Setting Map");
+                                            initMap('<?php echo $l1;?>','<?php echo $l2;?>','<?php echo  "labmap_".$dcr['lab_id'];?>')
+                                            </script>
+                                        
+                                       <?php
+                                          }
+                                        ?>
+                                        
+                                        
+                                        
+                                        
+                                        <div class="labtiletd2c1" style="position: relative; z-index: 7; background-color: rgba(255,255,255,0.9)">
+                                            <br><strong>Address:</strong><?php echo  $dcr['lab_address'];?>
+                                            
+                                        </diV>
+                                        
+                                        <div class="labtiletd2c2" style="position: relative; z-index: 7;"><a  href="javascript:showtest('<?php echo  $dcr['lab_id'];?>')" style="color:white;font-weight: bold;">More Info <i class="glyphicon glyphicon-menu-right"> </i></a></div>
+                                    </td>
+                                </tr>
+                            </table>
                     
+                    
+                 
                 </div>
                 
                 
@@ -397,10 +435,7 @@ e-mail: doctor247@biht.in
     
     
     
-    <script src='../../js/jquery-3.2.1.min.js'></script>
-    <script src='../../js/jquery-ui.min.js'></script>
-    <script src='../../bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
-    <script src='../../js/public.js'></script>
+    
 <script>
     
     <?php
