@@ -133,7 +133,7 @@ order by `d_chamber_appointment`.`app_date`, `d_chamber_appointment`.`app_time_f
                                     }
                                     else{
                                         ?>
-                                    <button class='btn btn-info btn-xs disabled' role='Button' id="<?php echo $appr['id'].'_btn'; ?>" onclick="visitedp('<?php echo $appr['id']; ?>')">Visited</button>
+                                    <button class='btn btn-info btn-xs disabled' role='Button' id="<?php echo $appr['id'].'_btn'; ?>" onclick="visitedp('<?php echo $appr['id']; ?>')" disabled="disabled">Visited</button>
                                 
                                             <?php
                                     }
@@ -161,7 +161,7 @@ order by `d_chamber_appointment`.`app_date`, `d_chamber_appointment`.`app_time_f
         <h5 class="modal-title">Patient Visited</h5>
       </div>
       <div class="modal-body">
-          <iframe id='appointmentframe' styl="height: 300px"></iframe>   
+          <iframe id='appointmentframe' style="height: 300px"></iframe>   
         
         
         

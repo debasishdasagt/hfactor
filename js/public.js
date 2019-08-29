@@ -360,6 +360,7 @@ function checkmob(item)
                     $('input[name="pdob"]').attr("required","true");
                     $('input[name="paddress"]').attr("required","true");
                     $('#newcustsubmit').removeClass('disabled');
+                    $('#newcustsubmit').removeAttr('disabled');
                     oldnewpatient="new";
                 }
             }

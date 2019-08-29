@@ -131,7 +131,7 @@ concat(chamber_name,chamber_address,chamber_area_pin,
                         
                         <tr>
                             <td colspan="2" align='right'>
-                                <a class='btn btn-warning btn-xs' role='button' href='docappointment.php.php?chid=<?php echo  $dcr['chamber_id'];?>&did=<?php echo  $dcr['doctor_code'];?>'>Select</a>
+                                <a class='btn btn-warning btn-xs' role='button' href='docappointment.php?chid=<?php echo  $dcr['chamber_id'];?>&did=<?php echo  $dcr['doctor_code'];?>'>Select</a>
                             </td>
                         </tr>
                     </table>

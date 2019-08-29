@@ -314,7 +314,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#94bababa', e
           </div>
       </div>
       <div class="modal-footer" style="border-top:0px">
-        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Go To Website</button>
+        <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Go To Website</button>
       </div>
     </div>
 

@@ -316,6 +316,13 @@ function visitedp(pid)
     }
     
     
+    function licensingmodal(lid)
+    {
+        $('#licensemodal').modal('show');
+        $('#licensingframe').attr('src','licensing.php?lid='+lid);
+    }
+    
+    
     function aftervisit(id)
     {
         var appcomp;

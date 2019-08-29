@@ -42,17 +42,7 @@ $labcd=$labr['lab_id'];
 </head>
 <body>
     <div class='container'>
-            <div class='btn-group btn-group-sm'>
-                <a class='btn btn-info' role='button' href="addtest.php">New Test</a>
-                <?php
-                if($rolecd=="1001")
-                {
-                ?>
-                <a class='btn btn-info' role='button' href="approvetest.php">Approve Test</a>
-                <a class='btn btn-info' role='button' href="addlab.php">New Lab.</a>
-                <?php } ?>
-                <a class='btn btn-info' role='button' href="tagtests.php">Tag Tests</a>
-            </div><hr>
+            <?php include_once 'menu.php'; ?><hr>
     
     <div class="row">
                 <div class='col-lg-12'>
